@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRS · Digital Rebel Studio</title>
+<meta name="description" content="Digital Rebel Studio (DRS) — a visual, code-free studio for building IoT, HMI and SCADA applications. The next step after Microset IOT Designer.">
+<meta property="og:title" content="DRS · Digital Rebel Studio">
+<meta property="og:description" content="Visual, code-free studio for IoT, HMI and SCADA applications.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' text-anchor='middle' fill='white'%3EDRS%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#ffffff; --bg-alt:#f5f7fb; --card:#ffffff; --text:#0f172a; --muted:#5b6478;
+  --line:#e3e8f0; --accent:#2563eb; --accent-2:#7c3aed; --accent-ink:#ffffff;
+  --shadow:0 1px 2px rgba(15,23,42,.05),0 8px 24px rgba(15,23,42,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0b1020; --bg-alt:#0f1630; --card:#131b36; --text:#e8ecf5; --muted:#9aa5c0;
+    --line:#222c4d; --accent:#5b8cff; --accent-2:#a78bfa; --accent-ink:#0b1020;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);letter-spacing:.2px}
+.brand:hover{text-decoration:none}
+.logo{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#fff;font-size:12px;font-weight:800}
+.nav nav{display:flex;gap:22px;align-items:center}
+.nav nav a{color:var(--muted);font-size:15px}
+.nav nav a:hover{color:var(--text);text-decoration:none}
+.btn{display:inline-block;padding:11px 20px;border-radius:10px;font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer}
+.btn:hover{text-decoration:none}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{border-color:var(--line);color:var(--text);background:var(--card)}
+.btn.ghost:hover{border-color:var(--accent)}
+.hero{padding:88px 0 72px;text-align:center;background:radial-gradient(900px 380px at 50% -80px,color-mix(in srgb,var(--accent) 16%,transparent),transparent)}
+.pill{display:inline-block;font-size:13px;font-weight:600;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));background:color-mix(in srgb,var(--accent) 8%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:22px}
+h1{font-size:clamp(38px,6vw,64px);line-height:1.08;margin:0 0 18px;letter-spacing:-1.2px}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:680px;margin:0 auto 32px;font-size:19px;color:var(--muted)}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.meta{margin-top:26px;font-size:14px;color:var(--muted)}
+section{padding:72px 0}
+section.alt{background:var(--bg-alt);border-block:1px solid var(--line)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h2{font-size:clamp(26px,4vw,36px);line-height:1.2;margin:0 0 14px;letter-spacing:-.5px}
+.sub{color:var(--muted);max-width:640px;margin:0 0 40px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+#features .grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){#features .grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+.card h3{margin:14px 0 6px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.icon{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+.icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.split{display:grid;gap:40px;grid-template-columns:1fr 1fr;align-items:center}
+.code{background:#0b1020;color:#d7e0ff;border-radius:16px;padding:22px;font:14px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;box-shadow:var(--shadow);overflow-x:auto;border:1px solid #222c4d;white-space:pre}
+.code .c{color:#6f7ba3}.code .k{color:#8fb0ff}.code .s{color:#b7f0c5}
+.checks{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
+.checks li{display:flex;gap:10px;color:var(--muted)}
+.checks li::before{content:"";flex:0 0 18px;height:18px;margin-top:4px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:14px;font-weight:500}
+.plat{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.plat .card{text-align:center}
+.plat .card .icon{margin:0 auto}
+.timeline{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.step b{display:block;color:var(--accent);font-size:13px;letter-spacing:1px;margin-bottom:6px}
+.contact{text-align:center}
+.contact p{color:var(--muted);max-width:560px;margin:0 auto 26px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:820px){
+  .split{grid-template-columns:1fr}
+  .nav nav a:not(.btn){display:none}
+  .hero{padding:60px 0 50px}
+  section{padding:54px 0}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="logo">DRS</span> Digital Rebel Studio</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#platforms">Platforms</a>
+      <a href="#roadmap">Roadmap</a>
+      <a class="btn primary" href="#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<div class="hero">
+  <div class="wrap">
+    <span class="pill">New project · Successor to Microset IOT Designer</span>
+    <h1>Build IoT interfaces<br><span>without writing code.</span></h1>
+    <p class="lead">Digital Rebel Studio (DRS) is a visual studio for designing HMI and SCADA applications, wiring them to real hardware, and running them natively on desktop and mobile.</p>
+    <div class="cta">
+      <a class="btn primary" href="#download">Get DRS</a>
+      <a class="btn ghost" href="#features">Explore features</a>
+    </div>
+    <p class="meta">Free to use · Offline-first · Native performance</p>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <p class="eyebrow">Features</p>
+    <h2>Everything between your sensor and your screen</h2>
+    <p class="sub">Design the interface, bind it to your data, connect your devices. DRS keeps the whole loop in one visual workspace.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div>
+        <h3>Visual designer</h3>
+        <p>Drag and drop gauges, charts, buttons and indicators onto a canvas to build HMI and SCADA screens.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H14a3 3 0 0 1 3 3v6.5"/></svg></div>
+        <h3>Data binding</h3>
+        <p>Connect controls to live values with simple expressions such as <code>Gauge1.Value ← Serial1.Value / 10</code>.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="8.5" y="14" width="7" height="7" rx="1.5"/><path d="M6.5 10v2.5h11V10M12 12.5V14"/></svg></div>
+        <h3>Block logic</h3>
+        <p>Describe behavior with visual blocks instead of code: react to events, transform values, trigger actions.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg></div>
+        <h3>Many protocols</h3>
+        <p>Talk to your devices over serial, Modbus, MQTT, HTTP/REST, Bluetooth and TCP.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></div>
+        <h3>Works with your hardware</h3>
+        <p>Use it with Arduino, ESP32, STM32, PLCs and other microcontroller and industrial platforms.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg></div>
+        <h3>Offline and native</h3>
+        <p>No cloud account required. Projects run locally as native applications, so they stay fast and private.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">How it works</p>
+      <h2>From idea to running panel in three steps</h2>
+      <ul class="checks">
+        <li><span><b style="color:var(--text)">Design.</b> Lay out your screen with ready-made components.</span></li>
+        <li><span><b style="color:var(--text)">Connect.</b> Pick a port or protocol and bind values to your controls.</span></li>
+        <li><span><b style="color:var(--text)">Run.</b> Launch the project and watch live data move.</span></li>
+      </ul>
+    </div>
+    <div class="code" aria-label="Example binding">
+<span class="c">// Bindings read like sentences</span>
+<span class="k">Gauge1.Value</span>   ← <span class="k">Serial1.Value</span> / 10
+<span class="k">Label1.Text</span>    ← <span class="s">"Temp: "</span> + <span class="k">Gauge1.Value</span>
+<span class="k">Led1.State</span>     ← <span class="k">Gauge1.Value</span> &gt; 80
+
+<span class="c">// Send commands back to the device</span>
+<span class="k">Serial1.Send</span>   ← <span class="k">Button1.Click</span>
+    </div>
+  </div>
+</section>
+
+<section id="platforms">
+  <div class="wrap">
+    <p class="eyebrow">Platforms</p>
+    <h2>Design once, run where you need it</h2>
+    <p class="sub">DRS is built on a modern cross-platform foundation so your projects are not tied to one operating system.</p>
+    <div class="plat">
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 5l8-1v7H3zM13 3.8L21 3v8h-8zM3 13h8v7l-8-1zM13 13h8v8l-8-1.2z"/></svg></div><h3>Windows</h3><p>Desktop studio and runtime</p></div>
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M8 21h8M9 8l2 2-2 2M13 12h3"/></svg></div><h3>Linux</h3><p>64-bit desktop support</p></div>
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div><h3>Android</h3><p>Run your panels on mobile</p></div>
+    </div>
+    <div style="margin-top:36px" class="chips">
+      <span class="chip">Serial / USB</span><span class="chip">Modbus RTU / ASCII</span><span class="chip">MQTT</span><span class="chip">HTTP / REST</span><span class="chip">Bluetooth</span><span class="chip">TCP</span>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">Roadmap</p>
+    <h2>Where DRS is heading</h2>
+    <p class="sub">DRS is an active new project. Here is the direction of travel.</p>
+    <div class="timeline">
+      <div class="card step"><b>NOW</b><h3>Core studio</h3><p>Visual designer, data binding and block logic on a new cross-platform base.</p></div>
+      <div class="card step"><b>NEXT</b><h3>Protocol coverage</h3><p>Serial, Modbus, MQTT and HTTP connectivity, with a built-in port monitor.</p></div>
+      <div class="card step"><b>LATER</b><h3>Mobile and sharing</h3><p>Android runtime, project templates and example libraries.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap contact">
+    <p class="eyebrow">Download</p>
+    <h2>Try Digital Rebel Studio</h2>
+    <p>Builds and documentation will be published here as DRS matures. Questions, feedback or ideas? Get in touch.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:erol.micset@gmail.com?subject=DRS%20-%20Digital%20Rebel%20Studio">Contact us</a>
+      <a class="btn ghost" href="https://micset.wixsite.com/micset" target="_blank" rel="noopener">Microset projects</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y">2026</span> Digital Rebel Studio (DRS). A Microset project.</span>
+    <span><a href="mailto:erol.micset@gmail.com">erol.micset@gmail.com</a></span>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
