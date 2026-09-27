@@ -99,6 +99,10 @@ h2{font-size:clamp(27px,3.6vw,38px);line-height:1.18;margin:0 0 14px}
 /* ═══ hero ════════════════════════════════════════════════════════════ */
 .hero{padding:84px 0 0;text-align:center;
   background:radial-gradient(1100px 440px at 50% -70px,color-mix(in srgb,var(--amber) 18%,transparent),transparent)}
+/* DRS_pcb.png: seffaf zemin; harflerin ust/alt bosluklari aspect-ratio + cover ile kirpilir */
+.herologo{max-width:640px;margin:0 auto 26px;aspect-ratio:1408/470}
+.herologo img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;
+  filter:drop-shadow(0 14px 22px rgba(60,30,8,.28))}
 .pill{display:inline-block;font-size:13px;font-weight:600;color:var(--amber);
   border:1px solid color-mix(in srgb,var(--amber) 38%,var(--line));
   background:color-mix(in srgb,var(--amber) 9%,transparent);padding:6px 14px;border-radius:999px;margin-bottom:24px}
@@ -131,6 +135,13 @@ h1 em{font-style:normal;background:linear-gradient(90deg,#f0b357,#d98613);
 .legend li b{flex:0 0 26px;height:26px;border-radius:50%;display:grid;place-items:center;
   background:#2d5fa8;color:#fff;font-size:12px;font-weight:700;font-style:italic;margin-top:-1px}
 .legend li strong{color:var(--text);font-weight:600}
+.peek{display:block;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:16px;
+  overflow:hidden;box-shadow:var(--shadow)}
+.peek:hover{text-decoration:none;border-color:var(--amber)}
+.peek .ph{background:#1b1b1b;aspect-ratio:16/10}
+.peek .ph img{width:100%;height:100%;object-fit:contain}
+.peek span{display:block;padding:12px 14px;font-size:14.5px;font-weight:600}
+.peek span small{display:block;font-weight:500;color:var(--muted);font-size:13px}
 figure{margin:0}
 figure.card{padding:16px}
 figure.card img{border-radius:11px;border:1px solid var(--line)}
@@ -271,6 +282,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <a href="#components">Components</a>
       <a href="#connect">Connectivity</a>
       <a href="#data">Reports</a>
+      <a href="gallery.html">Gallery</a>
       <a class="btn primary" href="#download">Early access</a>
     </nav>
   </div>
@@ -281,6 +293,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
 <div class="hero">
   <div class="wrap">
+    <div class="herologo"><img src="DRS_pcb.png" alt="DRS, the letters built from copper circuit boards" width="1408" height="768"></div>
     <span class="pill">New project · Successor to Microset IOT Designer</span>
     <h1>Draw the panel.<br><em>Wire it to the plant.</em></h1>
     <p class="lead">Digital Rebel Studio is a visual studio for HMI, SCADA and IoT screens. Draw the panel, connect it to your machines, and it is ready for the shift: alarms the operator confirms, users who only see what they may touch, a record of who changed what, and history you can page through day by day. The same project file runs on a workstation, a panel PC or a tablet.</p>
@@ -1539,8 +1552,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
+<!-- ═══ GALLERY TEASER ═════════════════════════════════════════════════ -->
+<section id="gallery">
+  <div class="wrap">
+    <p class="eyebrow">Gallery</p>
+    <h2>See it at work</h2>
+    <p class="sub">Screenshots from real projects — gauges, charts, cameras, web reports, logic and the studio. New ones are added as DRS grows.</p>
+    <div class="grid g4">
+      <a class="peek" href="gallery.html#Instruments"><div class="ph"><img src="Gauges1.png" alt="A bent linear gauge and a round dial in the Designer." width="1235" height="738" loading="lazy"></div><span>Gauges<small>Instruments</small></span></a>
+      <a class="peek" href="gallery.html#Instruments"><div class="ph"><img src="Charts1.png" alt="Area, line, bar and pie charts on one panel." width="1326" height="541" loading="lazy"></div><span>Charts<small>Instruments</small></span></a>
+      <a class="peek" href="gallery.html#Connectivity"><div class="ph"><img src="IpCamera1.png" alt="Four IP cameras arranged on one panel." width="1322" height="696" loading="lazy"></div><span>Four cameras, one panel<small>Connectivity</small></span></a>
+      <a class="peek" href="gallery.html#Connectivity"><div class="ph"><img src="HttpReport1.png" alt="A report with a live gauge opened in a web browser, served by the panel." width="1222" height="730" loading="lazy"></div><span>Report in a browser<small>Connectivity</small></span></a>
+    </div>
+    <div class="cta" style="margin-top:28px"><a class="btn ghost" href="gallery.html">Open the gallery</a></div>
+  </div>
+</section>
+
 <!-- ═══ ROADMAP ════════════════════════════════════════════════════════ -->
-<section id="roadmap">
+<section id="roadmap" class="alt">
   <div class="wrap">
     <p class="eyebrow">Roadmap</p>
     <h2>Where DRS is heading</h2>
@@ -1554,7 +1583,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </section>
 
 <!-- ═══ DOWNLOAD ═══════════════════════════════════════════════════════ -->
-<section id="download" class="alt">
+<section id="download">
   <div class="wrap contact">
     <p class="eyebrow">Download</p>
     <h2>Not yet — but soon</h2>

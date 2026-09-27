@@ -7,7 +7,9 @@ SCADA and IoT panels.
 
 | file | |
 |---|---|
-| `index.html` | the whole site — one self-contained file |
+| `index.html` | the home page |
+| `gallery.html` | the screenshot gallery, with topic filters and a full-size view |
+| `*.png` | screenshots used by both pages |
 
 There is no build step, no framework and no external request: styles, scripts
 and icons are all inline. Open `index.html` in a browser to preview it.
@@ -23,9 +25,19 @@ and icons are all inline. Open `index.html` in a browser to preview it.
 A repository named `<user>.github.io` is served at `https://<user>.github.io/`
 instead, with no sub-path.
 
-## Editing
+## Adding a screenshot
 
-Everything lives in `index.html`:
+1. Copy the PNG into this folder. File names are case-sensitive on GitHub Pages.
+2. In `gallery.html`, add one line to the `SHOTS` list: file name, topic
+   (`cat`), width and height in pixels, a title and one or two sentences about
+   what the picture shows.
+
+The topic buttons and their counts update by themselves. A new topic only
+needs its name added to `CATEGORIES`.
+
+## Editing the home page
+
+Everything on the home page lives in `index.html`:
 
 - design tokens (colours, shadows) are CSS custom properties on `:root`, with a
   dark-mode override under `@media (prefers-color-scheme: dark)`
