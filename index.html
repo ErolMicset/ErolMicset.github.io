@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DRS · Digital Rebel Studio</title>
-<meta name="description" content="Digital Rebel Studio is a visual studio for HMI, SCADA and IoT panels: 83 drag-and-drop components, Modbus RTU/TCP, Siemens S7, MQTT, GPIO and SPI, five data sources, a banded report engine and three ways to express logic. Design on desktop, run on Windows, Linux, Android and the browser.">
+<meta name="description" content="Digital Rebel Studio is a visual studio for HMI, SCADA and IoT panels: 90 drag-and-drop components, alarms, users and access control, a change log, history trends, reports and live connections to PLCs, cameras and databases. Design on desktop, run on Windows, Linux and Android.">
 <meta property="og:title" content="DRS · Digital Rebel Studio">
-<meta property="og:description" content="A visual studio for HMI, SCADA and IoT panels. 83 components, industrial protocols, reports, and three ways to express logic.">
+<meta property="og:description" content="A visual studio for HMI, SCADA and IoT panels. Alarms, users, change log, history trends, reports and live plant connections in one project file.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="ide-overview.png">
 <meta name="theme-color" content="#0f1626">
@@ -43,7 +43,7 @@ a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 h1,h2,h3{letter-spacing:-.02em}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 .wrap{max-width:1200px;margin:0 auto;padding:0 22px}
 .skip{position:absolute;left:-9999px;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:0 0 10px 0;z-index:60}
 .skip:focus{left:0;top:0}
@@ -123,6 +123,14 @@ h1 em{font-style:normal;background:linear-gradient(90deg,#f0b357,#d98613);
 .shot .bar i:first-child{background:#d98613}
 .shot .bar b{margin-left:10px;font:500 11.5px/1 var(--mono);color:#9a9a9a}
 .shotcap{font-size:13.5px;color:var(--faint);margin:10px 2px 0;text-align:left}
+.legend{max-width:1180px;margin:22px auto 0;padding:0;list-style:none;text-align:left;
+  display:grid;gap:10px 22px;grid-template-columns:repeat(3,1fr)}
+@media(max-width:1000px){.legend{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.legend{grid-template-columns:1fr}}
+.legend li{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:var(--muted);line-height:1.5}
+.legend li b{flex:0 0 26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  background:#2d5fa8;color:#fff;font-size:12px;font-weight:700;font-style:italic;margin-top:-1px}
+.legend li strong{color:var(--text);font-weight:600}
 figure{margin:0}
 figure.card{padding:16px}
 figure.card img{border-radius:11px;border:1px solid var(--line)}
@@ -259,6 +267,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <nav aria-label="Primary">
       <a href="#studio">Studio</a>
       <a href="#logic">Logic</a>
+      <a href="#operations">Operations</a>
       <a href="#components">Components</a>
       <a href="#connect">Connectivity</a>
       <a href="#data">Reports</a>
@@ -274,25 +283,45 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <span class="pill">New project · Successor to Microset IOT Designer</span>
     <h1>Draw the panel.<br><em>Wire it to the plant.</em></h1>
-    <p class="lead">Digital Rebel Studio is a visual studio for HMI, SCADA and IoT screens. Place instruments on a canvas, bind them to Modbus, S7, MQTT or serial tags, and run the same project file on a workstation, a panel PC, a tablet or a browser tab.</p>
+    <p class="lead">Digital Rebel Studio is a visual studio for HMI, SCADA and IoT screens. Draw the panel, connect it to your machines, and it is ready for the shift: alarms the operator confirms, users who only see what they may touch, a record of who changed what, and history you can page through day by day. The same project file runs on a workstation, a panel PC or a tablet.</p>
     <div class="cta">
       <a class="btn primary" href="#download">Request early access</a>
-      <a class="btn ghost" href="#components">See all 83 components</a>
+      <a class="btn ghost" href="#operations">What the operator gets</a>
     </div>
     <p class="meta">In testing · Offline-first · No cloud account · No runtime to install</p>
 
     <div class="stats">
-      <div><b>83</b><span>components in the toolbox</span></div>
-      <div><b>16</b><span>protocols and buses</span></div>
-      <div><b>5</b><span>data sources</span></div>
-      <div><b>0</b><span>external dependencies</span></div>
+      <div><b>90</b><span>components in the toolbox</span></div>
+      <div><b>18</b><span>protocols and buses</span></div>
+      <div><b>1</b><span>project file for every target</span></div>
+      <div><b>0</b><span>accounts, subscriptions, licence servers</span></div>
     </div>
 
     <div class="shot big">
       <div class="bar"><i></i><i></i><i></i><b>DigitalRebel Studio — _Block2.drs</b></div>
-      <img src="ide-overview.png" alt="The DRS Designer: recent projects and file commands on the left, a panel canvas in the middle holding a dot-matrix display, a rung block and a Start button, and the object tree, message log and property editor on the right." width="1178" height="718">
+      <img src="ide-overview.png" alt="The DRS Designer with numbered callouts: recent projects and file commands on the left; the project tab, run button and editing toolbar at the top; a panel canvas in the middle holding a dot-matrix display, a rung block, a Start button and a message list; the object tree, find, messages, properties, links and references on the right." width="1451" height="712">
     </div>
     <p class="shotcap" style="max-width:1180px;margin-left:auto;margin-right:auto">One window: toolbox, canvas, object tree, messages and the property editor — no separate code project, no build step.</p>
+    <ol class="legend" aria-label="What the numbers in the picture show">
+      <li><b>1</b><span><strong>Open project.</strong> The file you are working on; the tab tells you which one.</span></li>
+      <li><b>2</b><span><strong>Run.</strong> Starts the panel right here, exactly as the Runner will run it.</span></li>
+      <li><b>3</b><span><strong>Editing toolbar.</strong> Bring to front, send back, undo, redo, mark, select all, move, copy, paste, delete.</span></li>
+      <li><b>4</b><span><strong>Up · Down.</strong> Moves the selected object one step in the object order.</span></li>
+      <li><b>5</b><span><strong>Objects.</strong> Every object in the project as a tree — what sits inside what.</span></li>
+      <li><b>6</b><span><strong>Find.</strong> Locate any object by name, even in a large project.</span></li>
+      <li><b>7</b><span><strong>Selected object.</strong> Click it in the tree or on the canvas — both select the same thing, with a short summary beside its name.</span></li>
+      <li><b>8</b><span><strong>Messages.</strong> What happened while designing or running, ready to copy.</span></li>
+      <li><b>9</b><span><strong>Properties.</strong> Everything about the selected object, changed in place.</span></li>
+      <li><b>10</b><span><strong>Links.</strong> Which values this object follows or feeds.</span></li>
+      <li><b>11</b><span><strong>On References.</strong> Who else points at this object — check before you delete or rename.</span></li>
+      <li><b>12</b><span><strong>Property search and editors.</strong> Type a few letters to find a property; the “…” button opens its own editor for colours, shapes and files.</span></li>
+      <li><b>13</b><span><strong>Message manager.</strong> The alarm and message list, placed on the panel like any other component.</span></li>
+      <li><b>14</b><span><strong>Messages on the panel.</strong> Each row an alarm, a warning, a notice or an event, coloured by kind. At the top left, the recent projects, one click away.</span></li>
+      <li><b>15</b><span><strong>File.</strong> New, open, save, reload, import and export objects, add a page.</span></li>
+      <li><b>16</b><span><strong>Button.</strong> An ordinary component — here it starts the logic beside it.</span></li>
+      <li><b>17</b><span><strong>Rung block.</strong> Logic you can read: count up and show the result on the display.</span></li>
+      <li><b>18</b><span><strong>Dot matrix display.</strong> Shows the value the rung block writes, the moment it changes.</span></li>
+    </ol>
   </div>
 </div>
 
@@ -300,11 +329,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section id="arch" class="alt">
   <div class="wrap">
     <p class="eyebrow">How it fits together</p>
-    <h2>One project file. Two programs. Four targets.</h2>
+    <h2>One project file. Two programs. Three targets.</h2>
     <p class="sub">There is no build step and no code generation. The Designer writes a <code>.drs</code> file; the Runner opens exactly that file and executes it. Both are the same application core, so what you see while designing is what runs.</p>
 
     <div class="plate">
-      <svg viewBox="0 0 1200 424" role="img" aria-label="Schematic: the Designer saves a .drs project file which the Runner executes on Windows, Linux, Android and the browser, while talking to PLCs, databases, printers and client applications.">
+      <svg viewBox="0 0 1200 424" role="img" aria-label="Schematic: the Designer saves a .drs project file which the Runner executes on Windows, Linux and Android, while talking to PLCs, databases, printers and client applications.">
 
         <!-- callout: no build step -->
         <g filter="url(#fShadowS)">
@@ -356,10 +385,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <ellipse cx="828" cy="150" rx="10" ry="6" fill="#fff" opacity=".42"/>
         </g>
         <g stroke="#e8801f" stroke-width="2.3" fill="none" stroke-linecap="round" marker-end="url(#mOrange)">
-          <path d="M861 159 C 900 159, 902 87, 953 87"/>
-          <path d="M861 159 C 900 159, 902 135, 953 135"/>
-          <path d="M861 159 C 900 159, 902 183, 953 183"/>
-          <path d="M861 159 C 900 159, 902 231, 953 231"/>
+          <path d="M861 159 C 900 159, 902 111, 953 111"/>
+          <path d="M861 159 C 900 159, 902 159, 953 159"/>
+          <path d="M861 159 C 900 159, 902 207, 953 207"/>
         </g>
 
         <!-- callout: one codebase — sag UST, bos alan; alttaki akisla cakismaz -->
@@ -368,18 +396,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <path d="M1040 52l8 13 16-13z" fill="#f6dd96" stroke="#d9ae44"/>
         </g>
         <text x="1056" y="25" text-anchor="middle" class="ti" font-size="12" font-weight="600" fill="#6b4c14">Same component code</text>
-        <text x="1056" y="42" text-anchor="middle" class="ti" font-size="12" font-weight="600" fill="#6b4c14">compiles into all four</text>
+        <text x="1056" y="42" text-anchor="middle" class="ti" font-size="12" font-weight="600" fill="#6b4c14">compiles into all three</text>
 
-        <!-- targets -->
+        <!-- targets: hub (y=159) etrafinda ortali uc kutu -->
         <g>
-          <g filter="url(#fShadowS)"><rect x="963" y="69" width="186" height="36" rx="9" fill="url(#gBlue)" stroke="#7fa6d8"/><rect x="963" y="69" width="186" height="17" rx="9" fill="url(#gGloss)"/></g>
-          <text x="1056" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4372">Windows</text>
-          <g filter="url(#fShadowS)"><rect x="963" y="117" width="186" height="36" rx="9" fill="url(#gBlue)" stroke="#7fa6d8"/><rect x="963" y="117" width="186" height="17" rx="9" fill="url(#gGloss)"/></g>
-          <text x="1056" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4372">Linux</text>
-          <g filter="url(#fShadowS)"><rect x="963" y="165" width="186" height="36" rx="9" fill="url(#gBlue)" stroke="#7fa6d8"/><rect x="963" y="165" width="186" height="17" rx="9" fill="url(#gGloss)"/></g>
-          <text x="1056" y="188" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4372">Android</text>
-          <g filter="url(#fShadowS)"><rect x="963" y="213" width="186" height="36" rx="9" fill="url(#gBlue)" stroke="#7fa6d8"/><rect x="963" y="213" width="186" height="17" rx="9" fill="url(#gGloss)"/></g>
-          <text x="1056" y="236" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4372">Browser</text>
+          <g filter="url(#fShadowS)"><rect x="963" y="93" width="186" height="36" rx="9" fill="url(#gBlue)" stroke="#7fa6d8"/><rect x="963" y="93" width="186" height="17" rx="9" fill="url(#gGloss)"/></g>
+          <text x="1056" y="116" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4372">Windows</text>
+          <g filter="url(#fShadowS)"><rect x="963" y="141" width="186" height="36" rx="9" fill="url(#gBlue)" stroke="#7fa6d8"/><rect x="963" y="141" width="186" height="17" rx="9" fill="url(#gGloss)"/></g>
+          <text x="1056" y="164" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4372">Linux</text>
+          <g filter="url(#fShadowS)"><rect x="963" y="189" width="186" height="36" rx="9" fill="url(#gBlue)" stroke="#7fa6d8"/><rect x="963" y="189" width="186" height="17" rx="9" fill="url(#gGloss)"/></g>
+          <text x="1056" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4372">Android</text>
         </g>
 
         <!-- Runner -> mavi hub -> dis dunya: duz bus yerine hub + egri yelpaze
@@ -401,7 +427,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <g>
           <g filter="url(#fShadowS)"><rect x="60" y="356" width="232" height="54" rx="10" fill="url(#gGreen)" stroke="#7fa86a"/><rect x="60" y="356" width="232" height="25" rx="10" fill="url(#gGloss)"/></g>
           <text x="176" y="380" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2f4a1e">PLCs &amp; devices</text>
-          <text x="176" y="398" text-anchor="middle" font-size="10.5" fill="#41602b">Modbus · S7 · serial · GPIO</text>
+          <text x="176" y="398" text-anchor="middle" font-size="10.5" fill="#41602b">Modbus · S7 · OPC UA · cameras</text>
 
           <g filter="url(#fShadowS)"><rect x="363" y="356" width="232" height="54" rx="10" fill="url(#gGreen)" stroke="#7fa86a"/><rect x="363" y="356" width="232" height="25" rx="10" fill="url(#gGloss)"/></g>
           <text x="479" y="380" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2f4a1e">Databases</text>
@@ -422,7 +448,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="grid g3" style="margin-top:28px">
       <div class="card">
         <h3 style="margin:0 0 8px;font-size:17px">Containers hold tags</h3>
-        <p style="margin:0;color:var(--muted);font-size:15px">A Modbus master, an S7 client, an MQTT client or a query is a <em>container</em>. Its tags are added from its own menu, and a compatibility rule keeps the wrong child out. The address map lives with the device that owns it.</p>
+        <p style="margin:0;color:var(--muted);font-size:15px">A Modbus master, an S7 client, an OPC UA client, an MQTT client or a query is a <em>container</em>. Its tags are added from its own menu, and a compatibility rule keeps the wrong child out. The address map lives with the device that owns it.</p>
       </div>
       <div class="card">
         <h3 style="margin:0 0 8px;font-size:17px">One value model</h3>
@@ -430,7 +456,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </div>
       <div class="card">
         <h3 style="margin:0 0 8px;font-size:17px">Import, don't type</h3>
-        <p style="margin:0;color:var(--muted);font-size:15px">Tag Import Sets build a whole Modbus or S7 address map from templates, so a 400-register panel is a handful of rules instead of 400 hand-typed rows.</p>
+        <p style="margin:0;color:var(--muted);font-size:15px">Tag Import Sets build a whole Modbus or S7 address map from templates, and an OPC UA client browses the server and imports the nodes you tick. Then the Link Wizard lays out a label and an edit for every tag in one step.</p>
       </div>
     </div>
   </div>
@@ -447,7 +473,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <figure class="card">
         <img src="ide-toolbox.png" alt="The component toolbox tree with the Instruments category expanded, showing Led, Gauge Linear, Gauge Circular, Barcode 1D and 2D, Dot Matrix Text, Digital Number, Protocol Dump, Scope, Line, Area, Bar and Pie charts, Chart Panel, Path Pipe and Path Track, followed by the Communication category." loading="lazy">
         <figcaption>
-          <b>Toolbox — 83 entries in 14 categories</b>
+          <b>Toolbox — 90 entries in 14 categories</b>
           <span>Every component carries its own icon and drops straight onto the canvas. The same list backs the right-click “Add Component” menu.</span>
         </figcaption>
       </figure>
@@ -557,6 +583,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
     <p class="note">A shared <strong>Utils Library</strong> sits beside all three: one set of string, date, maths and conversion helpers that blocks and scripts both call. Write a helper once, use it in either language.</p>
 
+    <p class="note"><strong>Projects can call projects.</strong> A <em>Scheme Call</em> opens another project file in its own window and passes it parameters with the same <code>SetParam</code> / <code>GetParam</code> calls that blocks and scripts already use. The called project answers whenever it likes: <code>DoOnResult</code> fires <em>OnResult</em> on the caller, and closing its window fires <em>OnClose</em>. Nothing waits and nothing freezes; a large plant can be split into small screens that each do one job.</p>
+
     <div class="split" style="margin-top:44px">
       <figure class="card" style="margin:0;max-width:420px">
         <img src="ide-scheme-tree.png" alt="The object tree: Button1 holding an event command and a shadow effect, then LRBlock1 containing a value, an equality statement with its property reference, direction and bracket, and inside that bracket a property reference, an operator and a constant, followed by a remark and a second statement." loading="lazy">
@@ -578,16 +606,185 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
+<!-- ═══ OPERATIONS ═════════════════════════════════════════════════════ -->
+<section id="operations">
+  <div class="wrap">
+    <p class="eyebrow">Operations</p>
+    <h2>Ready for the shift, not just the demo</h2>
+    <p class="sub">A screen that shows values is the easy half. The other half is what a plant needs every day: alarms someone answers, people who may only touch their part, a record of every change, and the history behind a problem. All four are components you drop into the project — no second product, no extra server.</p>
+
+    <div class="grid g2">
+
+      <div class="card">
+        <div class="plate" style="padding:14px 14px 6px;box-shadow:none">
+          <svg viewBox="0 0 420 164" role="img" aria-label="An alarm list: a high-pressure alarm waiting for confirmation, a low-level warning, a notice and an event, with one row muted for 30 minutes.">
+            <g filter="url(#fShadow)"><rect x="6" y="6" width="408" height="150" rx="11" fill="url(#gSteel)" stroke="#c9d6e8"/></g>
+            <rect x="6" y="6" width="408" height="26" rx="11" fill="url(#gAmber)" stroke="#d79a3a"/>
+            <rect x="6" y="19" width="408" height="13" fill="url(#gAmber)"/>
+            <text x="20" y="24" font-size="11" font-weight="700" fill="#6b4c14">Alarms</text>
+            <text x="400" y="24" text-anchor="end" font-size="10.5" font-weight="600" fill="#6b4c14">2 active · 1 to confirm</text>
+            <g font-size="10.5">
+              <rect x="16" y="40" width="388" height="24" rx="6" fill="#fde4e1" stroke="#e7a39b"/>
+              <rect x="22" y="46" width="52" height="12" rx="6" fill="#c8392f"/><text x="48" y="55.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">ALARM</text>
+              <text x="84" y="56" font-weight="600" fill="#5a1a14">Boiler pressure high</text>
+              <text x="266" y="56" class="tm" fill="#7a3a33">14:02</text>
+              <g filter="url(#fShadowS)"><rect x="330" y="44" width="66" height="16" rx="5" fill="url(#gArcV)" stroke="#bf7a14"/></g>
+              <text x="363" y="55.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="#43290a">Confirm</text>
+
+              <rect x="16" y="68" width="388" height="24" rx="6" fill="#fdf1d6" stroke="#ecc97a"/>
+              <rect x="22" y="74" width="52" height="12" rx="6" fill="#e0a51d"/><text x="48" y="83.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#3d2a06">WARNING</text>
+              <text x="84" y="84" fill="#5b4312">Tank 2 level low</text>
+              <text x="266" y="84" class="tm" fill="#7b5a1c">13:48</text>
+              <text x="396" y="84" text-anchor="end" font-size="9.5" fill="#8a6a2a">muted 30 min</text>
+
+              <rect x="16" y="96" width="388" height="24" rx="6" fill="#e3edfb" stroke="#a9c5ec"/>
+              <rect x="22" y="102" width="52" height="12" rx="6" fill="#3d76c9"/><text x="48" y="111.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">NOTICE</text>
+              <text x="84" y="112" fill="#1d3d6b">Filter change due</text>
+              <text x="266" y="112" class="tm" fill="#33507d">13:30</text>
+              <text x="396" y="112" text-anchor="end" font-size="9.5" fill="#33507d">confirmed · operator</text>
+
+              <rect x="16" y="124" width="388" height="24" rx="6" fill="#f1f4f8" stroke="#d3dbe7"/>
+              <rect x="22" y="130" width="52" height="12" rx="6" fill="#8a96aa"/><text x="48" y="139.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">EVENT</text>
+              <text x="84" y="140" fill="#4a5a7c">Pump 2 started</text>
+              <text x="266" y="140" class="tm" fill="#5d6980">13:12</text>
+            </g>
+          </svg>
+        </div>
+        <h3 style="margin:14px 0 6px;font-size:18px">Alarms the operator answers</h3>
+        <p style="margin:0;color:var(--muted);font-size:15px">Every message is an alarm, a warning, a notice or an event — decided by two plain questions: does a condition drive it, and must someone confirm it? Alarms stay until they are confirmed, a nuisance can be muted for a set time, and priorities put the worst at the top. Start, end and confirmation are written to a daily log together with the name of the person on duty.</p>
+      </div>
+
+      <div class="card">
+        <div class="plate" style="padding:14px 14px 6px;box-shadow:none">
+          <svg viewBox="0 0 420 164" role="img" aria-label="Users and access: an Operator group sees the start button but the setpoint is locked; an Engineer group may change both; an idle session logs out by itself.">
+            <g filter="url(#fShadowS)"><rect x="8" y="10" width="124" height="30" rx="9" fill="url(#gBlue)" stroke="#7fa6d8"/><rect x="8" y="10" width="124" height="14" rx="9" fill="url(#gGloss)"/></g>
+            <text x="70" y="30" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d4372">Operator</text>
+            <g filter="url(#fShadowS)"><rect x="8" y="52" width="124" height="30" rx="9" fill="url(#gGreen)" stroke="#7fa86a"/><rect x="8" y="52" width="124" height="14" rx="9" fill="url(#gGloss)"/></g>
+            <text x="70" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2f4a1e">Engineer</text>
+            <g filter="url(#fShadowS)"><rect x="8" y="94" width="124" height="30" rx="9" fill="url(#gSteel)" stroke="#c9d6e8"/></g>
+            <text x="70" y="114" text-anchor="middle" font-size="11" fill="#4a5a7c">Guest · view only</text>
+
+            <path d="M138 25 C 170 25, 172 60, 196 60" stroke="#3d76c9" stroke-width="2" fill="none" stroke-linecap="round" marker-end="url(#mBlue)"/>
+
+            <g filter="url(#fShadow)"><rect x="204" y="10" width="208" height="120" rx="11" fill="url(#gSteel)" stroke="#c9d6e8"/></g>
+            <text x="218" y="30" font-size="10.5" font-weight="700" fill="#33456b">Logged in: operator</text>
+            <g filter="url(#fShadowS)"><rect x="218" y="42" width="84" height="30" rx="8" fill="url(#gArcV)" stroke="#bf7a14"/><rect x="218" y="42" width="84" height="14" rx="8" fill="url(#gGloss)"/></g>
+            <text x="260" y="62" text-anchor="middle" font-size="11.5" font-weight="700" fill="#43290a">START</text>
+            <rect x="312" y="42" width="86" height="30" rx="8" fill="#eef1f6" stroke="#cfd7e3"/>
+            <text x="336" y="62" class="tm" font-size="11" fill="#a3adbd">85.0</text>
+            <g transform="translate(378,49)" fill="none" stroke="#8a96aa" stroke-width="1.8">
+              <rect x="-5" y="6" width="12" height="9" rx="2" fill="#8a96aa"/>
+              <path d="M-2 6v-3a3 3 0 0 1 6 0v3"/>
+            </g>
+            <text x="218" y="92" font-size="10" fill="#5d6980">Setpoint: engineers only</text>
+            <text x="218" y="118" font-size="10" fill="#5d6980">Idle for 10 min: logged out</text>
+            <circle cx="392" cy="114" r="9" fill="none" stroke="#d98613" stroke-width="2"/>
+            <path d="M392 109v5l3 3" stroke="#d98613" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+            <g filter="url(#fShadowS)"><rect x="204" y="138" width="208" height="20" rx="7" fill="url(#gGold)" stroke="#d9ae44"/></g>
+            <text x="308" y="152" text-anchor="middle" class="ti" font-size="10.5" font-weight="600" fill="#6b4c14">same users for the screen and the web</text>
+          </svg>
+        </div>
+        <h3 style="margin:14px 0 6px;font-size:18px">Users see only their part</h3>
+        <p style="margin:0;color:var(--muted);font-size:15px">One user manager rules the whole project. Put people in groups and decide, object by object, what each group may see and what it may change. The same log-in protects the web pages the panel serves, an idle session closes itself after the time you choose, and every log-in, refusal and log-out is recorded.</p>
+      </div>
+
+      <div class="card">
+        <div class="plate" style="padding:14px 14px 6px;box-shadow:none">
+          <svg viewBox="0 0 420 150" role="img" aria-label="A change log: each row shows the time, the user, where the change came from, the value that changed, and its old and new value.">
+            <g filter="url(#fShadow)"><rect x="6" y="6" width="408" height="136" rx="11" fill="url(#gSteel)" stroke="#c9d6e8"/></g>
+            <g font-size="9.5" font-weight="700" fill="#8494ab" letter-spacing=".5">
+              <text x="18" y="26">TIME</text><text x="68" y="26">WHO</text><text x="134" y="26">FROM</text><text x="186" y="26">WHAT</text><text x="300" y="26">OLD</text><text x="352" y="26">NEW</text>
+            </g>
+            <path d="M16 33h388" stroke="#d3dbe7"/>
+            <g font-size="10.5" class="tm" fill="#33456b">
+              <text x="18" y="52">14:05</text><text x="68" y="52">operator</text><text x="134" y="52">Screen</text><text x="186" y="52">Setpoint</text><text x="300" y="52">80</text><text x="352" y="52" font-weight="700" fill="#b0710e">85</text>
+              <text x="18" y="78">14:11</text><text x="68" y="78">engineer</text><text x="134" y="78">Web</text><text x="186" y="78">Pump1.Speed</text><text x="300" y="78">1200</text><text x="352" y="78" font-weight="700" fill="#b0710e">1350</text>
+              <text x="18" y="104">14:26</text><text x="68" y="104">operator</text><text x="134" y="104">Screen</text><text x="186" y="104">Mode</text><text x="300" y="104">Auto</text><text x="352" y="104" font-weight="700" fill="#b0710e">Hand</text>
+            </g>
+            <path d="M16 62h388M16 88h388M16 114h388" stroke="#e6ebf2"/>
+            <text x="210" y="132" text-anchor="middle" class="ti" font-size="10.5" fill="#6d7d96">values the program writes itself are left out</text>
+          </svg>
+        </div>
+        <h3 style="margin:14px 0 6px;font-size:18px">A record of every change</h3>
+        <p style="margin:0;color:var(--muted);font-size:15px">When a setpoint moves, the log says who moved it, from where — the panel, a web page or a remote client — and what it was before. Values the project writes on its own are kept out, so the log holds decisions made by people, not thousands of automatic updates. Choose the values to watch the same way you choose them for a recipe.</p>
+      </div>
+
+      <div class="card">
+        <div class="plate" style="padding:14px 14px 6px;box-shadow:none">
+          <svg viewBox="0 0 420 150" role="img" aria-label="A history trend spanning midnight: the first day drawn in orange, the second in blue, the title showing both dates in their own colours, with Prior and Next buttons to page through the hours.">
+            <g filter="url(#fShadow)"><rect x="6" y="6" width="408" height="138" rx="11" fill="#fff" stroke="#d3dbe7"/></g>
+            <text x="150" y="26" text-anchor="end" font-size="11" font-weight="700" fill="#d1720f">26.09.2026</text>
+            <text x="160" y="26" text-anchor="middle" font-size="11" font-weight="700" fill="#6d7d96">-</text>
+            <text x="170" y="26" font-size="11" font-weight="700" fill="#2f66c4">27.09.2026</text>
+            <g filter="url(#fShadowS)"><rect x="300" y="13" width="50" height="18" rx="5" fill="url(#gSteel)" stroke="#c9d6e8"/><rect x="356" y="13" width="50" height="18" rx="5" fill="url(#gSteel)" stroke="#c9d6e8"/></g>
+            <text x="325" y="26" text-anchor="middle" font-size="9.5" font-weight="700" fill="#33456b">Prior</text>
+            <text x="381" y="26" text-anchor="middle" font-size="9.5" font-weight="700" fill="#33456b">Next</text>
+            <g stroke="#eef1f6"><path d="M30 50h370M30 74h370M30 98h370"/></g>
+            <path d="M30 118h370" stroke="#cdd7e6"/>
+            <path d="M226 38v80" stroke="#b7c2d4" stroke-dasharray="4 4"/>
+            <polyline points="30,92 52,86 74,90 96,76 118,80 140,66 162,70 184,58 206,62 226,54" stroke="#d1720f" fill="none" stroke-width="2.4" stroke-linejoin="round"/>
+            <polyline points="226,54 248,60 270,72 292,68 314,84 336,78 358,94 380,88 400,98" stroke="#2f66c4" fill="none" stroke-width="2.4" stroke-linejoin="round"/>
+            <g font-size="9.5" class="tm">
+              <text x="30" y="134" text-anchor="middle" fill="#d1720f">20:00</text>
+              <text x="128" y="134" text-anchor="middle" fill="#d1720f">22:00</text>
+              <text x="226" y="134" text-anchor="middle" font-weight="700" fill="#2f66c4">27.09</text>
+              <text x="324" y="134" text-anchor="middle" fill="#2f66c4">02:00</text>
+            </g>
+          </svg>
+        </div>
+        <h3 style="margin:14px 0 6px;font-size:18px">History you can walk through</h3>
+        <p style="margin:0;color:var(--muted);font-size:15px">Pick the days, then page through the hours with Prior and Next the way you scroll a table. Each day gets its own colour, so the moment one night turns into the next morning is plain to see. Zoom in on a spike, zoom out to the whole range, and return to your chosen window with one command. The data comes from a file or a database the project already uses.</p>
+      </div>
+    </div>
+
+    <h3 style="margin:48px 0 8px;font-size:22px">Seen in the studio</h3>
+    <p style="color:var(--muted);max-width:740px;margin:0 0 22px">The same features in real projects, not drawings.</p>
+    <div class="grid g2" style="align-items:start">
+      <figure class="card">
+        <img src="Alarms.png" alt="An alarm project in the Designer: Pressure, Temperature and Level edits, each driving a message's condition, a Confirm All button, a Mute checkbox, active and waiting counters, and below them the message list showing High Pressure in red, High Temperature in orange and Low Level in yellow." width="1143" height="727" loading="lazy">
+        <figcaption>
+          <b>Alarms from plain conditions</b>
+          <span>Pressure above 100 raises an alarm, temperature above 80 another; the list colours them by kind, counts what is active and what still waits for a confirmation, and one button confirms them all.</span>
+        </figcaption>
+      </figure>
+      <figure class="card">
+        <img src="UserMenager.png" alt="A user-manager project in the Designer: user name and password edits, a Test button, and a User Manager box holding a user group with two locks, one per protected object, next to the table that holds the users." width="1143" height="727" loading="lazy">
+        <figcaption>
+          <b>Access set up on the canvas</b>
+          <span>The user list, the groups and a lock for every protected button live in one box. Copy that box into another project and the whole access setup comes along.</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="split" style="margin-top:20px">
+      <figure class="card" style="margin:0;max-width:540px">
+        <img src="Trend.png" alt="A running trend screen: Start and End day fields, Zoom In, Zoom Out, Zoom All and Zoom Ignore buttons, a chart with two lines crossing midnight, the date 26.09.2026 at the start of the axis and 27.09.2026 in green at the end, the title showing both dates, and Prior, Next and Now buttons below." width="762" height="792" loading="lazy">
+      </figure>
+      <div>
+        <h3 style="margin:0 0 14px;font-size:20px">Crossing midnight, clearly</h3>
+        <p style="color:var(--muted);margin:0 0 16px">A running trend screen. The operator types the first and last day; the chart shows the chosen window of hours inside them.</p>
+        <ul class="checks">
+          <li><span><b>Prior · Next.</b> Page through the hours; pages follow each other without gaps, so the change of day shows up inside a page.</span></li>
+          <li><span><b>Each day in its own colour.</b> The new day's date appears in its colour on the axis and in the title.</span></li>
+          <li><span><b>Zoom In · Out · All · Ignore.</b> Look closer, see everything, or go back to the window you set.</span></li>
+          <li><span><b>Now.</b> Jumps to the latest record.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ COMPONENTS ═════════════════════════════════════════════════════ -->
-<section id="components">
+<section id="components" class="alt">
   <div class="wrap">
     <p class="eyebrow">Components</p>
-    <h2>83 components, drawn and ready</h2>
+    <h2>90 components, drawn and ready</h2>
     <p class="sub">Every item below is a real entry in the toolbox — drop it on the canvas, set its properties, and it works. Nothing to fetch, nothing to wrap, no package manager involved.</p>
 
     <div class="card" style="margin-bottom:22px">
-      <div class="galhead"><h3>Instruments</h3><span class="n">16</span></div>
-      <p class="galdesc">Readouts for the plant floor. Gauges, charts and displays are value-driven: point them at a tag and they follow it.</p>
+      <div class="galhead"><h3>Instruments</h3><span class="n">17</span></div>
+      <p class="galdesc">Readouts for the plant floor. Gauges, charts and displays are value-driven: point them at a tag and they follow it. The Trend Chart looks back instead — at the history of those same values.</p>
       <div class="tiles">
 
         <div class="tile">
@@ -878,6 +1075,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
         <div class="tile">
           <svg viewBox="0 0 120 96" aria-hidden="true">
+            <g filter="url(#fShadowS)"><rect x="8" y="14" width="104" height="68" rx="8" fill="#fff" stroke="#d8e0ec"/></g>
+            <path d="M16 70h88" stroke="#cdd7e6" fill="none"/>
+            <path d="M62 22v48" stroke="#b7c2d4" stroke-dasharray="3 3" fill="none"/>
+            <polyline points="16,60 26,54 36,58 46,44 56,48 62,38" stroke="#d1720f" fill="none" stroke-width="2.2" stroke-linejoin="round"/>
+            <polyline points="62,38 72,44 82,36 92,50 104,46" stroke="#2f66c4" fill="none" stroke-width="2.2" stroke-linejoin="round"/>
+            <text x="38" y="78" text-anchor="middle" font-size="7.5" font-weight="700" fill="#d1720f" font-family="var(--mono)">26.09</text>
+            <text x="84" y="78" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2f66c4" font-family="var(--mono)">27.09</text>
+          </svg>
+          <b>Trend Chart</b><span>history, day by day</span>
+        </div>
+
+        <div class="tile">
+          <svg viewBox="0 0 120 96" aria-hidden="true">
             <g filter="url(#fShadowS)"><rect x="10" y="16" width="100" height="64" rx="8" fill="url(#gSteel)" stroke="#c9d6e8"/></g>
             <rect x="10" y="16" width="100" height="18" rx="8" fill="url(#gAmber)" stroke="#d79a3a"/>
             <rect x="10" y="25" width="100" height="9" fill="url(#gAmber)"/>
@@ -888,12 +1098,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <text x="18" y="72" fill="#c8392f">ERR</text><text x="38" y="72" fill="#5d6980">timeout on RTU 3</text>
             </g>
           </svg>
-          <b>Msg Manager</b><span>operator messages</span>
+          <b>Msg Manager</b><span>alarms and messages</span>
         </div>
       </div>
       <ul class="names">
         <li>Gauge Circular</li><li>Gauge Linear</li><li>Led</li><li>Scope</li><li>Line Chart</li><li>Area Chart</li>
-        <li>Bar Chart</li><li>Pie Chart</li><li>Chart Panel</li><li>Digital Number</li><li>Dot Matrix Text</li>
+        <li>Bar Chart</li><li>Pie Chart</li><li>Chart Panel</li><li>Trend Chart</li><li>Digital Number</li><li>Dot Matrix Text</li>
         <li>Barcode 1D</li><li>Barcode 2D (QR)</li><li>Protocol Dump</li><li>Path Pipe</li><li>Path Track</li>
       </ul>
     </div>
@@ -941,7 +1151,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <rect x="12" y="18" width="96" height="7" fill="url(#gAmber)"/>
               <g fill="#b3bfd0"><rect x="20" y="32" width="56" height="4.5" rx="2.2"/><rect x="20" y="42" width="72" height="4.5" rx="2.2"/><rect x="20" y="52" width="44" height="4.5" rx="2.2"/></g>
             </svg>
-            <b>Memo · Lists</b><span>text, items, files</span>
+            <b>Memo · Lists</b><span>rolling logs, files</span>
           </div>
           <div class="tile">
             <svg viewBox="0 0 120 72" aria-hidden="true">
@@ -954,8 +1164,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </div>
 
       <div class="card">
-        <div class="galhead"><h3>Shapes, Effects, Controls, Timers, SVG</h3><span class="n">18</span></div>
-        <p class="galdesc">The drawing and framing layer. Shapes take arbitrary path geometry; effects attach to any parent; SVG documents can be driven element by element from a script.</p>
+        <div class="galhead"><h3>Shapes, Effects, Controls, Timers, SVG</h3><span class="n">17</span></div>
+        <p class="galdesc">The drawing and framing layer. Shapes take any outline; effects attach to any parent. Bring in a ready-made drawing — a tank, a valve, a whole plant layout — and it fills its box cleanly; then make its parts move: a fan turns on its hub, a tank fills to the level, a valve changes colour, and a click on a part tells the project which one was picked. Scheme Call opens another project in its own window, hands it parameters and gets the result back as an event.</p>
         <div class="tiles">
           <div class="tile">
             <svg viewBox="0 0 120 72" aria-hidden="true">
@@ -997,6 +1207,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           </div>
           <div class="tile">
             <svg viewBox="0 0 120 72" aria-hidden="true">
+              <g filter="url(#fShadowS)"><rect x="10" y="8" width="56" height="38" rx="7" fill="#26344b" stroke="#6e9ede"/></g>
+              <rect x="16" y="16" width="14" height="8" rx="2" fill="#4f8fe6"/><rect x="34" y="16" width="14" height="8" rx="2" fill="#4caf50"/>
+              <g filter="url(#fShadowS)"><rect x="50" y="26" width="60" height="40" rx="7" fill="url(#gSteel)" stroke="#c9d6e8"/></g>
+              <rect x="50" y="26" width="60" height="13" rx="7" fill="url(#gAmber)" stroke="#d79a3a"/>
+              <rect x="50" y="33" width="60" height="6" fill="url(#gAmber)"/>
+              <g fill="#c2ccdb"><rect x="58" y="46" width="36" height="4" rx="2"/><rect x="58" y="55" width="24" height="4" rx="2"/></g>
+              <path d="M70 12c16-6 26 0 26 11" stroke="#2f9e44" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M90 21l6 7 6-7z" fill="#2f9e44"/>
+            </svg>
+            <b>Scheme Call</b><span>project calls project</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 120 72" aria-hidden="true">
               <g filter="url(#fShadowS)"><circle cx="60" cy="36" r="24" fill="url(#gSteel)" stroke="#bf7a14" stroke-width="2.4"/></g>
               <path d="M60 36V18M60 36l12 8" stroke="#d98613" stroke-width="3" fill="none" stroke-linecap="round"/>
               <circle cx="60" cy="36" r="3.4" fill="#8b5a0a"/>
@@ -1009,18 +1232,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
     <div class="grid g2" style="margin-top:20px">
       <div class="card">
-        <div class="galhead"><h3>Script &amp; logic</h3><span class="n">6</span></div>
-        <p class="galdesc">Script, Rung Block and the Utils Library stand on the scheme as named objects. The three Link components run without a scan — they react to a property changing.</p>
+        <div class="galhead"><h3>Script &amp; logic</h3><span class="n">7</span></div>
+        <p class="galdesc">Script, Rung Block and the Utils Library stand on the scheme as named objects. Dll Loader brings the functions of your own compiled library into blocks and scripts. The three Link components run without a scan — they react to a property changing.</p>
         <ul class="names" style="margin-top:8px">
-          <li>Script</li><li>Rung Block</li><li>Utils Library</li><li>Link Property</li><li>Equal Property</li><li>Equal Property IIf</li>
+          <li>Script</li><li>Rung Block</li><li>Utils Library</li><li>Dll Loader</li><li>Link Property</li><li>Equal Property</li><li>Equal Property IIf</li>
         </ul>
       </div>
       <div class="card">
-        <div class="galhead"><h3>Tools, Database, Reports, Inlines</h3><span class="n">11</span></div>
-        <p class="galdesc">Recipes carry live pointers to any property on the scheme. Json Format shapes payloads into tags. Text Logger appends values to a file. Event Command wires a component event to a command.</p>
+        <div class="galhead"><h3>Tools, Database, Reports, Inlines</h3><span class="n">13</span></div>
+        <p class="galdesc">Msg Manager runs the alarms, User Manager decides who may do what, and Change Logger keeps the record of who did it. Recipes carry live pointers to any value on the scheme. Database fields flash as they are read and written while you test, so you can watch the data move.</p>
         <ul class="names" style="margin-top:8px">
-          <li>Recipes</li><li>Json Format</li><li>Text Logger</li><li>Msg Manager</li><li>Database</li><li>Query</li>
-          <li>Db Tag</li><li>Db Param</li><li>Csv Table</li><li>Report</li><li>Event Command</li>
+          <li>Msg Manager</li><li>User Manager</li><li>Change Logger</li><li>Recipes</li><li>Json Format</li><li>Text Logger</li>
+          <li>Database</li><li>Query</li><li>Db Tag</li><li>Db Param</li><li>Csv Table</li><li>Report</li><li>Event Command</li>
         </ul>
       </div>
     </div>
@@ -1028,14 +1251,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </section>
 
 <!-- ═══ CONNECTIVITY ═══════════════════════════════════════════════════ -->
-<section id="connect" class="alt">
+<section id="connect">
   <div class="wrap">
     <p class="eyebrow">Connectivity</p>
     <h2>Down to the register, up to the browser</h2>
-    <p class="sub">Twenty-five of the 83 components are connectivity. DRS is a client to your plant and, at the same moment, a server to whoever needs the data next.</p>
+    <p class="sub">Twenty-seven of the 90 components are connectivity. DRS is a client to your plant and, at the same moment, a server to whoever needs the data next.</p>
 
     <div class="plate" style="margin-bottom:30px">
-      <svg viewBox="0 0 1220 400" role="img" aria-label="Topology: field devices reach DRS over Modbus, S7, serial and board buses; inside DRS the protocol containers hold their tags and feed the panel logic; outward DRS serves HTTP, TCP, JSON and remote-control clients, and writes to databases, logs and reports.">
+      <svg viewBox="0 0 1220 400" role="img" aria-label="Topology: field devices reach DRS over Modbus, S7, OPC UA, serial, board buses and IP cameras; inside DRS the protocol containers hold their tags and feed the panel logic; outward DRS serves HTTP, TCP, JSON and remote-control clients, and writes to databases, logs and reports.">
         <text x="34" y="30" font-size="11.5" font-weight="700" letter-spacing=".9" fill="#8494ab">FIELD</text>
         <text x="976" y="30" font-size="11.5" font-weight="700" letter-spacing=".9" fill="#8494ab">SERVED TO</text>
 
@@ -1046,16 +1269,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <g filter="url(#fShadowS)"><rect x="34" y="100" width="176" height="42" rx="9" fill="url(#gGreen)" stroke="#7fa86a"/><rect x="34" y="100" width="176" height="20" rx="9" fill="url(#gGloss)"/></g>
           <text x="122" y="126" text-anchor="middle" font-size="12" font-weight="700" fill="#2f4a1e">PLC · Modbus TCP</text>
           <g filter="url(#fShadowS)"><rect x="34" y="152" width="176" height="42" rx="9" fill="url(#gGreen)" stroke="#7fa86a"/><rect x="34" y="152" width="176" height="20" rx="9" fill="url(#gGloss)"/></g>
-          <text x="122" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#2f4a1e">Siemens S7</text>
+          <text x="122" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#2f4a1e">Siemens S7 · OPC UA</text>
           <g filter="url(#fShadowS)"><rect x="34" y="204" width="176" height="42" rx="9" fill="url(#gGreen)" stroke="#7fa86a"/><rect x="34" y="204" width="176" height="20" rx="9" fill="url(#gGloss)"/></g>
           <text x="122" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="#2f4a1e">Sensor · serial</text>
           <g filter="url(#fShadowS)"><rect x="34" y="256" width="176" height="48" rx="9" fill="url(#gGreen)" stroke="#7fa86a"/><rect x="34" y="256" width="176" height="22" rx="9" fill="url(#gGloss)"/></g>
           <text x="122" y="278" text-anchor="middle" font-size="12" font-weight="700" fill="#2f4a1e">Single-board computer</text>
           <text x="122" y="295" text-anchor="middle" font-size="10" fill="#41602b">GPIO · PWM · SPI · I2C</text>
+          <g filter="url(#fShadowS)"><rect x="34" y="314" width="176" height="48" rx="9" fill="url(#gGreen)" stroke="#7fa86a"/><rect x="34" y="314" width="176" height="22" rx="9" fill="url(#gGloss)"/></g>
+          <text x="122" y="336" text-anchor="middle" font-size="12" font-weight="700" fill="#2f4a1e">IP camera</text>
+          <text x="122" y="353" text-anchor="middle" font-size="10" fill="#41602b">MJPEG · RTSP · ONVIF</text>
         </g>
 
-        <!-- field -> hub: bes egri AYNI noktada birlesir, 58 px yatay kosu -->
+        <!-- field -> hub: alti egri AYNI noktada birlesir, 58 px yatay kosu -->
         <g stroke="#e8801f" stroke-width="2.2" fill="none" stroke-linecap="round" marker-end="url(#mOrange)">
+          <path d="M218 338 C 244 338, 246 173, 270 173"/>
           <path d="M218 69 C 244 69, 246 173, 270 173"/>
           <path d="M218 121 C 244 121, 246 173, 270 173"/>
           <path d="M218 173 C 244 173, 246 173, 270 173"/>
@@ -1137,18 +1364,31 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="grid g3" style="margin-bottom:30px">
       <div class="card">
         <h3 style="margin:0 0 10px;font-size:17px">Industrial</h3>
-        <ul class="chips"><li>Modbus RTU</li><li>Modbus TCP</li><li>Siemens S7</li><li>Tag import sets</li></ul>
+        <ul class="chips"><li>Modbus RTU</li><li>Modbus TCP</li><li>Siemens S7</li><li>OPC UA</li><li>Tag import sets</li></ul>
         <p style="margin:14px 0 0;color:var(--muted);font-size:14.5px">Masters keep their own tag list; each tag is an address, a data type and a scan rule. Import sets generate the whole map from templates.</p>
       </div>
       <div class="card">
         <h3 style="margin:0 0 10px;font-size:17px">Network</h3>
         <ul class="chips"><li>TCP client · server</li><li>UDP client · server</li><li>HTTP client · server</li><li>MQTT</li><li>JT client · server</li><li>LZ client</li><li>Email</li><li>SMS</li></ul>
-        <p style="margin:14px 0 0;color:var(--muted);font-size:14.5px">The HTTP server hosts REST endpoints whose handlers are your own blocks and scripts — a gateway in minutes, not a separate service to deploy.</p>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14.5px">The panel can answer web requests itself, with your own blocks and scripts deciding the reply — a gateway in minutes, not a separate service to deploy. The user manager guards it with the same log-in as the screen.</p>
       </div>
       <div class="card">
         <h3 style="margin:0 0 10px;font-size:17px">Board level</h3>
         <ul class="chips"><li>Serial / USB</li><li>GPIO</li><li>PWM</li><li>SPI</li><li>I2C</li><li>Bluetooth Classic</li><li>Bluetooth LE</li></ul>
-        <p style="margin:14px 0 0;color:var(--muted);font-size:14.5px">GPIO talks to the Linux character-device interface directly and PWM to sysfs — no helper daemon and no native library to install on the board.</p>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14.5px">Pins, buses and ports on a single-board computer work straight away — nothing extra to install on the board.</p>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-bottom:30px">
+      <div class="card">
+        <h3 style="margin:0 0 10px;font-size:17px">OPC UA client</h3>
+        <ul class="chips"><li>Encrypted or open</li><li>Anonymous · user name</li><li>Browse &amp; import</li></ul>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14.5px">Connect to an OPC UA server, secured or not, and browse what it offers. Tick the values you need and they arrive as tags — no node IDs to type. Certificates are handled for you: the client makes its own and remembers the server after the first contact.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 10px;font-size:17px">IP camera</h3>
+        <ul class="chips"><li>MJPEG over HTTP</li><li>JPEG snapshot</li><li>RTSP</li><li>ONVIF</li><li>PTZ</li><li>Basic · Digest · HTTPS</li></ul>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14.5px">A live camera image on the panel, next to the tags it watches. ONVIF finds the cameras on the network, lists their profiles and drives pan, tilt, zoom and presets from a block or a script. Phone apps such as DroidCam work out of the box. The camera reconnects by itself after a drop, and <code>SaveSnapshot</code> writes the current frame to a file. H.264 streams are on the roadmap; until then an ONVIF camera that only offers H.264 is shown through its snapshot feed.</p>
       </div>
     </div>
 
@@ -1175,11 +1415,31 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </figcaption>
       </figure>
     </div>
+
+    <h3 style="margin:48px 0 8px;font-size:22px">Test without the hardware</h3>
+    <p style="color:var(--muted);max-width:740px;margin:0 0 22px">Alongside DRS, small test servers are being built that stand in for a PLC, an OPC UA server and an IP camera, so a panel can be built and checked before the real device is on the desk. They are not distributed yet. Each one sits in the Windows notification area with its own badge; its menu opens the log or closes the server. A matching test project comes with each server, and every tag's description states the value the server should return.</p>
+    <div class="grid g3">
+      <div class="card">
+        <h3 style="margin:0 0 10px;font-size:17px">S7 Test Server</h3>
+        <ul class="chips"><li>ISO-on-TCP · port 102</li><li>DB1 – DB3</li><li>I · Q · M</li><li>Timers · counters</li></ul>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14.5px">Answers reads and writes like an S7 PLC. DB1 is seeded with every data type, and a few counters and a toggling bit change every second so a live panel has something to show.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 10px;font-size:17px">OPC UA Test Server</h3>
+        <ul class="chips"><li>port 48400</li><li>Every security mode</li><li>User login</li><li>14 data types</li></ul>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14.5px">Offers every security mode the client supports, anonymous and user-name login, one tag per data type and a live counter.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 10px;font-size:17px">IP Camera Test Server</h3>
+        <ul class="chips"><li>MJPEG · snapshot</li><li>RTSP</li><li>ONVIF · PTZ</li><li>WS-Discovery</li><li>Digest</li></ul>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14.5px">Streams a generated test picture with a frame counter and a clock over HTTP and RTSP, answers ONVIF discovery, profile and PTZ requests, and protects its secure paths with Digest authentication.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ═══ DATA & REPORTS ═════════════════════════════════════════════════ -->
-<section id="data">
+<section id="data" class="alt">
   <div class="wrap">
     <p class="eyebrow">Data &amp; reports</p>
     <h2>Log it, query it, print it</h2>
@@ -1200,6 +1460,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <li><span><b>Components inside bands.</b> A gauge, a chart or a QR code is not a special “report object”: the same component you put on the screen goes in the band.</span></li>
           <li><span><b>Pagination that behaves.</b> Groups break, headers repeat, totals land where they should.</span></li>
           <li><span><b>Six outputs.</b> Print directly, or write PDF, XLSX, DOCX, HTML or plain text.</span></li>
+          <li><span><b>History on the screen, too.</b> The same tables that feed a report feed the Trend Chart: the operator picks the days and pages through them without leaving the panel.</span></li>
         </ul>
         <p class="caplabel" style="margin-top:26px">Data sources</p>
         <ul class="chips">
@@ -1212,12 +1473,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </section>
 
 <!-- ═══ PLATFORMS ══════════════════════════════════════════════════════ -->
-<section id="platforms" class="alt">
+<section id="platforms">
   <div class="wrap">
     <p class="eyebrow">Platforms</p>
     <h2>Design once, run where you need it</h2>
-    <p class="sub">The Designer runs on desktop. The Runner goes further — the same project file opens on a workstation, a panel PC, a tablet or a browser tab.</p>
-    <div class="grid g4 plat">
+    <p class="sub">The Designer runs on desktop. The Runner goes further — the same project file opens on a workstation, a panel PC or a tablet. A browser can still watch and drive a running panel through the Remote Control server.</p>
+    <div class="grid g3 plat">
       <div class="card">
         <svg viewBox="0 0 64 64" width="46" height="46" style="margin:0 auto 12px;display:block" aria-hidden="true">
           <path d="M8 14l22-3.2v20.4H8zM33.5 10.3L56 7v24.2H33.5zM8 34.8h22v20.4L8 52zM33.5 34.8H56V57l-22.5-3.2z" fill="url(#gArcB)"/>
@@ -1250,21 +1511,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <p style="margin:0;color:var(--muted);font-size:14px">Phones and tablets</p>
         <span class="tag">Runner</span>
       </div>
-      <div class="card">
-        <svg viewBox="0 0 64 64" width="46" height="46" style="margin:0 auto 12px;display:block" aria-hidden="true">
-          <circle cx="32" cy="32" r="25" fill="none" stroke="url(#gArcB)" stroke-width="4.5"/>
-          <path d="M7 32h50M32 7c9.5 9 9.5 41 0 50M32 7c-9.5 9-9.5 41 0 50" fill="none" stroke="url(#gArcB)" stroke-width="3"/>
-        </svg>
-        <h3 style="margin:0 0 4px;font-size:17px">Web browser</h3>
-        <p style="margin:0;color:var(--muted);font-size:14px">Compiled to WebAssembly</p>
-        <span class="tag">Runner</span>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- ═══ ENGINEERING ════════════════════════════════════════════════════ -->
-<section id="engineering">
+<section id="engineering" class="alt">
   <div class="wrap split">
     <div>
       <p class="eyebrow">Under the hood</p>
@@ -1274,11 +1526,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <div>
       <ul class="checks">
-        <li><span><b>No external dependencies.</b> Every library DRS uses is carried as source inside the project. No package feed to disappear, no version drift, no licence surprise.</span></li>
+        <li><span><b>Nothing borrowed that can be taken away.</b> Everything DRS needs travels with it. No download to disappear, no version drift, no licence surprise.</span></li>
         <li><span><b>Offline-first.</b> No account, no telemetry, no licence server. Nothing phones home, and nothing stops working when the network does.</span></li>
         <li><span><b>One file to deploy.</b> The Runner publishes as a single self-contained executable — copy it to the panel PC and start it.</span></li>
-        <li><span><b>One codebase, four targets.</b> Desktop, Android and browser builds share the same component source, so a fix lands everywhere at once.</span></li>
-        <li><span><b>Native drawing.</b> Panels render on a hardware-accelerated canvas, not inside an embedded browser.</span></li>
+        <li><span><b>One codebase, three targets.</b> Windows, Linux and Android builds share the same component source, so a fix lands everywhere at once.</span></li>
+        <li><span><b>Smooth on small hardware.</b> Panels draw directly on the screen, not inside a hidden browser, so they stay responsive on a modest panel PC.</span></li>
+        <li><span><b>Measured, not guessed.</b> A rung loop of 100,000 iterations writing a live value runs in about 130&nbsp;ms in the Runner, down from 700&nbsp;ms and with a quarter of the memory. Every optimisation is timed before it is kept.</span></li>
+        <li><span><b>Every project is sealed.</b> The Designer, a test run and a called project each keep their own state, so stopping or failing one never touches another.</span></li>
         <li><span><b>Old projects keep opening.</b> The project format tolerates components and properties that have moved on — a scheme saved a year ago still loads.</span></li>
       </ul>
     </div>
@@ -1286,21 +1540,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </section>
 
 <!-- ═══ ROADMAP ════════════════════════════════════════════════════════ -->
-<section id="roadmap" class="alt">
+<section id="roadmap">
   <div class="wrap">
     <p class="eyebrow">Roadmap</p>
     <h2>Where DRS is heading</h2>
     <p class="sub">DRS is under daily development. Here is the direction of travel.</p>
     <div class="grid g3">
-      <div class="card step"><b>NOW</b><h3 style="margin:0 0 8px">Studio and runtime</h3><p style="margin:0;color:var(--muted)">The Designer, the Runner, the 83-component toolbox, block logic and scripting, industrial protocols, databases and the report engine.</p></div>
-      <div class="card step"><b>NEXT</b><h3 style="margin:0 0 8px">First public builds</h3><p style="margin:0;color:var(--muted)">Downloadable Windows and Linux packages, the Android runner, worked example projects and getting-started documentation.</p></div>
-      <div class="card step"><b>LATER</b><h3 style="margin:0 0 8px">Reach and libraries</h3><p style="margin:0;color:var(--muted)">macOS and iOS runners, project templates, and a shared library of components, recipes and device profiles.</p></div>
+      <div class="card step"><b>NOW</b><h3 style="margin:0 0 8px">Studio and daily operation</h3><p style="margin:0;color:var(--muted)">The Designer, the Runner and the 90-component toolbox. Alarms, users and access, the change log and history trends. Plant connections, IP cameras, live drawings, databases and the report engine.</p></div>
+      <div class="card step"><b>NEXT</b><h3 style="margin:0 0 8px">First public builds</h3><p style="margin:0;color:var(--muted)">Downloadable Windows and Linux packages, the Android runner, worked example projects and getting-started documentation. Built-in recording of history, and a ready alarm-history screen.</p></div>
+      <div class="card step"><b>LATER</b><h3 style="margin:0 0 8px">Faster to a finished panel</h3><p style="margin:0;color:var(--muted)">Describe the panel you need and let the studio build a first version for you. A browser view of a running project, a library of process symbols — tanks, valves, pumps, motors — and more camera formats.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ═══ DOWNLOAD ═══════════════════════════════════════════════════════ -->
-<section id="download">
+<section id="download" class="alt">
   <div class="wrap contact">
     <p class="eyebrow">Download</p>
     <h2>Not yet — but soon</h2>
