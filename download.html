@@ -309,7 +309,7 @@ var RELEASE = {
       '<p class="path" translate="no" style="margin:10px 0 0;overflow-wrap:anywhere">SHA-256 ' + t[4] + '</p></div>';
   }).join('');
 
-  /* Download/DownloadPathList.txt names the zips of every version; the newest one wins. Without the list (or on file://) the values above stay. */
+  /* DownloadPathList.txt names the zips of every version; the newest one wins. Without the list (or on file://) the values above stay. */
   function applyList(text) {
     var best = null;
     text.split(/\r?\n/).forEach(function (ln) {
@@ -346,7 +346,7 @@ var RELEASE = {
   }
 
   paint();
-  if (window.fetch && location.protocol !== 'file:') fetch('Download/DownloadPathList.txt', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) { if (t) applyList(t); }, function () {});
+  if (window.fetch && location.protocol !== 'file:') fetch('DownloadPathList.txt', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) { if (t) applyList(t); }, function () {});
 
   /* the install flow, drawn from data */
   var STEPS = [
