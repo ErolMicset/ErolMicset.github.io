@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>drQEmu · ESP32 emulator · Digital Rebel Studio</title>
+<meta name="description" content="drQEmu runs a compiled ESP32 program on your PC, with pins, buses and chips you can see and drive from a browser. Download for Windows and Linux.">
+<meta name="theme-color" content="#0f1626">
+<link rel="icon" type="image/png" href="images/drs-logo.png">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --bg:#ffffff; --bg-alt:#f4f7fc; --card:#ffffff; --panel:#f8fafc;
+  --text:#0d1424; --muted:#57617a; --faint:#8a93a8;
+  --line:#e2e8f2;
+  --accent:#2563eb; --amber:#d98613; --accent-ink:#ffffff; --ok:#16a34a;
+  --shadow:0 1px 2px rgba(13,20,36,.05),0 10px 28px rgba(13,20,36,.07);
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0a1020; --bg-alt:#0d1428; --card:#121b33; --panel:#0e1730;
+    --text:#e9edf6; --muted:#9aa5bd; --faint:#6e7891;
+    --line:#1f2b4a;
+    --accent:#5b8cff; --amber:#e8a33d; --accent-ink:#06101f; --ok:#34d399;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{letter-spacing:-.02em}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+header.nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 84%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;color:var(--text);white-space:nowrap}
+.brand:hover{text-decoration:none}
+.logo{width:38px;height:38px;object-fit:contain}
+.nav nav{display:flex;gap:23px;align-items:center}
+.nav nav a{color:var(--muted);font-size:15px;white-space:nowrap}
+.nav nav a:hover,.nav nav a[aria-current]{color:var(--text);text-decoration:none}
+.btn{display:inline-block;padding:12px 22px;border-radius:11px;font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;font-family:inherit}
+.btn:hover{text-decoration:none}
+.btn.primary{background:linear-gradient(180deg,#f0b357,#d98613);color:#1d1408;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 6px 18px rgba(217,134,19,.28);transition:transform .2s,filter .2s}
+.btn.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn.ghost{border-color:var(--line);color:var(--text);background:var(--card)}
+.btn.ghost:hover{border-color:var(--amber)}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);margin:0 0 10px}
+.head{padding:64px 0 36px;background:radial-gradient(1100px 380px at 50% -90px,color-mix(in srgb,var(--amber) 16%,transparent),transparent)}
+h1{font-size:clamp(32px,5vw,50px);line-height:1.1;margin:0 0 14px}
+h2{font-size:clamp(24px,3vw,32px);margin:0 0 12px}
+.sub{color:var(--muted);max-width:740px;margin:0;font-size:17px}
+section{padding:46px 0}
+section.alt{background:var(--bg-alt);border-block:1px solid var(--line)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
+
+/* recommended */
+.rec{display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;
+  border-color:color-mix(in srgb,var(--amber) 50%,var(--line));
+  background:linear-gradient(180deg,color-mix(in srgb,var(--amber) 8%,var(--card)),var(--card))}
+.rec .ico{width:76px;height:76px;border-radius:20px;display:grid;place-items:center;
+  background:linear-gradient(180deg,#f0b357,#d98613);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 10px 24px rgba(217,134,19,.3)}
+.rec .ico svg{width:42px;height:42px}
+.rec h2{margin:0 0 4px;font-size:24px}
+.rec p{margin:0;color:var(--muted)}
+.rec .meta{font:600 12.5px var(--mono);color:var(--faint);margin-top:8px}
+@media(max-width:800px){.rec{grid-template-columns:1fr;text-align:center}.rec .ico{margin:0 auto}}
+
+/* package table */
+.pk{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:22px}
+.pk .card{padding:20px;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .2s}
+.pk .card:hover{transform:translateY(-3px);border-color:var(--amber)}
+.pk .card.me{border-color:var(--amber);box-shadow:0 0 0 2px color-mix(in srgb,var(--amber) 35%,transparent),var(--shadow)}
+.pk h3{margin:0 0 2px;font-size:18px}
+.pk .os{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--amber)}
+.pk ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.pk li{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+.pk li b{color:var(--text);font-weight:600}
+.pk li code,.path{font:12.5px var(--mono);color:var(--faint)}
+.sz{font:600 12.5px var(--mono);white-space:nowrap}
+
+/* hash */
+.hash{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.hash code{flex:1 1 360px;min-width:0;overflow-wrap:anywhere;font:13px/1.5 var(--mono);background:var(--panel);
+  border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.pre{background:#070d1f;color:#d7e0ff;border-radius:12px;padding:14px 16px;border:1px solid #1c2748;
+  font:13px/1.7 var(--mono);overflow-x:auto;white-space:pre;margin:8px 0 0}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.tabs button{font:inherit;font-size:14px;font-weight:600;cursor:pointer;padding:7px 15px;border-radius:999px;
+  border:1px solid var(--line);background:var(--card);color:var(--text)}
+.tabs button[aria-pressed="true"]{background:linear-gradient(180deg,#f0b357,#d98613);border-color:#c47a10;color:#1d1408}
+
+/* flow */
+.plate{background:#f7f9fc;border:1px solid #e0e7f1;border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.plate svg{display:block;width:100%;height:auto;max-width:980px;margin:0 auto}
+.plate .pcap{font-size:12.5px;color:#7a869c;margin:8px 4px 0;font-weight:600}
+.step rect{filter:drop-shadow(0 3px 5px rgba(20,32,60,.22))}
+.js .step{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;transition-delay:var(--d)}
+.js .plate.go .step{opacity:1;transform:none}
+.js .plate .arrow{stroke-dasharray:1;stroke-dashoffset:1}
+.js .plate.go .arrow{animation:draw .7s ease-out forwards;animation-delay:var(--d)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+.notes{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.notes p{margin:0;color:var(--muted);font-size:15px}
+.notes h3{margin:0 0 6px;font-size:17px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.badge{display:inline-block;font:700 12px var(--mono);letter-spacing:.5px;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 45%,var(--line));background:color-mix(in srgb,var(--accent) 9%,transparent);padding:4px 11px;border-radius:999px;margin-bottom:16px}
+.rec .ico{background:linear-gradient(180deg,#7fa6ee,#2563eb)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 10px 24px rgba(37,99,235,.3)!important}
+.rec{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))!important;background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 7%,var(--card)),var(--card))!important}
+.rec .ico svg{stroke:#fff}
+.shotgrid{display:grid;gap:22px;grid-template-columns:1fr;margin-top:22px}
+.shotfig{padding:16px;margin:0}
+.shotfig .frame{background:radial-gradient(700px 240px at 50% -40px,#eef2f9,#e1e8f3);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;place-items:center;cursor:zoom-in;overflow:hidden}
+.shotfig img{width:auto;max-width:100%;height:auto;border-radius:8px;border:1px solid #d6deec;box-shadow:0 14px 34px rgba(20,32,60,.22),0 2px 6px rgba(20,32,60,.15);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.shotfig .frame:hover img{transform:scale(1.015)}
+.shotfig figcaption{margin-top:12px;display:grid;gap:3px}
+.shotfig figcaption b{font-size:16.5px}
+.shotfig figcaption span{color:var(--muted);font-size:14.5px}
+dialog.zoom{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100vh;margin:0}
+dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
+.zb{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;padding:54px 40px 16px}
+.zb .view{flex:1 1 auto;min-height:0;width:100%;overflow:auto;display:grid;place-items:center}
+.zb img{width:auto;height:auto;max-width:100%;max-height:calc(100vh - 150px);border-radius:10px;box-shadow:0 24px 70px rgba(0,0,0,.65);animation:zin .35s cubic-bezier(.2,.7,.2,1)}
+@keyframes zin{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.zb .cap{color:#d8deea;margin-top:12px;font-size:15px;text-align:center;max-width:860px}
+.zb .cap b{display:block;color:#fff;font-size:17px}
+.zb button{font:inherit;cursor:pointer;border:1px solid rgba(255,255,255,.18);background:rgba(20,28,48,.82);color:#fff;min-width:44px;height:44px;border-radius:999px;font-size:20px;position:absolute}
+.zb button:hover{background:rgba(217,134,19,.92)}
+.zb .close{top:10px;right:14px}.zb .prev{left:10px;top:50%}.zb .next{right:10px;top:50%}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img class="logo" src="images/drs-logo.png" alt="" width="38" height="38"> Digital Rebel Studio</a>
+    <nav aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="drqemu.html" aria-current="page">drQEmu</a>
+      <a href="#contact">Contact</a>
+      <a href="download.html">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="head">
+    <div class="wrap">
+      <span class="badge" translate="no">drQEmu</span>
+      <h1>An <span translate="no" class="notranslate">ESP32</span> on your screen</h1>
+      <p class="sub"><span translate="no" class="notranslate">drQEmu</span> runs the program you compiled for an <span translate="no" class="notranslate">ESP32</span> on your PC. The pins, the <span translate="no" class="notranslate">I2C</span> and <span translate="no" class="notranslate">SPI</span> buses and the chips on them are drawn in a browser page: press a button, turn a knob, see the display. It is a separate program from <span translate="no" class="notranslate">DRS</span>, with its own download.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="card rec reveal" id="rec">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg></div>
+        <div>
+          <h2 id="recTitle">Download <span translate="no" class="notranslate">drQEmu</span></h2>
+          <p id="recText">One zip: the emulator for <span translate="no" class="notranslate">Windows</span> and <span translate="no" class="notranslate">Linux</span>, the flasher for real boards, the help page and the source offer.</p>
+          <p class="meta" id="recMeta" translate="no"></p>
+        </div>
+        <a class="btn primary" id="recBtn" href="#">Download the zip</a>
+      </div>
+      <p class="other" style="margin:18px 4px 0;color:var(--muted);font-size:14.5px"><span>Looking for the panel studio? That is <a href="download.html"><span translate="no" class="notranslate">DRS</span>, on its own download page</a>.</span></p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">What is inside</p>
+      <h2>Four files</h2>
+      <div class="pk" id="pk"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Pictures</p>
+      <h2>What it looks like</h2>
+      <p class="sub">Real screens of <span translate="no" class="notranslate">drQEmu</span> while a compiled program runs, at their real size. Click a picture to look at every pixel.</p>
+      <div class="shotgrid" id="shots">
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/lcd1602.png" alt="A text display on the I2C bus. A 16 x 2 HD44780 display on an I2C backpack. The program writes two lines and a custom character; the card shows the screen as it would look, with its mode, display and backlight state." width="1109" height="470" loading="lazy"></div>
+        <figcaption><b>A text display on the I2C bus</b><span>A 16 x 2 HD44780 display on an I2C backpack. The program writes two lines and a custom character; the card shows the screen as it would look, with its mode, display and backlight state.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/oled.png" alt="An OLED that draws what the program sends. A 128 x 64 SSD1306 display on I2C. The program draws two lines, a counter and a moving bar; the picture follows it live." width="1109" height="583" loading="lazy"></div>
+        <figcaption><b>An OLED that draws what the program sends</b><span>A 128 x 64 SSD1306 display on I2C. The program draws two lines, a counter and a moving bar; the picture follows it live.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/keypad-lcd.png" alt="A keypad and a parallel display. A 4 x 3 matrix keypad on seven pins and an HD44780 display on six pins. Click a key and the program sees it pressed; the display shows the text the program writes." width="1109" height="786" loading="lazy"></div>
+        <figcaption><b>A keypad and a parallel display</b><span>A 4 x 3 matrix keypad on seven pins and an HD44780 display on six pins. Click a key and the program sees it pressed; the display shows the text the program writes.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/dht-ds18b20.png" alt="Temperature and humidity sensors. A DHT22, a DS18B20 and a DHT11 on one pin each. The sliders set the values the program reads, and the chips answer with the timing the real ones use." width="1109" height="800" loading="lazy"></div>
+        <figcaption><b>Temperature and humidity sensors</b><span>A DHT22, a DS18B20 and a DHT11 on one pin each. The sliders set the values the program reads, and the chips answer with the timing the real ones use.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/max7219.png" alt="An LED matrix driver on SPI. Two chained MAX7219 chips with their intensity and the dots the program switched on." width="1079" height="252" loading="lazy"></div>
+        <figcaption><b>An LED matrix driver on SPI</b><span>Two chained MAX7219 chips with their intensity and the dots the program switched on.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/scope-pwm.png" alt="A scope for pins and PWM. Add a pin and its level changes are drawn against time. A PWM pin also shows its duty: here GPIO4 changes from 25 % to 75 % while GPIO5 stays at 50 %." width="1109" height="549" loading="lazy"></div>
+        <figcaption><b>A scope for pins and PWM</b><span>Add a pin and its level changes are drawn against time. A PWM pin also shows its duty: here GPIO4 changes from 25 % to 75 % while GPIO5 stays at 50 %.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/outputs-pwm.png" alt="Outputs, with frequency and duty. Every pin the program drives shows up by itself: its level, and for a PWM pin its frequency and duty." width="1124" height="242" loading="lazy"></div>
+        <figcaption><b>Outputs, with frequency and duty</b><span>Every pin the program drives shows up by itself: its level, and for a PWM pin its frequency and duty.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/clock-pcf8583.png" alt="A clock chip and the bytes it holds. The PCF8583 real-time clock: a clock face, the date, and all 256 bytes of its memory with the registers the program touched marked." width="1079" height="709" loading="lazy"></div>
+        <figcaption><b>A clock chip and the bytes it holds</b><span>The PCF8583 real-time clock: a clock face, the date, and all 256 bytes of its memory with the registers the program touched marked.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/clock-pcf8563.png" alt="A running real-time clock. The PCF8563 counts seconds by itself; its alarm and flags are decoded below the clock face." width="1094" height="274" loading="lazy"></div>
+        <figcaption><b>A running real-time clock</b><span>The PCF8563 counts seconds by itself; its alarm and flags are decoded below the clock face.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/clock-ds1307.png" alt="A clock the program has stopped. The DS1307 shows that it is halted until the program clears the halt bit, like the real chip." width="1094" height="274" loading="lazy"></div>
+        <figcaption><b>A clock the program has stopped</b><span>The DS1307 shows that it is halted until the program clears the halt bit, like the real chip.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/mpu6050.png" alt="A motion sensor you can tilt. The MPU6050: sliders for acceleration and rotation on every axis and for the temperature; the ranges the program chose are shown above them." width="1094" height="347" loading="lazy"></div>
+        <figcaption><b>A motion sensor you can tilt</b><span>The MPU6050: sliders for acceleration and rotation on every axis and for the temperature; the ranges the program chose are shown above them.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/bmp280.png" alt="Pressure and temperature. The BMP280: two sliders set what the program measures, and the registers the program wrote are shown." width="1094" height="208" loading="lazy"></div>
+        <figcaption><b>Pressure and temperature</b><span>The BMP280: two sliders set what the program measures, and the registers the program wrote are shown.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/mcp23017.png" alt="A port expander as lamps and switches. The MCP23017: every pin is a lamp when the program drives it and a switch when the program reads it." width="1094" height="601" loading="lazy"></div>
+        <figcaption><b>A port expander as lamps and switches</b><span>The MCP23017: every pin is a lamp when the program drives it and a switch when the program reads it.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/bus-monitor.png" alt="The bus monitor. Every I2C and SPI transaction on one line with a time stamp: the bytes the board sent and what the chip answered." width="1124" height="371" loading="lazy"></div>
+        <figcaption><b>The bus monitor</b><span>Every I2C and SPI transaction on one line with a time stamp: the bytes the board sent and what the chip answered.</span></figcaption>
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Use</p>
+      <h2>From a sketch to a running board</h2>
+      <div class="plate reveal" id="flow"><p class="pcap" id="flowCap">Compile the sketch, start <span translate="no" class="notranslate">drQEmu</span>, load the image, watch and drive the board in the browser.</p></div>
+      <div class="notes" style="margin-top:22px">
+        <div class="card reveal"><h3>The image</h3><p>Compile your sketch the way you always do and keep the merged image (the <span translate="no" class="notranslate">.merged.bin</span> file). That file is what <span translate="no" class="notranslate">drQEmu</span> runs: the same bytes you would write to a board.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">Windows</span> and <span translate="no" class="notranslate">Linux</span></h3><p>Start <span translate="no" class="notranslate">drQEmuESP32.exe</span>, or on <span translate="no" class="notranslate">Linux</span> make <span translate="no" class="notranslate">drQEmuESP32</span> runnable once with <span translate="no" class="notranslate">chmod +x</span> and start it. The page opens in your browser; the help page in the zip explains every part of it.</p></div>
+        <div class="card reveal"><h3>Real boards</h3><p><span translate="no" class="notranslate">drFlasher</span> writes an image to a connected <span translate="no" class="notranslate">ESP32</span> board over its serial port. It is a separate file: you do not need it to use the emulator.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Licence</p>
+      <h2>Free software, source on request</h2>
+      <p class="sub"><span translate="no" class="notranslate">drQEmu</span> contains parts under the <span translate="no" class="notranslate">GNU General Public License</span> and other open-source licences. The zip carries <span translate="no" class="notranslate">SOURCE-OFFER.txt</span>, the written offer: write to the address below and you get the complete source of the program you downloaded, including the emulator engine, the modules and the build scripts.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Talk to us</h2>
+      <p class="sub">Questions, problems, or a request for the source: write to us. Say which system you use, which file you took and what the screen showed.</p>
+      <p style="font-size:19px;font-weight:600;margin:14px 0 18px"><a href="mailto:erol.micset@gmail.com?subject=drQEmu">erol.micset@gmail.com</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y">2026</span> <span translate="no" class="notranslate">Digital Rebel Studio</span> (<span translate="no" class="notranslate">DRS</span>). A <span translate="no" class="notranslate">Microset</span> project.</span>
+    <span><a href="index.html">Home</a> · <a href="gallery.html">Gallery</a> · <a href="download.html"><span translate="no" class="notranslate">DRS</span> download</a></span>
+  </div>
+</footer>
+
+<script>
+/* The ONE place to edit for a new drQEmu release: version, date, the zip name and its size (MiB).
+   DownloadPathList.txt (lines whose zip name contains "drQEmu") gives the address of the newest zip. */
+var RELEASE = {
+  version: '0.1.0', date: '2026-10-31',
+  file: 'drQEmu-v0.1.0-2026-10-31.zip', url: 'downloads/drQEmu-v0.1.0-2026-10-31.zip', size: 0,
+  files: [
+    ['Emulator', 'Windows x64', 'drQEmuESP32.exe', 15.0],
+    ['Emulator', 'Linux x64', 'drQEmuESP32', 12.1],
+    ['Flasher', 'Windows x64', 'drFlasher.exe', 35.9],
+    ['Help', 'any browser', 'drQEmuESP32.html', 0.1]
+  ]
+};
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function nt(s) { return '<span translate="no" class="notranslate">' + s + '</span>'; }
+  function mb(x) { return x.toFixed(1) + ' MiB'; }
+  function paint() {
+    $('recBtn').href = RELEASE.url;
+    $('recBtn').setAttribute('download', RELEASE.file.split('/').pop());
+    $('recBtn').innerHTML = 'Download ' + nt(RELEASE.file.replace(/\.zip$/, '')) + (RELEASE.size ? ' <small style="opacity:.7">· ' + mb(RELEASE.size) + '</small>' : '');
+    $('recMeta').textContent = 'version ' + RELEASE.version + (RELEASE.date ? ' · ' + RELEASE.date : '') + ' · ' + RELEASE.file;
+  }
+  paint();
+  var plat = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '') + (navigator.userAgent || '');
+  var mine = /win/i.test(plat) ? 'Windows' : /linux|x11/i.test(plat) ? 'Linux' : '';
+  $('pk').innerHTML = RELEASE.files.map(function (f) {
+    var me = mine && f[1].indexOf(mine) === 0;
+    return '<div class="card reveal' + (me ? ' me' : '') + '"><div class="os">' + f[1] + '</div><h3>' + nt(f[0]) + '</h3><p class="path" translate="no" style="margin:6px 0 0">' + f[2] + '</p><p class="sz" translate="no" style="margin:6px 0 0">' + mb(f[3]) + '</p></div>';
+  }).join('');
+
+  function cmp(a, b) { var x = a.split('.'), y = b.split('.'); for (var i = 0; i < Math.max(x.length, y.length); i++) { var d = (+x[i] || 0) - (+y[i] || 0); if (d) return d; } return 0; }
+  if (window.fetch && location.protocol !== 'file:') fetch('DownloadPathList.txt', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.text() : ''; }).then(function (text) {
+    var best = null;
+    text.split(/\r?\n/).forEach(function (ln) {
+      if (/^\s*(#|$)/.test(ln)) return;
+      var p = ln.split(' - ').map(function (s) { return s.trim(); });
+      if (p.length < 3 || !/drqemu/i.test(p[1])) return;
+      if (!best || cmp(p[0], best.v) > 0) best = { v: p[0], file: p[1], url: p.slice(2).join(' - ') };
+    });
+    if (best) { RELEASE.version = best.v; RELEASE.file = best.file; RELEASE.url = best.url; RELEASE.date = ''; paint(); }
+  }, function () {});
+
+  /* full-size viewer */
+  (function () {
+    var imgs = Array.prototype.slice.call(document.querySelectorAll('#shots img')), dlg, zi, zc, at = 0;
+    if (!imgs.length) return;
+    function build() {
+      dlg = document.createElement('dialog'); dlg.className = 'zoom'; dlg.setAttribute('aria-label', 'Screenshot');
+      dlg.innerHTML = '<div class="zb"><button type="button" class="close" aria-label="Close">\u2715</button><button type="button" class="prev" aria-label="Previous">\u2039</button><div class="view"><img alt=""></div><div class="cap"></div><button type="button" class="next" aria-label="Next">\u203a</button></div>';
+      document.body.appendChild(dlg); zi = dlg.querySelector('img'); zc = dlg.querySelector('.cap');
+      dlg.querySelector('.close').onclick = function () { dlg.close(); };
+      dlg.querySelector('.prev').onclick = function () { show(at - 1); };
+      dlg.querySelector('.next').onclick = function () { show(at + 1); };
+      dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.className === 'zb' || e.target.className === 'view') dlg.close(); });
+      dlg.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') show(at - 1); else if (e.key === 'ArrowRight') show(at + 1); });
+    }
+    function show(i) { at = (i + imgs.length) % imgs.length; var im = imgs[at], f = im.closest('figure'); zi.src = im.src; zi.alt = im.alt; zc.innerHTML = f.querySelector('figcaption').innerHTML; }
+    imgs.forEach(function (im, i) { im.parentElement.addEventListener('click', function () { if (!dlg) build(); show(i); dlg.showModal(); }); });
+  })();
+
+  var STEPS = [
+    ['Compile the sketch', 'as usual', '#7fa6d8', '#dbe9fb'],
+    ['Keep the image', '.merged.bin', '#7fa6d8', '#dbe9fb'],
+    ['Start drQEmu', 'a page opens', '#d79a3a', '#fbe3b8'],
+    ['Load the image', 'the board runs', '#7fa6d8', '#dbe9fb'],
+    ['Watch and drive', 'pins, chips, serial', '#7fa86a', '#d9efc9']
+  ];
+  (function drawFlow() {
+    var NS = 'http://www.w3.org/2000/svg', w = 168, h = 62, gap = 44, pad = 12, W = pad * 2 + STEPS.length * w + (STEPS.length - 1) * gap, H = h + pad * 2 + 6;
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', 'Steps: compile the sketch, keep the merged image, start drQEmu, load the image, watch and drive the board in the browser.');
+    function el(n, a, p) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+    function mk(t, s) { if (/drQEmu|\.merged\.bin/.test(s)) { t.setAttribute('translate', 'no'); t.setAttribute('class', 'notranslate'); } return t; }
+    STEPS.forEach(function (s, i) {
+      var x = pad + i * (w + gap), y = pad;
+      if (i) el('path', { d: 'M' + (x - gap + 4) + ' ' + (y + h / 2) + ' L' + (x - 6) + ' ' + (y + h / 2), stroke: '#e8801f', 'stroke-width': 2.4, 'stroke-linecap': 'round', fill: 'none', class: 'arrow', pathLength: 1, style: '--d:' + (i * 0.25 - 0.1).toFixed(2) + 's' }, svg);
+      if (i) el('path', { d: 'M' + (x - 12) + ' ' + (y + h / 2 - 6) + ' L' + (x - 4) + ' ' + (y + h / 2) + ' L' + (x - 12) + ' ' + (y + h / 2 + 6), stroke: '#e8801f', 'stroke-width': 2.4, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', fill: 'none' }, svg);
+      var g = el('g', { class: 'step', style: '--d:' + (i * 0.25).toFixed(2) + 's' }, svg);
+      el('rect', { x: x, y: y, width: w, height: h, rx: 12, fill: s[3], stroke: s[2] }, g);
+      var t = el('text', { x: x + w / 2, y: y + 27, 'text-anchor': 'middle', 'font-size': 14.5, 'font-weight': 700, fill: '#27324a', 'font-family': 'system-ui,Segoe UI,sans-serif' }, g); mk(t, s[0]).textContent = s[0];
+      var u = el('text', { x: x + w / 2, y: y + 46, 'text-anchor': 'middle', 'font-size': 12, fill: '#5b6780', 'font-family': 'system-ui,Segoe UI,sans-serif' }, g); mk(u, s[1]).textContent = s[1];
+    });
+    $('flow').insertBefore(svg, $('flowCap'));
+  })();
+
+  var items = Array.prototype.slice.call(document.querySelectorAll('.reveal')), plate = $('flow');
+  if (reduce || !('IntersectionObserver' in window)) { plate.classList.add('go'); items.forEach(function (e) { e.classList.add('in'); }); }
+  else {
+    var io = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); if (x.target === plate) plate.classList.add('go'); io.unobserve(x.target); } }); }, { threshold: 0.12 });
+    items.forEach(function (e, i) { e.style.transitionDelay = (i % 3) * 0.08 + 's'; io.observe(e); });
+    setTimeout(function () { plate.classList.add('go'); items.forEach(function (e) { e.classList.add('in'); }); }, 6000);
+  }
+  $('y').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
