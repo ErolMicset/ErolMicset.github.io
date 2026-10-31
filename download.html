@@ -292,8 +292,8 @@ var RELEASE = {
   $('recBtn').innerHTML = 'Download ' + nt(RELEASE.file.replace(/\.zip$/, '')) + ' <small style="opacity:.7">· ' + mb(RELEASE.size) + '</small>';
   $('recMeta').textContent = 'version ' + RELEASE.version + ' · ' + RELEASE.date + ' · ' + RELEASE.file;
   if (rec) {
-    $('recTitle').innerHTML = 'For your system: ' + nt(rec.name);
-    $('recText').innerHTML = 'After unpacking, open ' + rec.items.map(function (i) { return nt(i[1].split('/')[0]); }).join(' and ') + '. It is highlighted below.';
+    $('recTitle').innerHTML = 'Download ' + nt('DRS') + ': all systems in one zip';
+    $('recText').innerHTML = 'The zip holds the programs for every system. Your system is ' + nt(rec.name) + ': after unpacking, open ' + rec.items.map(function (i) { return nt(i[1].split('/')[0]); }).join(' and ') + '. It is highlighted below.';
   }
 
   /* one card per system */
