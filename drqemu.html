@@ -293,7 +293,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
 
 <script>
 /* The ONE place to edit for a new drQEmu release: version, date, the zip name and its size (MiB).
-   DownloadPathList.txt (lines whose zip name contains "drQEmu") gives the address of the newest zip. */
+   Download/DownloadPathList.txt (lines whose zip name contains "drQEmu") gives the address of the newest zip. */
 var RELEASE = {
   version: '0.1.0', date: '2026-10-31',
   file: 'drQEmu-v0.1.0-2026-10-31.zip', url: 'downloads/drQEmu-v0.1.0-2026-10-31.zip', size: 0,
@@ -325,7 +325,7 @@ var RELEASE = {
   }).join('');
 
   function cmp(a, b) { var x = a.split('.'), y = b.split('.'); for (var i = 0; i < Math.max(x.length, y.length); i++) { var d = (+x[i] || 0) - (+y[i] || 0); if (d) return d; } return 0; }
-  if (window.fetch && location.protocol !== 'file:') fetch('DownloadPathList.txt', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.text() : ''; }).then(function (text) {
+  if (window.fetch && location.protocol !== 'file:') fetch('Download/DownloadPathList.txt', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.text() : ''; }).then(function (text) {
     var best = null;
     text.split(/\r?\n/).forEach(function (ln) {
       if (/^\s*(#|$)/.test(ln)) return;
