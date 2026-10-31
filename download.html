@@ -243,7 +243,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    `url` may point anywhere (a file next to this page, or a release page of a code host). Sizes are in MiB. */
 var RELEASE = {
   version: '1.0.1', date: '2026-10-29',
-  url: 'downloads/DRS-v1.0.1-2026-10-29.zip', file: 'DRS-v1.0.1-2026-10-29.zip', size: 449.4,
+  url: 'https://github.com/ErolMicset/ErolMicset.github.io/releases/download/v1.0.1/DRS-v1.0.1-2026-10-29.zip', file: 'DRS-v1.0.1-2026-10-29.zip', size: 449.4,
   sha256: 'D324EFC052154FDF617FF1E827D140A8E46BA5643974B7A51A2671C261CE85D4',
   tools: [
     ['S7 Test Server', 'S7TestServer.exe', 12.6, 'Answers reads and writes like an S7 PLC: ISO-on-TCP port 102, DB1 to DB3, inputs, outputs, markers, timers and counters.', '08DCA2B09AF60781C7B8D537F7119824984AE8D9B9BFEFEF03ACB2AEC10EEE91'],
@@ -311,7 +311,7 @@ var RELEASE = {
       '<p class="path" translate="no" style="margin:10px 0 0;overflow-wrap:anywhere">SHA-256 ' + t[4] + '</p></div>';
   }).join('');
 
-  /* DownloadPathList.txt names the zips of every version; the newest one wins. Without the list (or on file://) the values above stay. */
+  /* Download/DownloadPathList.txt names the zips of every version; the newest one wins. Without the list (or on file://) the values above stay. */
   function applyList(text) {
     var best = null;
     text.split(/\r?\n/).forEach(function (ln) {
@@ -348,7 +348,7 @@ var RELEASE = {
   }
 
   paint();
-  if (window.fetch && location.protocol !== 'file:') fetch('DownloadPathList.txt', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) { if (t) applyList(t); }, function () {});
+  if (window.fetch && location.protocol !== 'file:') fetch('Download/DownloadPathList.txt', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) { if (t) applyList(t); }, function () {});
 
   /* the install flow, drawn from data */
   var STEPS = [
