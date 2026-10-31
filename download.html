@@ -148,7 +148,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2b1b04" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg></div>
         <div>
           <h2 id="recTitle">Download <span translate="no" class="notranslate">DRS</span></h2>
-          <p id="recText">The zip contains every program; open the folder that matches your system.</p>
+          <p id="recText">The zip contains every program, one file per system.</p>
           <p class="meta" id="recMeta" translate="no"></p>
         </div>
         <a class="btn primary" id="recBtn" href="#">Download the zip</a>
@@ -159,8 +159,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <section class="alt">
     <div class="wrap">
       <p class="eyebrow">What is inside</p>
-      <h2>Pick the folder for your system</h2>
-      <p class="sub">Every program is one self-contained file. The folder names say what is in them: <span translate="no" class="notranslate">DR</span> is the <span translate="no" class="notranslate">Designer</span>, <span translate="no" class="notranslate">RR</span> is the <span translate="no" class="notranslate">Runner</span>.</p>
+      <h2>Pick the file for your system</h2>
+      <p class="sub">Every program is one self-contained file, and all of them sit side by side in the zip. The name says what it is: <span translate="no" class="notranslate">drDesign</span> is the <span translate="no" class="notranslate">Designer</span>, <span translate="no" class="notranslate">drRunner</span> is the <span translate="no" class="notranslate">Runner</span>, and the end of the name is the system.</p>
       <div class="pk" id="pk"></div>
     </div>
   </section>
@@ -181,7 +181,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <h2>From the zip to a running panel</h2>
       <div class="plate reveal" id="flow"><p class="pcap" id="flowCap">Download, unpack, start the <span translate="no" class="notranslate">Designer</span>, save a project, start it in the <span translate="no" class="notranslate">Runner</span>.</p></div>
       <div class="notes" style="margin-top:22px">
-        <div class="card reveal"><h3><span translate="no" class="notranslate">Windows</span></h3><p>Unpack the zip, open <span translate="no" class="notranslate">DR-D-X64</span> (or <span translate="no" class="notranslate">DR-D-A64</span> for ARM) and start the <span translate="no" class="notranslate">.exe</span>. If SmartScreen asks, choose “More info”, then “Run anyway”: the file is not signed yet.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">Windows</span></h3><p>Unpack the zip and start <span translate="no" class="notranslate">drDesign-X64.exe</span> (or <span translate="no" class="notranslate">drDesign-A64.exe</span> on ARM). If SmartScreen asks, choose “More info”, then “Run anyway”: the file is not signed yet.</p></div>
         <div class="card reveal"><h3><span translate="no" class="notranslate">Linux</span></h3><p>The files have no extension. Make them runnable once, then start them:</p><pre class="pre" translate="no">chmod +x drDesign-LX64 drRunner-LX64
 ./drDesign-LX64</pre></div>
         <div class="card reveal"><h3><span translate="no" class="notranslate">Android</span></h3><p>Copy <span translate="no" class="notranslate">drRunner-A64.apk</span> to the device and open it. Android asks once to allow installs from this source. Only the <span translate="no" class="notranslate">Runner</span> exists for <span translate="no" class="notranslate">Android</span>; projects are designed on a desktop.</p></div>
@@ -243,8 +243,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    `url` may point anywhere (a file next to this page, or a release page of a code host). Sizes are in MiB. */
 var RELEASE = {
   version: '1.0.1', date: '2026-10-29',
-  url: 'https://github.com/ErolMicset/ErolMicset.github.io/releases/download/v1.0.1/DRS-v1.0.1-2026-10-29.zip', file: 'DRS-v1.0.1-2026-10-29.zip', size: 449.4,
-  sha256: 'D324EFC052154FDF617FF1E827D140A8E46BA5643974B7A51A2671C261CE85D4',
+  url: 'https://github.com/ErolMicset/ErolMicset.github.io/releases/download/v1.0.1/DRS-v1.0.1-2026-10-29.zip', file: 'DRS-v1.0.1-2026-10-29.zip', size: 415.8,
+  sha256: 'FFDEF83C6E8A36C0982B411937177925BAB8E11BA924613B8F16744EA73FAC62',
   tools: [
     ['S7 Test Server', 'S7TestServer.exe', 12.6, 'Answers reads and writes like an S7 PLC: ISO-on-TCP port 102, DB1 to DB3, inputs, outputs, markers, timers and counters.', '08DCA2B09AF60781C7B8D537F7119824984AE8D9B9BFEFEF03ACB2AEC10EEE91'],
     ['OPC UA Test Server', 'OpcUaTestServer.exe', 80.6, 'Port 48400, every security mode, anonymous and user-name login, one tag per data type and a live counter.', '043B9128873DE7E084DD38679369EDFB835977C813E3292EC4CBBB0043FFF131'],
@@ -255,15 +255,15 @@ var RELEASE = {
   toolsBase: 'downloads/tools/',
   systems: [
     { id: 'win', name: 'Windows', os: 'x64 · most PCs', items: [
-      ['Designer', 'DR-D-X64/drDesign-X64.exe', 100.6], ['Runner', 'RR-D-X64/drRunner-X64.exe', 98.9]] },
+      ['Designer', 'drDesign-X64.exe', 100.7], ['Runner', 'drRunner-X64.exe', 99.0]] },
     { id: 'winarm', name: 'Windows on ARM', os: 'ARM64', items: [
-      ['Designer', 'DR-D-A64/drDesign-A64.exe', 107.9], ['Runner', 'RR-D-A64/drRunner-A64.exe', 106.2]] },
+      ['Designer', 'drDesign-A64.exe', 108.0], ['Runner', 'drRunner-A64.exe', 106.3]] },
     { id: 'lin', name: 'Linux', os: 'x64', items: [
-      ['Designer', 'DR-D-LX64/drDesign-LX64', 100.8], ['Runner', 'RR-D-LX64/drRunner-LX64', 99.1]] },
+      ['Designer', 'drDesign-LX64', 100.9], ['Runner', 'drRunner-LX64', 99.1]] },
     { id: 'linarm', name: 'Linux on ARM', os: 'ARM64 · single-board computers', items: [
-      ['Designer', 'DR-D-LA64/drDesign-LA64', 106.5], ['Runner', 'RR-D-LA64/drRunner-LA64', 104.8]] },
+      ['Designer', 'drDesign-LA64', 106.7], ['Runner', 'drRunner-LA64', 104.8]] },
     { id: 'android', name: 'Android', os: 'phones and tablets', items: [
-      ['Runner', 'RR-A-A64/drRunner-A64.apk', 72.1]] }
+      ['Runner', 'drRunner-A64.apk', 72.2]] }
   ]
 };
 
@@ -293,15 +293,14 @@ var RELEASE = {
   $('recMeta').textContent = 'version ' + RELEASE.version + ' · ' + RELEASE.date + ' · ' + RELEASE.file;
   if (rec) {
     $('recTitle').innerHTML = 'Download ' + nt('DRS') + ': all systems in one zip';
-    $('recText').innerHTML = 'The zip holds the programs for every system. Your system is ' + nt(rec.name) + ': after unpacking, open ' + rec.items.map(function (i) { return nt(i[1].split('/')[0]); }).join(' and ') + '. It is highlighted below.';
+    $('recText').innerHTML = 'The zip holds the programs for every system. Your system is ' + nt(rec.name) + ': after unpacking, start ' + rec.items.map(function (i) { return nt(i[1]); }).join(' and ') + '. It is highlighted below.';
   }
 
   /* one card per system */
   $('pk').innerHTML = RELEASE.systems.map(function (s) {
     return '<div class="card reveal' + (s.id === mine ? ' me' : '') + '"><div class="os">' + s.os + '</div><h3>' + nt(s.name) + '</h3><ul>' +
       s.items.map(function (i) {
-        var parts = i[1].split('/');
-        return '<li><span><b>' + nt(i[0]) + '</b><br><span class="path" translate="no">' + parts[0] + '/' + parts[1] + '</span></span><span class="sz" translate="no">' + mb(i[2]) + '</span></li>';
+        return '<li><span><b>' + nt(i[0]) + '</b><br><span class="path" translate="no">' + i[1] + '</span></span><span class="sz" translate="no">' + mb(i[2]) + '</span></li>';
       }).join('') + '</ul></div>';
   }).join('');
 
