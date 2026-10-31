@@ -13,7 +13,7 @@ SCADA and IoT panels.
 | `images/drs/*.png` | screenshots of the DRS studio (lower-case, hyphenated names) |
 | `images/drqemu/*.png` | screenshots of drQEmu |
 | `download.html`, `drqemu.html` | the two download pages; each has its own zip |
-| `DownloadPathList.txt` | one line per zip: `version - zip file name - path`; "Tools" in the name = test servers, "drQEmu" in the name = the emulator |
+| `Download/DownloadPathList.txt` | one line per zip: `version - zip file name - path`; "Tools" in the name = test servers, "drQEmu" in the name = the emulator |
 
 There is no build step, no framework and no external request: styles, scripts
 and icons are all inline. Open `index.html` in a browser to preview it.
