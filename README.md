@@ -12,6 +12,7 @@ SCADA and IoT panels.
 | `site.css` | the dark look shared by every page (loaded after the page's own style) |
 | `lzflow.js` | the DRS - LZ - device animation, used by DRS.html, PLC.html and drQEmu.html (`data-lzflow`; the device alternates between the PLC and drQEmu) |
 | `PLC.html`, `Kantar.html` | the Olympus PLC page and the Kantar page |
+| `Embedded.html` | the page for embedded developers: boards, LZ protocol, gateway, on-board pins, downloadable example in `examples/` |
 | `DRSGallery.html` | the screenshot gallery, with topic filters and a full-size view |
 | `images/drs-logo.png`, `images/drs-pcb.png` | the logo and the hero picture, shared by every page |
 | `images/drs/*.png` | screenshots of the DRS studio (lower-case, hyphenated names) |
