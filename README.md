@@ -7,12 +7,16 @@ SCADA and IoT panels.
 
 | file | |
 |---|---|
-| `index.html` | the home page |
-| `gallery.html` | the screenshot gallery, with topic filters and a full-size view |
+| `index.html` | the home page: all projects |
+| `DRS.html` | the DRS page |
+| `site.css` | the dark look shared by every page (loaded after the page's own style) |
+| `lzflow.js` | the DRS - LZ - device animation, used by DRS.html, PLC.html and drQEmu.html (`data-lzflow`; the device alternates between the PLC and drQEmu) |
+| `PLC.html`, `Kantar.html` | the Olympus PLC page and the Kantar page |
+| `DRSGallery.html` | the screenshot gallery, with topic filters and a full-size view |
 | `images/drs-logo.png`, `images/drs-pcb.png` | the logo and the hero picture, shared by every page |
 | `images/drs/*.png` | screenshots of the DRS studio (lower-case, hyphenated names) |
 | `images/drqemu/*.png` | screenshots of drQEmu |
-| `download.html`, `drqemu.html` | the two download pages; each has its own zip |
+| `DRSDownload.html`, `drQEmu.html` | the two download pages; each has its own zip |
 | `DownloadPathList.txt` | one line per zip: `version - zip file name - path`; "Tools" in the name = test servers, "drQEmu" in the name = the emulator |
 
 There is no build step, no framework and no external request: styles, scripts
@@ -33,7 +37,7 @@ instead, with no sub-path.
 
 1. Copy the PNG into `images/drs/` (or `images/drqemu/`). Use a lower-case, hyphenated name without
    spaces (`modbus-serial.png`); file names are case-sensitive on GitHub Pages.
-2. In `gallery.html`, add one entry to the `SHOTS` list: `images/drs/<name>`, topic
+2. In `DRSGallery.html`, add one entry to the `SHOTS` list: `images/drs/<name>`, topic
    (`cat`), width and height in pixels (the real size of the file), a title and
    one or two sentences about what the picture shows. Keep entries of the same
    topic together; the list order is the page order.
@@ -43,7 +47,7 @@ needs its name added to `CATEGORIES`.
 
 ## Editing the home page
 
-Everything on the home page lives in `index.html`:
+Everything on the DRS page lives in `DRS.html`:
 
 - design tokens (colours, shadows) are CSS custom properties on `:root`, with a
   dark-mode override under `@media (prefers-color-scheme: dark)`
