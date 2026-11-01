@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DRS for embedded developers · Free HMI and SCADA for ESP32, Arduino, PIC, Raspberry Pi · Digital Rebel Studio</title>
 <link rel="canonical" href="https://erolmicset.github.io/Embedded.html">
-<meta name="description" content="DRS is a free control panel for every board you build: ESP32, Arduino, Atmel AVR, PIC, Raspberry Pi, Pico, Radxa and LattePanda. Test interfaces, parameter setting, home automation over MQTT, a REST database service for all your microcontrollers, logging, printed reports, data for an ERP, and your own functions in a DLL. Free for students, teachers and hobbyists.">
+<meta name="description" content="DRS is a free control panel for every board you build: ESP32, Arduino, Atmel AVR, PIC, Raspberry Pi, Pico, Radxa and LattePanda. Test interfaces, parameter setting, home automation over MQTT with Zigbee coordinators, an MQTT to REST and web gateway, serial to HTTP and any port to any port, a REST database service for all your microcontrollers, logging, printed reports, data for an ERP, and your own functions in a DLL. Free for students, teachers and hobbyists.">
 <meta name="theme-color" content="#0f1626">
 <link rel="icon" type="image/png" href="images/drs-logo.png">
 <script>document.documentElement.classList.add('js')</script>
@@ -234,14 +234,28 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
       <p class="sub">No server to build and no cloud to pay for.</p>
       <div class="steps">
         <div class="card reveal"><h3>Sensors and switches</h3><p>Rooms, doors, lights and heating, on any boards you like.</p></div>
-        <div class="card reveal"><h3><span translate="no" class="notranslate">ESP32</span> coordinator</h3><p>One <span translate="no" class="notranslate">ESP32</span> gathers the other sensors and connects straight to the <span translate="no" class="notranslate">DRS</span> <span translate="no" class="notranslate">MQTT</span> server.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">Zigbee</span> or <span translate="no" class="notranslate">ESP32</span> coordinator</h3><p>A <span translate="no" class="notranslate">Zigbee</span> coordinator, which already publishes its devices to an <span translate="no" class="notranslate">MQTT</span> server, or an <span translate="no" class="notranslate">ESP32</span> that gathers your own sensors, connects straight to the <span translate="no" class="notranslate">DRS</span> <span translate="no" class="notranslate">MQTT</span> server.</p></div>
         <div class="card reveal"><h3><span translate="no" class="notranslate">DRS</span> with its own broker</h3><p>The broker runs inside <span translate="no" class="notranslate">DRS</span>. Topics such as <span translate="no" class="notranslate">home/room1/temperature</span> become values on the panel.</p></div>
         <div class="card reveal"><h3>The panel</h3><p>Control and watch the house from a tablet or a wall screen, with alarms you confirm.</p></div>
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="gateway">
+    <div class="wrap">
+      <p class="eyebrow">Gateway</p>
+      <h2>Put <span translate="no" class="notranslate">DRS</span> between your devices and the outside</h2>
+      <p class="sub">Zigbee coordinators and your own boards already speak <span translate="no" class="notranslate">MQTT</span>. Connect them straight to the <span translate="no" class="notranslate">DRS</span> <span translate="no" class="notranslate">MQTT</span> server, and open the data to the web and to other systems from the same place, as a gateway you set up in minutes instead of a separate service to deploy.</p>
+      <div class="notes" style="margin-top:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+        <div class="card reveal"><h3><span translate="no" class="notranslate">MQTT</span> to <span translate="no" class="notranslate">REST</span> and the web</h3><p>What a <span translate="no" class="notranslate">Zigbee</span> coordinator or a board publishes to the <span translate="no" class="notranslate">MQTT</span> server is also offered as <span translate="no" class="notranslate">REST</span> endpoints and web pages, so a browser, an app or an <span translate="no" class="notranslate">ERP</span> can read it without speaking <span translate="no" class="notranslate">MQTT</span>. A web request can publish back to a topic.</p></div>
+        <div class="card reveal"><h3>Test over <span translate="no" class="notranslate">HTTP</span></h3><p>Test a board that sits on a serial port from a browser or a script over plain <span translate="no" class="notranslate">HTTP</span>: <span translate="no" class="notranslate">DRS</span> takes the request, asks the board on the serial port and returns the answer.</p></div>
+        <div class="card reveal"><h3>Any port to any port</h3><p>A serial-to-<span translate="no" class="notranslate">TCP</span> bridge is a few blocks: a board on a serial port becomes reachable over the network. Serial, <span translate="no" class="notranslate">TCP</span>, <span translate="no" class="notranslate">UDP</span>, <span translate="no" class="notranslate">HTTP</span>, <span translate="no" class="notranslate">MQTT</span>, <span translate="no" class="notranslate">Bluetooth</span> and <span translate="no" class="notranslate">Modbus</span> can be joined in any combination, and one input can feed many outputs at once. Read a serial port once and send what arrives to an <span translate="no" class="notranslate">MQTT</span> topic, an <span translate="no" class="notranslate">HTTP</span> service, a <span translate="no" class="notranslate">TCP</span> peer, a database and a file together, and the other way round.</p></div>
+        <div class="card reveal"><h3>Your rules in the middle</h3><p>Your own blocks and scripts decide what is forwarded, converted or answered, and the user manager guards who may reach it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
     <div class="wrap">
       <p class="eyebrow">Data</p>
       <h2>One hub for all your boards</h2>
@@ -257,7 +271,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
     </div>
   </section>
 
-  <section class="alt">
+  <section>
     <div class="wrap">
       <p class="eyebrow">Your own code</p>
       <h2>Write the parts only you know</h2>
@@ -268,7 +282,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
     </div>
   </section>
 
-  <section id="join">
+  <section id="join" class="alt">
     <div class="wrap">
       <p class="eyebrow">Join in</p>
       <h2>Help us make it better</h2>
@@ -281,7 +295,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
     </div>
   </section>
 
-  <section id="contact" class="alt">
+  <section id="contact">
     <div class="wrap">
       <p class="eyebrow">Contact</p>
       <h2>Talk to us</h2>
