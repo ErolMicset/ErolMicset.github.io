@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DRS for embedded developers · Free HMI and SCADA for ESP32, Arduino, PIC, Raspberry Pi · Digital Rebel Studio</title>
 <link rel="canonical" href="https://erolmicset.github.io/Embedded.html">
-<meta name="description" content="DRS is a free control panel for every board you build: ESP32, Arduino, Atmel AVR, PIC, Raspberry Pi, Pico, Radxa and LattePanda. Test interfaces, parameter setting, home automation over MQTT with Zigbee coordinators, an MQTT to REST and web gateway, serial to HTTP and any port to any port, a REST database service for all your microcontrollers, logging, printed reports, data for an ERP, and your own functions in a DLL. Free for students, teachers and hobbyists.">
+<meta name="description" content="DRS is a free control panel for every board you build, and it generates the Arduino sketch for you: ESP32, Arduino, Atmel AVR, PIC, Raspberry Pi, Pico, Radxa and LattePanda. Test interfaces, parameter setting, home automation over MQTT with Zigbee coordinators, an MQTT to REST and web gateway, serial to HTTP and any port to any port, a REST database service for all your microcontrollers, logging, printed reports, data for an ERP, and your own functions in a DLL. Free for students, teachers and hobbyists.">
 <meta name="theme-color" content="#0f1626">
 <link rel="icon" type="image/png" href="images/drs-logo.png">
 <script>document.documentElement.classList.add('js')</script>
@@ -211,7 +211,38 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
     </div>
   </section>
 
-  <section>
+  <section id="how">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2><span translate="no" class="notranslate">DRS</span> writes the <span translate="no" class="notranslate">Arduino</span> sketch for you</h2>
+      <p class="sub">You do not write a protocol or a user-interface program. Draw the panel, and <span translate="no" class="notranslate">DRS</span> generates the board side from the same tags.</p>
+      <div class="steps">
+        <div class="card reveal"><h3>Draw the panel</h3><p>Add an <span translate="no" class="notranslate">LZ</span> client and its tags: <span translate="no" class="notranslate">Led</span>, <span translate="no" class="notranslate">Button</span>, <span translate="no" class="notranslate">Analog</span>. Link a switch, a button and a dial to them.</p></div>
+        <div class="card reveal"><h3>Generate the sketch</h3><p>Choose <b>Generate Arduino Server</b> on the client. <span translate="no" class="notranslate">DRS</span> writes the <span translate="no" class="notranslate">.ino</span> file that answers those tags, for a serial port, <span translate="no" class="notranslate">Ethernet</span>, <span translate="no" class="notranslate">WiFi</span> or <span translate="no" class="notranslate">Bluetooth</span>.</p></div>
+        <div class="card reveal"><h3>Upload it</h3><p>Open the file in the <span translate="no" class="notranslate">Arduino IDE</span> and upload it to the board. Add your own code in the loop.</p></div>
+        <div class="card reveal"><h3>Run</h3><p>The panel reads the button and the analog value and writes the <span translate="no" class="notranslate">LED</span>. Change a tag in the panel and the board follows.</p></div>
+        <div class="card reveal"><h3>No board yet?</h3><p>Run the same sketch in <a href="drQEmu.html"><span translate="no" class="notranslate">drQEmu</span></a> and test the panel against the emulated <span translate="no" class="notranslate">ESP32</span>.</p></div>
+      </div>
+      <h3 style="margin:40px 0 8px;font-size:22px">The protocol is plain text, so any chip can speak it</h3>
+      <p class="sub">One line per tag, ended with a carriage return. A request with no value is a read; a request with a value is a write. You can try it by hand in any serial terminal.</p>
+      <pre class="pre">panel asks   Led:&lt;CR&gt;      board answers   Led:0&lt;CR&gt;
+panel writes Led:1&lt;CR&gt;      (the board sets the pin; no answer)</pre>
+      <p class="sub" style="margin-top:16px">That is why it is not tied to one family. The generated sketch is a short tag table and a line scanner. A <span translate="no" class="notranslate">PIC</span>, an <span translate="no" class="notranslate">AVR</span>, a <span translate="no" class="notranslate">Raspberry Pi Pico</span> or a board in any other language needs only the same few lines on its serial port or socket. This is the heart of the sketch <span translate="no" class="notranslate">DRS</span> generates for the three tags above:</p>
+      <pre class="pre">Tags[0] = (TTags) {"Led",0};
+Tags[1] = (TTags) {"Button",0};
+Tags[2] = (TTags) {"Analog",0};
+
+void loop() {
+  if (Tags[0].TagValue == 1) digitalWrite(PIN_LEDTAG, HIGH); else digitalWrite(PIN_LEDTAG, LOW);
+  Tags[1].TagValue = (int)digitalRead(PIN_BUTTONTAG);
+  Tags[2].TagValue = (int)analogRead(PIN_ANALOGTAG);
+  ScanLZPacked();      // answers the panel's requests
+  delay(10);
+}</pre>
+    </div>
+  </section>
+
+  <section class="alt">
     <div class="wrap">
       <p class="eyebrow">Build and test</p>
       <h2>A face for your firmware</h2>
@@ -227,7 +258,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
     </div>
   </section>
 
-  <section class="alt">
+  <section>
     <div class="wrap">
       <p class="eyebrow">Home automation</p>
       <h2>From the sensor to the screen in the hall</h2>
@@ -241,7 +272,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
     </div>
   </section>
 
-  <section id="gateway">
+  <section id="gateway" class="alt">
     <div class="wrap">
       <p class="eyebrow">Gateway</p>
       <h2>Put <span translate="no" class="notranslate">DRS</span> between your devices and the outside</h2>
@@ -255,7 +286,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
     </div>
   </section>
 
-  <section class="alt">
+  <section>
     <div class="wrap">
       <p class="eyebrow">Data</p>
       <h2>One hub for all your boards</h2>
@@ -271,7 +302,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
     </div>
   </section>
 
-  <section>
+  <section class="alt">
     <div class="wrap">
       <p class="eyebrow">Your own code</p>
       <h2>Write the parts only you know</h2>
@@ -282,7 +313,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
     </div>
   </section>
 
-  <section id="join" class="alt">
+  <section id="join">
     <div class="wrap">
       <p class="eyebrow">Join in</p>
       <h2>Help us make it better</h2>
@@ -295,7 +326,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="alt">
     <div class="wrap">
       <p class="eyebrow">Contact</p>
       <h2>Talk to us</h2>
