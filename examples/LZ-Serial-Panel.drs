@@ -1,0 +1,393 @@
+{
+  "Header": {
+    "Format": "DigitalRebelScheme",
+    "FormatVersion": 1,
+    "SavedAtUtc": "2026-10-19T11:52:25.7080465Z",
+    "Encrypted": false
+  },
+  "Root": {
+    "Class": "drScheme",
+    "Name": "Scheme1",
+    "Properties": {
+      "MsgInfo.ReferangeName": "Msg2",
+      "MsgError.ReferangeName": "Msg1",
+      "GridFrequency": 5,
+      "GridMarks": 10,
+      "Size.Width": 450,
+      "Size.Height": 400
+    },
+    "Children": [
+      {
+        "Class": "drLed",
+        "Name": "Led",
+        "Properties": {
+          "OnValue": "0",
+          "OffValue": "1",
+          "Position.X": 150,
+          "Position.Y": 265
+        },
+        "Children": []
+      },
+      {
+        "Class": "drButton",
+        "Name": "ButtonLed",
+        "Properties": {
+          "ValueDown": "1",
+          "ValueUp": "0",
+          "Text": " Led On / Off",
+          "Position.X": 150,
+          "Position.Y": 230,
+          "Size.Width": 105
+        },
+        "Children": []
+      },
+      {
+        "Class": "drLLinkProperty",
+        "Name": "LLProperty1",
+        "Properties": {
+          "Position.X": 260,
+          "Position.Y": 265,
+          "Size.Width": 155.28466796875,
+          "RunVisible": true
+        },
+        "Children": [
+          {
+            "Class": "drLPropertyReferange",
+            "Name": "LPRefA1",
+            "Properties": {
+              "Referange.ReferangeName": "Led",
+              "Position.X": 12,
+              "Position.Y": 2,
+              "Size.Width": 34.931640625
+            },
+            "Children": []
+          },
+          {
+            "Class": "drLLinkDir",
+            "Name": "LLDir1",
+            "Properties": {
+              "Position.X": 48.931640625,
+              "Position.Y": 2,
+              "Size.Width": 26.9990234375
+            },
+            "Children": []
+          },
+          {
+            "Class": "drLPropertyReferange",
+            "Name": "LPRefB1",
+            "Properties": {
+              "Referange.ReferangeName": "ButtonTag",
+              "Position.X": 77.9306640625,
+              "Position.Y": 2,
+              "Size.Width": 73.35400390625
+            },
+            "Children": []
+          }
+        ]
+      },
+      {
+        "Class": "drLLinkProperty",
+        "Name": "LLProperty2",
+        "Properties": {
+          "Position.X": 260,
+          "Position.Y": 230,
+          "Size.Width": 176.51123046875,
+          "RunVisible": true
+        },
+        "Children": [
+          {
+            "Class": "drLPropertyReferange",
+            "Name": "LPRefA2",
+            "Properties": {
+              "Referange.ReferangeName": "ButtonLed",
+              "Position.X": 12,
+              "Position.Y": 2,
+              "Size.Width": 73.169921875
+            },
+            "Children": []
+          },
+          {
+            "Class": "drLLinkDir",
+            "Name": "LLDir2",
+            "Properties": {
+              "Position.X": 87.169921875,
+              "Position.Y": 2,
+              "Size.Width": 26.9990234375
+            },
+            "Children": []
+          },
+          {
+            "Class": "drLPropertyReferange",
+            "Name": "LPRefB2",
+            "Properties": {
+              "Referange.ReferangeName": "LedTag",
+              "Position.X": 116.1689453125,
+              "Position.Y": 2,
+              "Size.Width": 56.34228515625
+            },
+            "Children": []
+          }
+        ]
+      },
+      {
+        "Class": "drMsgMenager",
+        "Name": "MMenager1",
+        "Properties": {
+          "Text": "MMenager1",
+          "Position.Y": 300,
+          "Size.Width": 450,
+          "Align": "Bottom"
+        },
+        "Children": [
+          {
+            "Class": "drMsg",
+            "Name": "Msg1",
+            "Properties": {
+              "Header": "Error",
+              "Size.Width": 450,
+              "Align": "Top",
+              "Brush.Color": "#ffee9e83",
+              "Brush.Color1.G": 158,
+              "Brush.Color1.Value": "#EE9E83",
+              "Brush.Color2.G": 158,
+              "Brush.Color2.Value": "#EE9E83"
+            },
+            "Children": []
+          },
+          {
+            "Class": "drMsg",
+            "Name": "Msg2",
+            "Properties": {
+              "Header": "Message",
+              "Size.Width": 450,
+              "Align": "Top"
+            },
+            "Children": []
+          }
+        ]
+      },
+      {
+        "Class": "drLZClient",
+        "Name": "LZUart",
+        "Properties": {
+          "RunVisible": true,
+          "Transport.ReferangeName": "SPort1",
+          "Delay": 1,
+          "ActiveLed.ReferangeName": "LzStateLed",
+          "Position.X": 15,
+          "Position.Y": 125,
+          "Size.Width": 105,
+          "Size.Height": 60,
+          "OpenHeight": 60,
+          "OpenWidth": 105,
+          "ClosedPosition": "15, 125",
+          "OpenPosition": "15, 125",
+          "HomeParentRef.ReferangeName": "Scheme1"
+        },
+        "Children": [
+          {
+            "Class": "drLZTag",
+            "Name": "LedTag",
+            "Properties": {
+              "RemoteLZName": "Led",
+              "ReadType": "OnceAfterWrite",
+              "Direction": "Output",
+              "Pin": "2",
+              "Position.X": 4,
+              "Position.Y": 4
+            },
+            "Children": []
+          },
+          {
+            "Class": "drLZTag",
+            "Name": "ButtonTag",
+            "Properties": {
+              "RemoteLZName": "Button",
+              "Pin": "0",
+              "Position.X": 34,
+              "Position.Y": 4
+            },
+            "Children": []
+          },
+          {
+            "Class": "drLZTag",
+            "Name": "AnalogTag",
+            "Properties": {
+              "RemoteLZName": "Analog",
+              "IOType": "Analog",
+              "Pin": "34",
+              "Position.X": 64,
+              "Position.Y": 4
+            },
+            "Children": []
+          }
+        ]
+      },
+      {
+        "Class": "drSerialPort",
+        "Name": "SPort1",
+        "Properties": {
+          "Port": "COM2",
+          "LineEnd": "\\r",
+          "ActiveLed.ReferangeName": "ComStateLed",
+          "Position.X": 130,
+          "Position.Y": 125
+        },
+        "Children": []
+      },
+      {
+        "Class": "drLed",
+        "Name": "ComStateLed",
+        "Properties": {
+          "Position.X": 115,
+          "Position.Y": 30
+        },
+        "Children": []
+      },
+      {
+        "Class": "drLabel",
+        "Name": "Label1",
+        "Properties": {
+          "Value": "GPIO2 On Board Buton  ",
+          "Position.X": 5,
+          "Position.Y": 270,
+          "Size.Width": 130
+        },
+        "Children": []
+      },
+      {
+        "Class": "drLabel",
+        "Name": "LabelAdc",
+        "Properties": {
+          "Value": "GPIO34  ADC channel 6 ",
+          "Position.X": 5,
+          "Position.Y": 195,
+          "Size.Width": 135
+        },
+        "Children": []
+      },
+      {
+        "Class": "drLLinkProperty",
+        "Name": "LLProperty3",
+        "Properties": {
+          "Position.X": 260,
+          "Position.Y": 195,
+          "Size.Width": 180.37060546875,
+          "RunVisible": true
+        },
+        "Children": [
+          {
+            "Class": "drLPropertyReferange",
+            "Name": "LPRefA3",
+            "Properties": {
+              "Referange.ReferangeName": "Digital1",
+              "Position.X": 12,
+              "Position.Y": 2,
+              "Size.Width": 57.64990234375
+            },
+            "Children": []
+          },
+          {
+            "Class": "drLLinkDir",
+            "Name": "LLDir3",
+            "Properties": {
+              "Position.X": 71.64990234375,
+              "Position.Y": 2,
+              "Size.Width": 26.9990234375
+            },
+            "Children": []
+          },
+          {
+            "Class": "drLPropertyReferange",
+            "Name": "LPRefB3",
+            "Properties": {
+              "Referange.ReferangeName": "AnalogTag",
+              "Position.X": 100.64892578125,
+              "Position.Y": 2,
+              "Size.Width": 75.7216796875
+            },
+            "Children": []
+          }
+        ]
+      },
+      {
+        "Class": "drDigital",
+        "Name": "Digital1",
+        "Properties": {
+          "Position.X": 150,
+          "Position.Y": 195,
+          "Size.Width": 105,
+          "Size.Height": 25
+        },
+        "Children": []
+      },
+      {
+        "Class": "drLabel",
+        "Name": "Label2",
+        "Properties": {
+          "Value": "GPIO0 On Board Led",
+          "Position.X": 5,
+          "Position.Y": 230,
+          "Size.Width": 130
+        },
+        "Children": []
+      },
+      {
+        "Class": "drPath",
+        "Name": "Path1",
+        "Properties": {
+          "Data": "M 51.37, -7.67 L 51.37, 0 L 8.25, 0 L 8.25, -71.09 L 17.68, -71.09 L 17.68, -7.67 L 51.37, -7.67Z M 58.74, -63.38 L 58.74, -71.09 L 108.25, -71.09 L 108.25, -64.26 L 69.19, -7.67 L 109.81, -7.67 L 109.81, 0 L 58.11, 0 L 58.11, -7.03 L 97.07, -63.38 L 58.74, -63.38Z M 146.83, 0 L 146.83, -71.09 L 166.94, -71.09 Q 180.96, -71.09 189.62, -62.08 Q 198.29, -53.08 198.29, -37.65 L 198.29, -33.4 Q 198.29, -17.97 189.58, -8.98 Q 180.86, 0 166.06, 0 L 146.83, 0Z M 156.25, -63.38 L 156.25, -7.67 L 166.06, -7.67 Q 177.44, -7.67 183.2, -14.7 Q 188.96, -21.73 188.96, -33.4 L 188.96, -37.74 Q 188.96, -50 183.2, -56.69 Q 177.44, -63.38 166.94, -63.38 L 156.25, -63.38Z M 252.88, -9.23 Q 250.29, -5.32 245.56, -2.17 Q 240.82, 0.98 233.01, 0.98 Q 221.97, 0.98 215.36, -6.2 Q 208.74, -13.38 208.74, -24.56 L 208.74, -26.61 Q 208.74, -35.25 212.04, -41.33 Q 215.33, -47.41 220.61, -50.61 Q 225.88, -53.81 231.84, -53.81 Q 243.16, -53.81 248.36, -46.41 Q 253.56, -39.01 253.56, -27.93 L 253.56, -23.88 L 217.82, -23.88 Q 218.02, -16.6 222.14, -11.5 Q 226.27, -6.4 233.5, -6.4 Q 238.28, -6.4 241.6, -8.35 Q 244.92, -10.3 247.41, -13.57 L 252.88, -9.23Z M 231.84, -46.39 Q 226.46, -46.39 222.75, -42.48 Q 219.04, -38.57 218.12, -31.25 L 244.53, -31.25 L 244.53, -31.93 Q 244.19, -37.21 241.48, -41.8 Q 238.77, -46.39 231.84, -46.39Z M 285.25, -46.19 Q 276.37, -46.19 273.1, -38.72 L 273.1, 0 L 264.01, 0 L 264.01, -52.83 L 272.61, -52.83 L 272.85, -47.07 Q 278.56, -53.81 288.48, -53.81 Q 293.55, -53.81 297.53, -51.78 Q 301.51, -49.76 303.61, -45.31 Q 306.25, -49.12 310.47, -51.46 Q 314.7, -53.81 320.41, -53.81 Q 328.91, -53.81 333.52, -49.27 Q 338.13, -44.73 338.13, -34.72 L 338.13, 0 L 329.05, 0 L 329.05, -34.81 Q 329.05, -41.46 326, -43.82 Q 322.95, -46.19 317.77, -46.19 Q 312.3, -46.19 309.18, -42.94 Q 306.05, -39.7 305.57, -35.06 L 305.57, 0 L 296.53, 0 L 296.53, -34.77 Q 296.53, -40.97 293.46, -43.58 Q 290.38, -46.19 285.25, -46.19Z M 349.41, -26.95 Q 349.41, -38.43 355.86, -46.12 Q 362.3, -53.81 373.39, -53.81 Q 384.47, -53.81 390.92, -46.26 Q 397.36, -38.72 397.51, -27.44 L 397.51, -25.83 Q 397.51, -14.36 391.04, -6.69 Q 384.57, 0.98 373.49, 0.98 Q 362.35, 0.98 355.88, -6.69 Q 349.41, -14.36 349.41, -25.83 L 349.41, -26.95Z M 358.45, -25.83 Q 358.45, -17.97 362.18, -12.21 Q 365.92, -6.45 373.49, -6.45 Q 380.86, -6.45 384.62, -12.13 Q 388.38, -17.82 388.43, -25.68 L 388.43, -26.95 Q 388.43, -34.72 384.67, -40.55 Q 380.91, -46.39 373.39, -46.39 Q 365.92, -46.39 362.18, -40.55 Q 358.45, -34.72 358.45, -26.95 L 358.45, -25.83Z",
+          "Position.X": 175,
+          "Position.Y": 15,
+          "Size.Width": 225
+        },
+        "Children": [
+          {
+            "Class": "drShadowEffect",
+            "Name": "SEffect1",
+            "Properties": {
+              "Reference.ReferangeName": "Path1",
+              "Position.X": 50,
+              "Position.Y": 65
+            },
+            "Children": []
+          }
+        ]
+      },
+      {
+        "Class": "drLabel",
+        "Name": "Label3",
+        "Properties": {
+          "Value": "COM 1 State",
+          "TextAlignH": "Left",
+          "Position.X": 20,
+          "Position.Y": 35,
+          "Size.Width": 75
+        },
+        "Children": []
+      },
+      {
+        "Class": "drLed",
+        "Name": "LzStateLed",
+        "Properties": {
+          "Position.X": 115,
+          "Position.Y": 75
+        },
+        "Children": []
+      },
+      {
+        "Class": "drLabel",
+        "Name": "Label4",
+        "Properties": {
+          "Value": "LZ State",
+          "TextAlignH": "Left",
+          "Position.X": 20,
+          "Position.Y": 75,
+          "Size.Width": 75
+        },
+        "Children": []
+      }
+    ]
+  },
+  "EncryptedRoot": null
+}
