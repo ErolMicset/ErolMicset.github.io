@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download · Digital Rebel Studio</title>
+<meta name="description" content="Download Digital Rebel Studio: the Designer and the Runner for Windows and Linux (x64 and ARM64), the Runner for Android.">
+<meta name="theme-color" content="#0f1626">
+<link rel="icon" type="image/png" href="images/drs-logo.png">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --bg:#ffffff; --bg-alt:#f4f7fc; --card:#ffffff; --panel:#f8fafc;
+  --text:#0d1424; --muted:#57617a; --faint:#8a93a8;
+  --line:#e2e8f2;
+  --accent:#2563eb; --amber:#d98613; --accent-ink:#ffffff; --ok:#16a34a;
+  --shadow:0 1px 2px rgba(13,20,36,.05),0 10px 28px rgba(13,20,36,.07);
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0a1020; --bg-alt:#0d1428; --card:#121b33; --panel:#0e1730;
+    --text:#e9edf6; --muted:#9aa5bd; --faint:#6e7891;
+    --line:#1f2b4a;
+    --accent:#5b8cff; --amber:#e8a33d; --accent-ink:#06101f; --ok:#34d399;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{letter-spacing:-.02em}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+header.nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 84%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;color:var(--text);white-space:nowrap}
+.brand:hover{text-decoration:none}
+.logo{width:38px;height:38px;object-fit:contain}
+.nav nav{display:flex;gap:15px;align-items:center}
+.nav nav a{color:var(--muted);font-size:15px;white-space:nowrap}
+.nav nav a:hover,.nav nav a[aria-current]{color:var(--text);text-decoration:none}
+.btn{display:inline-block;padding:12px 22px;border-radius:11px;font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;font-family:inherit}
+.btn:hover{text-decoration:none}
+.btn.primary{background:linear-gradient(180deg,#f0b357,#d98613);color:#1d1408;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 6px 18px rgba(217,134,19,.28);transition:transform .2s,filter .2s}
+.btn.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn.ghost{border-color:var(--line);color:var(--text);background:var(--card)}
+.btn.ghost:hover{border-color:var(--amber)}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);margin:0 0 10px}
+.head{padding:64px 0 36px;background:radial-gradient(1100px 380px at 50% -90px,color-mix(in srgb,var(--amber) 16%,transparent),transparent)}
+h1{font-size:clamp(32px,5vw,50px);line-height:1.1;margin:0 0 14px}
+h2{font-size:clamp(24px,3vw,32px);margin:0 0 12px}
+.sub{color:var(--muted);max-width:740px;margin:0;font-size:17px}
+section{padding:46px 0}
+section.alt{background:var(--bg-alt);border-block:1px solid var(--line)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
+
+/* recommended */
+.rec{display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;
+  border-color:color-mix(in srgb,var(--amber) 50%,var(--line));
+  background:linear-gradient(180deg,color-mix(in srgb,var(--amber) 8%,var(--card)),var(--card))}
+.rec .ico{width:76px;height:76px;border-radius:20px;display:grid;place-items:center;
+  background:linear-gradient(180deg,#f0b357,#d98613);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 10px 24px rgba(217,134,19,.3)}
+.rec .ico svg{width:42px;height:42px}
+.rec h2{margin:0 0 4px;font-size:24px}
+.rec p{margin:0;color:var(--muted)}
+.rec .meta{font:600 12.5px var(--mono);color:var(--faint);margin-top:8px}
+@media(max-width:800px){.rec{grid-template-columns:1fr;text-align:center}.rec .ico{margin:0 auto}}
+
+/* package table */
+.pk{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:22px}
+.pk .card{padding:20px;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .2s}
+.pk .card:hover{transform:translateY(-3px);border-color:var(--amber)}
+.pk .card.me{border-color:var(--amber);box-shadow:0 0 0 2px color-mix(in srgb,var(--amber) 35%,transparent),var(--shadow)}
+.pk h3{margin:0 0 2px;font-size:18px}
+.pk .os{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--amber)}
+.pk ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.pk li{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+.pk li b{color:var(--text);font-weight:600}
+.pk li code,.path{font:12.5px var(--mono);color:var(--faint)}
+.sz{font:600 12.5px var(--mono);white-space:nowrap}
+
+/* hash */
+.hash{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.hash code{flex:1 1 360px;min-width:0;overflow-wrap:anywhere;font:13px/1.5 var(--mono);background:var(--panel);
+  border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.pre{background:#070d1f;color:#d7e0ff;border-radius:12px;padding:14px 16px;border:1px solid #1c2748;
+  font:13px/1.7 var(--mono);overflow-x:auto;white-space:pre;margin:8px 0 0}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.tabs button{font:inherit;font-size:14px;font-weight:600;cursor:pointer;padding:7px 15px;border-radius:999px;
+  border:1px solid var(--line);background:var(--card);color:var(--text)}
+.tabs button[aria-pressed="true"]{background:linear-gradient(180deg,#f0b357,#d98613);border-color:#c47a10;color:#1d1408}
+
+/* flow */
+.plate{background:#f7f9fc;border:1px solid #e0e7f1;border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.plate svg{display:block;width:100%;height:auto;max-width:980px;margin:0 auto}
+.plate .pcap{font-size:12.5px;color:#7a869c;margin:8px 4px 0;font-weight:600}
+.step rect{filter:drop-shadow(0 3px 5px rgba(20,32,60,.22))}
+.js .step{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;transition-delay:var(--d)}
+.js .plate.go .step{opacity:1;transform:none}
+.js .plate .arrow{stroke-dasharray:1;stroke-dashoffset:1}
+.js .plate.go .arrow{animation:draw .7s ease-out forwards;animation-delay:var(--d)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+.notes{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.notes p{margin:0;color:var(--muted);font-size:15px}
+.notes h3{margin:0 0 6px;font-size:17px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img class="logo" src="images/drs-logo.png" alt="" width="38" height="38"> Digital Rebel Studio</a>
+    <nav aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="DRS.html">DRS</a>
+      <a href="DRSGallery.html">Gallery</a>
+      <a href="drQEmu.html">drQEmu</a>
+      <a href="PLC.html">PLC</a>
+      <a href="Kantar.html">Kantar</a>
+      <a href="#contact">Contact</a>
+      <a href="DRSDownload.html" aria-current="page">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="head">
+    <div class="wrap">
+      <p class="eyebrow">Download</p>
+      <h1>Get <span translate="no" class="notranslate">DRS</span></h1>
+      <p class="sub">One zip holds everything: the <span translate="no" class="notranslate">Designer</span> and the <span translate="no" class="notranslate">Runner</span> for <span translate="no" class="notranslate">Windows</span> and <span translate="no" class="notranslate">Linux</span> (x64 and ARM64), and the <span translate="no" class="notranslate">Runner</span> for <span translate="no" class="notranslate">Android</span>. No installer, no account, no licence server.</p>
+      <p style="margin:12px 0 0;color:var(--muted);font-size:14.5px">Looking for the <span translate="no" class="notranslate">ESP32</span> emulator? That is <a href="drQEmu.html"><span translate="no" class="notranslate">drQEmu</span>, with its own page and its own zip</a>.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="card rec reveal" id="rec">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2b1b04" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg></div>
+        <div>
+          <h2 id="recTitle">Download <span translate="no" class="notranslate">DRS</span></h2>
+          <p id="recText">The zip contains every program, one file per system.</p>
+          <p class="meta" id="recMeta" translate="no"></p>
+        </div>
+        <a class="btn primary" id="recBtn" href="#">Download the zip</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">What is inside</p>
+      <h2>Pick the file for your system</h2>
+      <p class="sub">Every program is one self-contained file, and all of them sit side by side in the zip. The name says what it is: <span translate="no" class="notranslate">drDesign</span> is the <span translate="no" class="notranslate">Designer</span>, <span translate="no" class="notranslate">drRunner</span> is the <span translate="no" class="notranslate">Runner</span>, and the end of the name is the system.</p>
+      <div class="pk" id="pk"></div>
+    </div>
+  </section>
+
+  <section id="tools">
+    <div class="wrap">
+      <p class="eyebrow">Test without the hardware</p>
+      <h2>Test servers</h2>
+      <p class="sub">Small programs that stand in for a PLC, an <span translate="no" class="notranslate">OPC UA</span> server, an IP camera and a mail server, so a panel can be built and checked before the real device is on the desk. The test servers live in the notification area of <span translate="no" class="notranslate">Windows</span>. <span translate="no" class="notranslate">ComCapture</span> watches a serial, network, Bluetooth or HID connection byte by byte. They come in their own zip, apart from the programs.</p>
+      <div style="margin-top:18px"><a class="btn primary" id="toolsBtn" href="#">Download the test servers</a></div>
+      <div class="pk" id="tl"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Install</p>
+      <h2>From the zip to a running panel</h2>
+      <div class="plate reveal" id="flow"><p class="pcap" id="flowCap">Download, unpack, start the <span translate="no" class="notranslate">Designer</span>, save a project, start it in the <span translate="no" class="notranslate">Runner</span>.</p></div>
+      <div class="notes" style="margin-top:22px">
+        <div class="card reveal"><h3><span translate="no" class="notranslate">Windows</span></h3><p>Unpack the zip and start <span translate="no" class="notranslate">drDesign-X64.exe</span> (or <span translate="no" class="notranslate">drDesign-A64.exe</span> on ARM). If SmartScreen asks, choose “More info”, then “Run anyway”: the file is not signed yet.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">Linux</span></h3><p>The files have no extension. Make them runnable once, then start them:</p><pre class="pre" translate="no">chmod +x drDesign-LX64 drRunner-LX64
+./drDesign-LX64</pre></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">Android</span></h3><p>Copy <span translate="no" class="notranslate">drRunner-A64.apk</span> to the device and open it. Android asks once to allow installs from this source. Only the <span translate="no" class="notranslate">Runner</span> exists for <span translate="no" class="notranslate">Android</span>; projects are designed on a desktop.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="licence" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Free to use</p>
+      <h2>The <span translate="no" class="notranslate">Runner</span> and its licence limit</h2>
+      <p class="sub"><span translate="no" class="notranslate">DRS</span> is completely free, and it is a project that supports education. The <span translate="no" class="notranslate">Runner</span> carries a licence limit for one reason only: to prevent commercial use. The time limit applies to every run, and it does not block tests and experiments. It is not a price tag: the licence key is free too, and nothing in it phones home.</p>
+      <div class="notes" style="margin-top:22px">
+        <div class="card reveal"><h3>What the limit does</h3><p>On a device without a licence the project still starts and works. The frame of the scheme turns red, and the <span translate="no" class="notranslate">Runner</span> closes by itself after one minute. A licensed device runs without the red frame and without the timer.</p></div>
+        <div class="card reveal"><h3>Everything works on the desktop</h3><p>The limit is in the <span translate="no" class="notranslate">Runner</span> only. You can design, run, test and watch a project in the <span translate="no" class="notranslate">Designer</span> on a desktop as long as you like, with every component and every connection. A licence is needed only to leave a panel running on its own device.</p></div>
+        <div class="card reveal"><h3>On a phone or a tablet</h3><p>One minute is enough to enter a few parameters and close: set a value, change an address, switch a mode, then leave. Open the project again whenever you need it; each start gives a new minute.</p></div>
+        <div class="card reveal"><h3>How to get a licence (free)</h3>
+          <ol style="margin:0;padding-left:20px;color:var(--muted)">
+            <li>Run the <span translate="no" class="notranslate">Runner</span> on the device and start a project once. Without a licence it creates <span translate="no" class="notranslate">config.json</span> by itself, in the folder of the <span translate="no" class="notranslate">Runner</span> program (on <span translate="no" class="notranslate">Android</span>: <span translate="no" class="notranslate">/storage/emulated/0/DRS</span>), and writes the encrypted lock of that device into the field <span translate="no" class="notranslate">LicenseKey</span>.</li>
+            <li>Send that <span translate="no" class="notranslate">config.json</span> to <a href="#contact" translate="no" class="notranslate">erol.micset@gmail.com</a>.</li>
+            <li>You get a key back. Write it into <span translate="no" class="notranslate">config.json</span>, in the field <span translate="no" class="notranslate">License</span>, and start the <span translate="no" class="notranslate">Runner</span> again.</li>
+          </ol>
+          <p style="margin-top:10px">The key belongs to the hardware, not to the operating system, so reinstalling the system on the same machine keeps it valid. A phone that is reset to factory settings gets a new identity and needs a new key.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="notes">
+        <div class="card reveal"><h3>What stays the same</h3><p>No account, no telemetry, nothing that phones home. The panel you build today opens in the same program next year: a folder, an executable and your project file.</p></div>
+        <div class="card reveal"><h3>Licences</h3><p>The zip carries <span translate="no" class="notranslate">LICENSE.txt</span> and <span translate="no" class="notranslate">THIRD-PARTY-NOTICES.txt</span>. Read them before you redistribute anything.</p></div>
+        <div class="card reveal"><h3>Questions, problems</h3><p>Write to <a href="#contact">us</a>. Say which system, which file and what the screen showed.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="contact" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Talk to us</h2>
+      <p class="sub">Questions, problems, a protocol or a component you miss: write to us. Say which system you use, which file you took and what the screen showed.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
+        <a class="btn primary" href="mailto:erol.micset@gmail.com?subject=DRS%20-%20Digital%20Rebel%20Studio">erol.micset@gmail.com</a>
+        <a class="btn ghost" href="https://micset.wixsite.com/micset" target="_blank" rel="noopener"><span translate="no" class="notranslate">Microset</span> projects</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y">2026</span> <span translate="no" class="notranslate">Digital Rebel Studio</span> (<span translate="no" class="notranslate">DRS</span>). A <span translate="no" class="notranslate">Microset</span> project.</span>
+    <span><a href="index.html">Home</a> · <a href="DRSGallery.html">Gallery</a></span>
+  </div>
+</footer>
+
+<script>
+/* The ONE place to edit for a new release: version, date, the address of the zip and its SHA-256.
+   `url` may point anywhere (a file next to this page, or a release page of a code host). Sizes are in MiB. */
+var RELEASE = {
+  version: '1.0.1', date: '2026-10-29',
+  url: 'https://github.com/ErolMicset/ErolMicset.github.io/releases/download/v1.0.1/DRS-v1.0.1-2026-10-29.zip', file: 'DRS-v1.0.1-2026-10-29.zip', size: 415.8,
+  sha256: 'FFDEF83C6E8A36C0982B411937177925BAB8E11BA924613B8F16744EA73FAC62',
+  tools: [
+    ['S7 Test Server', 'S7TestServer.exe', 12.6, 'Answers reads and writes like an S7 PLC: ISO-on-TCP port 102, DB1 to DB3, inputs, outputs, markers, timers and counters.', '08DCA2B09AF60781C7B8D537F7119824984AE8D9B9BFEFEF03ACB2AEC10EEE91'],
+    ['OPC UA Test Server', 'OpcUaTestServer.exe', 80.6, 'Port 48400, every security mode, anonymous and user-name login, one tag per data type and a live counter.', '043B9128873DE7E084DD38679369EDFB835977C813E3292EC4CBBB0043FFF131'],
+    ['IP Camera Test Server', 'IpCamTestServer.exe', 79.6, 'A generated test picture over MJPEG, snapshot and RTSP, with ONVIF discovery, profiles, PTZ and Digest login.', 'D6C14D97EADF6A735FFCEE5EF130EE93772171522D8F273FABF55C0EE0D26FF6'],
+    ['SMTP Test Server', 'SmtpTestServer.exe', 13.4, 'Keeps every e-mail as an .eml file and sends nothing. Ports 2525 (plain), 2587 (STARTTLS) and 2465 (TLS).', '68C24926796C81EBBE9E78AF3E348378A4032A337874C6983D77E98D2F2C0BED'],
+    ['ComCapture', 'ComCapture.exe', 106.2, 'Opens a serial port, a TCP or UDP connection, a Bluetooth or BLE device or a HID device, shows the bytes that come in and sends your own.', '99113DAFA67D19EFA6E39E19AC33EF95F1578DA9C580F3F686E0F563C62A838C']
+  ],
+  toolsBase: 'downloads/tools/',
+  systems: [
+    { id: 'win', name: 'Windows', os: 'x64 · most PCs', items: [
+      ['Designer', 'drDesign-X64.exe', 100.7], ['Runner', 'drRunner-X64.exe', 99.0]] },
+    { id: 'winarm', name: 'Windows on ARM', os: 'ARM64', items: [
+      ['Designer', 'drDesign-A64.exe', 108.0], ['Runner', 'drRunner-A64.exe', 106.3]] },
+    { id: 'lin', name: 'Linux', os: 'x64', items: [
+      ['Designer', 'drDesign-LX64', 100.9], ['Runner', 'drRunner-LX64', 99.1]] },
+    { id: 'linarm', name: 'Linux on ARM', os: 'ARM64 · single-board computers', items: [
+      ['Designer', 'drDesign-LA64', 106.7], ['Runner', 'drRunner-LA64', 104.8]] },
+    { id: 'android', name: 'Android', os: 'phones and tablets', items: [
+      ['Runner', 'drRunner-A64.apk', 72.2]] }
+  ]
+};
+
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function nt(s) { return '<span translate="no" class="notranslate">' + s + '</span>'; }
+  function mb(x) { return x.toFixed(1) + ' MiB'; }
+
+  /* which system is this? */
+  function detect() {
+    var ua = navigator.userAgent || '', plat = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+    var arm = /arm|aarch64/i.test(ua + ' ' + plat);
+    if (/android/i.test(ua)) return 'android';
+    if (/win/i.test(plat + ua)) return arm ? 'winarm' : 'win';
+    if (/linux|x11|cros/i.test(plat + ua)) return arm ? 'linarm' : 'lin';
+    return '';
+  }
+  var mine = detect();
+
+  /* the zip, the recommendation */
+  var rec = RELEASE.systems.filter(function (s) { return s.id === mine; })[0];
+  $('recBtn').href = RELEASE.url;
+  $('recBtn').setAttribute('download', RELEASE.file);
+  $('recBtn').innerHTML = 'Download ' + nt(RELEASE.file.replace(/\.zip$/, '')) + ' <small style="opacity:.7">· ' + mb(RELEASE.size) + '</small>';
+  $('recMeta').textContent = 'version ' + RELEASE.version + ' · ' + RELEASE.date + ' · ' + RELEASE.file;
+  if (rec) {
+    $('recTitle').innerHTML = 'Download ' + nt('DRS') + ': all systems in one zip';
+    $('recText').innerHTML = 'The zip holds the programs for every system. Your system is ' + nt(rec.name) + ': after unpacking, start ' + rec.items.map(function (i) { return nt(i[1]); }).join(' and ') + '. It is highlighted below.';
+  }
+
+  /* one card per system */
+  $('pk').innerHTML = RELEASE.systems.map(function (s) {
+    return '<div class="card reveal' + (s.id === mine ? ' me' : '') + '"><div class="os">' + s.os + '</div><h3>' + nt(s.name) + '</h3><ul>' +
+      s.items.map(function (i) {
+        return '<li><span><b>' + nt(i[0]) + '</b><br><span class="path" translate="no">' + i[1] + '</span></span><span class="sz" translate="no">' + mb(i[2]) + '</span></li>';
+      }).join('') + '</ul></div>';
+  }).join('');
+
+  $('tl').innerHTML = RELEASE.tools.map(function (t) {
+    return '<div class="card reveal"><div class="os">' + (/.apk$/.test(t[1]) ? 'Android' : 'Windows') + '</div><h3>' + nt(t[0]) + '</h3><p style="margin:8px 0 12px;color:var(--muted);font-size:14.5px">' + t[3] + '</p>' +
+      '<p class="sz" translate="no" style="margin:0">' + t[1] + ' · ' + mb(t[2]) + '</p>' +
+      '<p class="path" translate="no" style="margin:10px 0 0;overflow-wrap:anywhere">SHA-256 ' + t[4] + '</p></div>';
+  }).join('');
+
+  /* DownloadPathList.txt names the zips of every version; the newest one wins. Without the list (or on file://) the values above stay. */
+  function applyList(text) {
+    var best = null;
+    text.split(/\r?\n/).forEach(function (ln) {
+      if (/^\s*(#|$)/.test(ln)) return;
+      var p = ln.split(' - ').map(function (s) { return s.trim(); });
+      if (p.length < 3) return;
+      if (/drqemu/i.test(p[1])) return;
+      var v = p[0], isTools = /tools/i.test(p[1]);
+      if (!best || cmp(v, best.v) > 0) best = { v: v, app: null, tools: null };
+      if (v === best.v) best[isTools ? 'tools' : 'app'] = { file: p[1], url: p.slice(2).join(' - ') };
+    });
+    if (!best) return;
+    if (best.app) {
+      var same = best.app.file === RELEASE.file;
+      RELEASE.version = best.v; RELEASE.file = best.app.file; RELEASE.url = best.app.url;
+      if (!same) { RELEASE.sha256 = ''; RELEASE.size = 0; RELEASE.date = ''; }
+    }
+    if (best.tools) RELEASE.toolsZip = best.tools;
+    paint();
+  }
+  function cmp(a, b) {
+    var x = a.split('.'), y = b.split('.');
+    for (var i = 0; i < Math.max(x.length, y.length); i++) { var d = (+x[i] || 0) - (+y[i] || 0); if (d) return d; }
+    return 0;
+  }
+  function paint() {
+    $('recBtn').href = RELEASE.url;
+    $('recBtn').setAttribute('download', RELEASE.file.split('/').pop());
+    $('recBtn').innerHTML = 'Download ' + nt(RELEASE.file.replace(/\.zip$/, '')) + (RELEASE.size ? ' <small style="opacity:.7">· ' + mb(RELEASE.size) + '</small>' : '');
+    $('recMeta').textContent = 'version ' + RELEASE.version + (RELEASE.date ? ' · ' + RELEASE.date : '') + ' · ' + RELEASE.file;
+    var tz = RELEASE.toolsZip || { file: 'DRS-Tools-v' + RELEASE.version + '.zip', url: RELEASE.toolsBase + 'DRS-Tools-v' + RELEASE.version + '.zip' };
+    $('toolsBtn').href = tz.url; $('toolsBtn').setAttribute('download', tz.file.split('/').pop());
+    $('toolsBtn').innerHTML = 'Download ' + nt(tz.file.replace(/\.zip$/, ''));
+  }
+
+  paint();
+  if (window.fetch && location.protocol !== 'file:') fetch('DownloadPathList.txt', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) { if (t) applyList(t); }, function () {});
+
+  /* the install flow, drawn from data */
+  var STEPS = [
+    ['Download', 'the zip', '#7fa6d8', '#dbe9fb'],
+    ['Unpack', 'any folder', '#7fa6d8', '#dbe9fb'],
+    ['Start the Designer', 'draw the panel', '#d79a3a', '#fbe3b8'],
+    ['Save the project', 'one .drs file', '#7fa6d8', '#dbe9fb'],
+    ['Start the Runner', 'on any target', '#7fa86a', '#d9efc9']
+  ];
+  (function drawFlow() {
+    var NS = 'http://www.w3.org/2000/svg', w = 168, h = 62, gap = 44, pad = 12, W = pad * 2 + STEPS.length * w + (STEPS.length - 1) * gap, H = h + pad * 2 + 6;
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', 'Steps: download the zip, unpack it, start the Designer and draw the panel, save the project as one file, start it in the Runner on any target.');
+    function el(n, a, p) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+    STEPS.forEach(function (s, i) {
+      var x = pad + i * (w + gap), y = pad, d = (i * 0.25).toFixed(2) + 's';
+      if (i) el('path', { d: 'M' + (x - gap + 4) + ' ' + (y + h / 2) + ' L' + (x - 6) + ' ' + (y + h / 2), stroke: '#e8801f', 'stroke-width': 2.4, 'stroke-linecap': 'round', fill: 'none', class: 'arrow', pathLength: 1, style: '--d:' + (i * 0.25 - 0.1).toFixed(2) + 's' }, svg);
+      if (i) el('path', { d: 'M' + (x - 12) + ' ' + (y + h / 2 - 6) + ' L' + (x - 4) + ' ' + (y + h / 2) + ' L' + (x - 12) + ' ' + (y + h / 2 + 6), stroke: '#e8801f', 'stroke-width': 2.4, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', fill: 'none' }, svg);
+      var g = el('g', { class: 'step', style: '--d:' + d }, svg);
+      el('rect', { x: x, y: y, width: w, height: h, rx: 12, fill: s[3], stroke: s[2] }, g);
+      var t = el('text', { x: x + w / 2, y: y + 27, 'text-anchor': 'middle', 'font-size': 14.5, 'font-weight': 700, fill: '#27324a', 'font-family': 'system-ui,Segoe UI,sans-serif' }, g); t.textContent = s[0];
+      if (/Designer|Runner/.test(s[0])) { t.setAttribute('translate', 'no'); t.setAttribute('class', 'notranslate'); }
+      var u = el('text', { x: x + w / 2, y: y + 46, 'text-anchor': 'middle', 'font-size': 12, fill: '#5b6780', 'font-family': 'system-ui,Segoe UI,sans-serif' }, g); u.textContent = s[1];
+      if (/\.drs/.test(s[1])) { u.setAttribute('translate', 'no'); u.setAttribute('class', 'notranslate'); }
+    });
+    $('flow').insertBefore(svg, $('flowCap'));
+  })();
+
+  /* reveal on scroll */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  var plate = $('flow');
+  if (reduce || !('IntersectionObserver' in window)) { plate.classList.add('go'); items.forEach(function (e) { e.classList.add('in'); }); }
+  else {
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); if (x.target === plate) plate.classList.add('go'); io.unobserve(x.target); } });
+    }, { threshold: 0.12 });
+    items.forEach(function (e, i) { e.style.transitionDelay = (i % 3) * 0.08 + 's'; io.observe(e); });
+    setTimeout(function () { plate.classList.add('go'); items.forEach(function (e) { e.classList.add('in'); }); }, 6000);
+  }
+  $('y').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
