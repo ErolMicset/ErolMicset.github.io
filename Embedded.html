@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRS for embedded developers · Free HMI and SCADA for ESP32, Arduino, PIC, Raspberry Pi · Digital Rebel Studio</title>
+<link rel="canonical" href="https://erolmicset.github.io/Embedded.html">
+<meta name="description" content="DRS is a free control panel for every board you build: ESP32, Arduino, Atmel AVR, PIC, Raspberry Pi, Pico, Radxa and LattePanda. Test interfaces, parameter setting, home automation over MQTT, a REST database service for all your microcontrollers, logging, printed reports, data for an ERP, and your own functions in a DLL. Free for students, teachers and hobbyists.">
+<meta name="theme-color" content="#0f1626">
+<link rel="icon" type="image/png" href="images/drs-logo.png">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --bg:#ffffff; --bg-alt:#f4f7fc; --card:#ffffff; --panel:#f8fafc;
+  --text:#0d1424; --muted:#57617a; --faint:#8a93a8;
+  --line:#e2e8f2;
+  --accent:#2563eb; --amber:#d98613; --accent-ink:#ffffff; --ok:#16a34a;
+  --shadow:0 1px 2px rgba(13,20,36,.05),0 10px 28px rgba(13,20,36,.07);
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0a1020; --bg-alt:#0d1428; --card:#121b33; --panel:#0e1730;
+    --text:#e9edf6; --muted:#9aa5bd; --faint:#6e7891;
+    --line:#1f2b4a;
+    --accent:#5b8cff; --amber:#e8a33d; --accent-ink:#06101f; --ok:#34d399;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{letter-spacing:-.02em}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+header.nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 84%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;color:var(--text);white-space:nowrap}
+.brand:hover{text-decoration:none}
+.logo{width:38px;height:38px;object-fit:contain}
+.nav nav{display:flex;gap:15px;align-items:center}
+.nav nav a{color:var(--muted);font-size:15px;white-space:nowrap}
+.nav nav a:hover,.nav nav a[aria-current]{color:var(--text);text-decoration:none}
+.btn{display:inline-block;padding:12px 22px;border-radius:11px;font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;font-family:inherit}
+.btn:hover{text-decoration:none}
+.btn.primary{background:linear-gradient(180deg,#f0b357,#d98613);color:#1d1408;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 6px 18px rgba(217,134,19,.28);transition:transform .2s,filter .2s}
+.btn.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn.ghost{border-color:var(--line);color:var(--text);background:var(--card)}
+.btn.ghost:hover{border-color:var(--amber)}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);margin:0 0 10px}
+.head{padding:64px 0 36px;background:radial-gradient(1100px 380px at 50% -90px,color-mix(in srgb,var(--amber) 16%,transparent),transparent)}
+h1{font-size:clamp(32px,5vw,50px);line-height:1.1;margin:0 0 14px}
+h2{font-size:clamp(24px,3vw,32px);margin:0 0 12px}
+.sub{color:var(--muted);max-width:740px;margin:0;font-size:17px}
+section{padding:46px 0}
+section.alt{background:var(--bg-alt);border-block:1px solid var(--line)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
+
+/* recommended */
+.rec{display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;
+  border-color:color-mix(in srgb,var(--amber) 50%,var(--line));
+  background:linear-gradient(180deg,color-mix(in srgb,var(--amber) 8%,var(--card)),var(--card))}
+.rec .ico{width:76px;height:76px;border-radius:20px;display:grid;place-items:center;
+  background:linear-gradient(180deg,#f0b357,#d98613);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 10px 24px rgba(217,134,19,.3)}
+.rec .ico svg{width:42px;height:42px}
+.rec h2{margin:0 0 4px;font-size:24px}
+.rec p{margin:0;color:var(--muted)}
+.rec .meta{font:600 12.5px var(--mono);color:var(--faint);margin-top:8px}
+@media(max-width:800px){.rec{grid-template-columns:1fr;text-align:center}.rec .ico{margin:0 auto}}
+
+/* package table */
+.pk{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:22px}
+.pk .card{padding:20px;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .2s}
+.pk .card:hover{transform:translateY(-3px);border-color:var(--amber)}
+.pk .card.me{border-color:var(--amber);box-shadow:0 0 0 2px color-mix(in srgb,var(--amber) 35%,transparent),var(--shadow)}
+.pk h3{margin:0 0 2px;font-size:18px}
+.pk .os{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--amber)}
+.pk ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.pk li{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+.pk li b{color:var(--text);font-weight:600}
+.pk li code,.path{font:12.5px var(--mono);color:var(--faint)}
+.sz{font:600 12.5px var(--mono);white-space:nowrap}
+
+/* hash */
+.hash{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.hash code{flex:1 1 360px;min-width:0;overflow-wrap:anywhere;font:13px/1.5 var(--mono);background:var(--panel);
+  border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.pre{background:#070d1f;color:#d7e0ff;border-radius:12px;padding:14px 16px;border:1px solid #1c2748;
+  font:13px/1.7 var(--mono);overflow-x:auto;white-space:pre;margin:8px 0 0}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.tabs button{font:inherit;font-size:14px;font-weight:600;cursor:pointer;padding:7px 15px;border-radius:999px;
+  border:1px solid var(--line);background:var(--card);color:var(--text)}
+.tabs button[aria-pressed="true"]{background:linear-gradient(180deg,#f0b357,#d98613);border-color:#c47a10;color:#1d1408}
+
+/* flow */
+.plate{background:#f7f9fc;border:1px solid #e0e7f1;border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.plate svg{display:block;width:100%;height:auto;max-width:980px;margin:0 auto}
+.plate .pcap{font-size:12.5px;color:#7a869c;margin:8px 4px 0;font-weight:600}
+.step rect{filter:drop-shadow(0 3px 5px rgba(20,32,60,.22))}
+.js .step{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;transition-delay:var(--d)}
+.js .plate.go .step{opacity:1;transform:none}
+.js .plate .arrow{stroke-dasharray:1;stroke-dashoffset:1}
+.js .plate.go .arrow{animation:draw .7s ease-out forwards;animation-delay:var(--d)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+.notes{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.notes p{margin:0;color:var(--muted);font-size:15px}
+.notes h3{margin:0 0 6px;font-size:17px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.badge{display:inline-block;font:700 12px var(--mono);letter-spacing:.5px;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 45%,var(--line));background:color-mix(in srgb,var(--accent) 9%,transparent);padding:4px 11px;border-radius:999px;margin-bottom:16px}
+.rec .ico{background:linear-gradient(180deg,#7fa6ee,#2563eb)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 10px 24px rgba(37,99,235,.3)!important}
+.rec{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))!important;background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 7%,var(--card)),var(--card))!important}
+.rec .ico svg{stroke:#fff}
+.shotgrid{display:grid;gap:22px;grid-template-columns:1fr;margin-top:22px}
+.shotfig{padding:16px;margin:0}
+.shotfig .frame{background:radial-gradient(700px 240px at 50% -40px,#eef2f9,#e1e8f3);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;place-items:center;cursor:zoom-in;overflow:hidden}
+.shotfig img{width:auto;max-width:100%;height:auto;border-radius:8px;border:1px solid #d6deec;box-shadow:0 14px 34px rgba(20,32,60,.22),0 2px 6px rgba(20,32,60,.15);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.shotfig .frame:hover img{transform:scale(1.015)}
+.shotfig figcaption{margin-top:12px;display:grid;gap:3px}
+.shotfig figcaption b{font-size:16.5px}
+.shotfig figcaption span{color:var(--muted);font-size:14.5px}
+dialog.zoom{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100vh;margin:0}
+dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
+.zb{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;padding:54px 40px 16px}
+.zb .view{flex:1 1 auto;min-height:0;width:100%;overflow:auto;display:grid;place-items:center}
+.zb img{width:auto;height:auto;max-width:100%;max-height:calc(100vh - 150px);border-radius:10px;box-shadow:0 24px 70px rgba(0,0,0,.65);animation:zin .35s cubic-bezier(.2,.7,.2,1)}
+@keyframes zin{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.zb .cap{color:#d8deea;margin-top:12px;font-size:15px;text-align:center;max-width:860px}
+.zb .cap b{display:block;color:#fff;font-size:17px}
+.zb button{font:inherit;cursor:pointer;border:1px solid rgba(255,255,255,.18);background:rgba(20,28,48,.82);color:#fff;min-width:44px;height:44px;border-radius:999px;font-size:20px;position:absolute}
+.zb button:hover{background:rgba(217,134,19,.92)}
+.zb .close{top:10px;right:14px}.zb .prev{left:10px;top:50%}.zb .next{right:10px;top:50%}
+.steps{counter-reset:s;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:18px}
+.steps .card{position:relative;padding-top:54px}
+.steps .card h3{margin:0 0 6px;font-size:17px}
+.steps .card p{margin:0;color:var(--muted);font-size:15px}
+.steps .card::before{counter-increment:s;content:counter(s);position:absolute;top:16px;left:22px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 13px var(--mono);color:#1d1408;background:linear-gradient(180deg,#f0b357,#d98613)}
+.boards{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:22px 0 0}
+.boards li{font:600 13px var(--mono);color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img class="logo" src="images/drs-logo.png" alt="" width="38" height="38"> Digital Rebel Studio</a>
+    <nav aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="DRS.html">DRS</a>
+      <a href="drQEmu.html">drQEmu</a>
+      <a href="PLC.html">PLC</a>
+      <a href="Kantar.html">Kantar</a>
+      <a href="#contact">Contact</a>
+      <a href="DRSDownload.html">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="head">
+    <div class="wrap">
+      <span class="badge" translate="no">DRS · for embedded developers · beta</span>
+      <h1>A free control panel for every board you build</h1>
+      <p class="sub"><span translate="no" class="notranslate">DRS</span> draws the panel for your <span translate="no" class="notranslate">ESP32</span>, <span translate="no" class="notranslate">Arduino</span>, <span translate="no" class="notranslate">Atmel</span> (<span translate="no" class="notranslate">AVR</span>), <span translate="no" class="notranslate">PIC</span>, <span translate="no" class="notranslate">Raspberry Pi</span>, <span translate="no" class="notranslate">Raspberry Pi Pico</span>, <span translate="no" class="notranslate">Radxa</span> or <span translate="no" class="notranslate">LattePanda</span> project, and then stores, prints and passes on what the board reports. Test benches, parameter screens, home automation and data logging all use the same tool, and it costs nothing.</p>
+      <p class="sub" style="margin-top:12px"><strong>This is a beta release.</strong> It is still being tested, so something may not work as you expect. <a href="#join">Tell us what you find</a>.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+        <a class="btn primary" href="DRSDownload.html">Download <span translate="no" class="notranslate">DRS</span></a>
+        <a class="btn ghost" href="DRS.html">Everything <span translate="no" class="notranslate">DRS</span> does</a>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Who it is for</p>
+      <h2>Made for people who build things</h2>
+      <p class="sub">No account, no licence key, no licence server and no fee, for a school project, a course, a thesis or a product. It works offline, so it also runs in a lab with no internet.</p>
+      <div class="notes" style="margin-top:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+        <div class="card reveal"><h3>Students</h3><p>See how a real panel talks to a real board. Build the control panel for your project instead of reading a serial monitor, and show it at the exam.</p></div>
+        <div class="card reveal"><h3>Teachers</h3><p>Teach automation, <span translate="no" class="notranslate">IoT</span> and embedded courses with one free tool. The same project file runs on <span translate="no" class="notranslate">Windows</span>, <span translate="no" class="notranslate">Linux</span> and <span translate="no" class="notranslate">Android</span>, and with <a href="drQEmu.html"><span translate="no" class="notranslate">drQEmu</span></a> every student can practise at home with no board.</p></div>
+        <div class="card reveal"><h3>Hobbyists</h3><p>Give the workshop, the greenhouse or the house a proper panel: buttons, dials, charts and alarms on a tablet or a screen next to the project.</p></div>
+        <div class="card reveal"><h3>Embedded engineers</h3><p>Build a test bench for your firmware, tune parameters while it runs and keep a log of every change, without writing a user-interface program.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Connect</p>
+      <h2>Any board, four ways to talk</h2>
+      <p class="sub">Pick what your board already speaks. A board does not need a special chip: if it can send and receive bytes, it can have a panel.</p>
+      <div class="notes" style="margin-top:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+        <div class="card reveal"><h3><span translate="no" class="notranslate">LZ</span> protocol</h3><p>One tag in each request, one answer back, over a serial port, <span translate="no" class="notranslate">TCP</span> or <span translate="no" class="notranslate">Bluetooth</span>. It is written for the <span translate="no" class="notranslate">Arduino</span> way of programming, so it fits every microcontroller.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">MQTT</span></h3><p><span translate="no" class="notranslate">DRS</span> has its own broker and also connects to the one you already run. Topics become values on the panel and back.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">REST</span> over <span translate="no" class="notranslate">HTTP</span></h3><p>The board posts its readings to <span translate="no" class="notranslate">DRS</span> with a plain <span translate="no" class="notranslate">HTTP</span> request. Nothing to install on the board.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">Modbus</span></h3><p>A board or a <span translate="no" class="notranslate">PLC</span> that already speaks <span translate="no" class="notranslate">Modbus</span> needs no <span translate="no" class="notranslate">LZ</span> at all.</p></div>
+      </div>
+      <ul class="boards" aria-label="Boards">
+        <li translate="no">ESP32</li><li translate="no">Arduino</li><li translate="no">Atmel AVR</li><li translate="no">PIC</li><li translate="no">Raspberry Pi</li><li translate="no">Raspberry Pi Pico</li><li translate="no">Radxa</li><li translate="no">LattePanda</li><li>and every other embedded board</li>
+      </ul>
+      <p class="sub" style="margin-top:16px">Boards that run <span translate="no" class="notranslate">Linux</span> or <span translate="no" class="notranslate">Windows</span> on <span translate="no" class="notranslate">x64</span> or <span translate="no" class="notranslate">ARM64</span>, such as a <span translate="no" class="notranslate">Raspberry Pi</span>, a <span translate="no" class="notranslate">Radxa</span> or a <span translate="no" class="notranslate">LattePanda</span>, can also run the <span translate="no" class="notranslate">DRS</span> Runner and show the panel themselves.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Build and test</p>
+      <h2>A face for your firmware</h2>
+      <p class="sub">Draw the panel, link each control to a value on the board, and the board answers.</p>
+      <div class="notes" style="margin-top:18px">
+        <div class="card reveal"><h3>Test interfaces</h3><p>Buttons, switches, sliders, dials and <span translate="no" class="notranslate">LED</span>s linked to the values on the board. Press, turn and watch it answer.</p></div>
+        <div class="card reveal"><h3>Set parameters</h3><p>Change set points, gains, thresholds, timings and calibration values while the board runs. Write the value from the panel and the board receives it, with no re-flash.</p></div>
+        <div class="card reveal"><h3>Watch values live</h3><p>Sensors, counters and states as numbers, gauges and trend charts, with a history you can page through day by day.</p></div>
+        <div class="card reveal"><h3>Lab and production fixtures</h3><p>A panel for the test fixture or the line: pass and fail indicators, users who may only touch what they are allowed to, and a record of who changed what.</p></div>
+        <div class="card reveal"><h3>Test before the hardware exists</h3><p>Run your program in <a href="drQEmu.html"><span translate="no" class="notranslate">drQEmu</span></a>, an emulated <span translate="no" class="notranslate">ESP32</span>, and build and check the panel with no board on the desk.</p></div>
+        <div class="card reveal"><h3>Next to the machine</h3><p>The same project file runs on a workstation, a panel <span translate="no" class="notranslate">PC</span>, a single-board computer or a tablet, so the panel you built at your desk can stay on the bench.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Home automation</p>
+      <h2>From the sensor to the screen in the hall</h2>
+      <p class="sub">No server to build and no cloud to pay for.</p>
+      <div class="steps">
+        <div class="card reveal"><h3>Sensors and switches</h3><p>Rooms, doors, lights and heating, on any boards you like.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">ESP32</span> coordinator</h3><p>One <span translate="no" class="notranslate">ESP32</span> gathers the other sensors and connects straight to the <span translate="no" class="notranslate">DRS</span> <span translate="no" class="notranslate">MQTT</span> server.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">DRS</span> with its own broker</h3><p>The broker runs inside <span translate="no" class="notranslate">DRS</span>. Topics such as <span translate="no" class="notranslate">home/room1/temperature</span> become values on the panel.</p></div>
+        <div class="card reveal"><h3>The panel</h3><p>Control and watch the house from a tablet or a wall screen, with alarms you confirm.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Data</p>
+      <h2>One hub for all your boards</h2>
+      <p class="sub">Every board, one place: collect, keep, show, print and pass on.</p>
+      <div class="steps">
+        <div class="card reveal"><h3>Collect over <span translate="no" class="notranslate">REST</span></h3><p>Every microcontroller posts its readings to <span translate="no" class="notranslate">DRS</span> over plain <span translate="no" class="notranslate">HTTP</span>. <span translate="no" class="notranslate">DRS</span> acts as the database service for all of them.</p></div>
+        <div class="card reveal"><h3>Store</h3><p>Into <span translate="no" class="notranslate">PostgreSQL</span>, <span translate="no" class="notranslate">MySQL</span>, <span translate="no" class="notranslate">SQL Server</span>, <span translate="no" class="notranslate">Firebird</span> or a <span translate="no" class="notranslate">CSV</span> file.</p></div>
+        <div class="card reveal"><h3>Log and watch</h3><p>Values from every board are logged together, with trend charts and a history you can page through.</p></div>
+        <div class="card reveal"><h3>Report and print</h3><p>Print a report on a printer, or write it as <span translate="no" class="notranslate">PDF</span>, <span translate="no" class="notranslate">XLSX</span>, <span translate="no" class="notranslate">DOCX</span> or <span translate="no" class="notranslate">HTML</span>. Labels and receipts too.</p></div>
+        <div class="card reveal"><h3>Serve to your users</h3><p>Show a report to the people on your network from the built-in web server.</p></div>
+        <div class="card reveal"><h3>Offer to your <span translate="no" class="notranslate">ERP</span></h3><p>Pass <span translate="no" class="notranslate">PLC</span> or board values to an <span translate="no" class="notranslate">ERP</span> or any other system through <span translate="no" class="notranslate">REST</span> endpoints.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Your own code</p>
+      <h2>Write the parts only you know</h2>
+      <div class="notes" style="margin-top:18px">
+        <div class="card reveal"><h3>Functions in a <span translate="no" class="notranslate">DLL</span></h3><p>A frame decoder for your board, a sensor conversion, calibration maths: write them in your own compiled library. <span translate="no" class="notranslate">DRS</span> brings its functions into blocks and scripts, so the panel calls them like built-in ones.</p></div>
+        <div class="card reveal"><h3>Blocks and scripts</h3><p>Put the interlocks, limits and sequences in the panel, in blocks or in a script, and change them without touching the firmware or flashing the board again.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join">
+    <div class="wrap">
+      <p class="eyebrow">Join in</p>
+      <h2>Help us make it better</h2>
+      <p class="sub"><span translate="no" class="notranslate">DRS</span> is free and in beta, so every bug you find helps everyone who comes after you. You do not need to write code: report a bug, tell us a component, a protocol or a board you miss, or show a panel you built.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
+        <a class="btn primary" href="https://github.com/ErolMicset/ErolMicset.github.io/issues/new?template=bug_report.yml" target="_blank" rel="noopener">Report a bug</a>
+        <a class="btn ghost" href="https://github.com/ErolMicset/ErolMicset.github.io/issues/new?template=feature_request.yml" target="_blank" rel="noopener">Suggest an idea</a>
+        <a class="btn ghost" href="https://github.com/ErolMicset/ErolMicset.github.io/discussions" target="_blank" rel="noopener">Ask or show your panel</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Talk to us</h2>
+      <p class="sub">Questions, a protocol or a board you miss, a panel you want to show: write to us. Say which board and system you use; a picture helps.</p>
+      <p style="font-size:19px;font-weight:600;margin:14px 0 18px"><a href="mailto:erol.micset@gmail.com?subject=DRS%20for%20embedded%20developers">erol.micset@gmail.com</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="y">2026</span> <span translate="no" class="notranslate">Digital Rebel Studio</span> (<span translate="no" class="notranslate">DRS</span>). A <span translate="no" class="notranslate">Microset</span> project.</span>
+    <span><a href="index.html">Home</a> &middot; <a href="DRSDownload.html"><span translate="no" class="notranslate">DRS</span> download</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (reduce || !('IntersectionObserver' in window)) items.forEach(function (e) { e.classList.add('in'); });
+  else {
+    var io = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }); }, { threshold: 0.12 });
+    items.forEach(function (e, i) { e.style.transitionDelay = (i % 3) * 0.08 + 's'; io.observe(e); });
+    setTimeout(function () { items.forEach(function (e) { e.classList.add('in'); }); }, 6000);
+  }
+  document.getElementById('y').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
