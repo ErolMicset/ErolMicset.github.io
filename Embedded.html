@@ -278,7 +278,36 @@ void loop() {
     </div>
   </section>
 
-  <section id="gateway" class="alt">
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">On the board itself</p>
+      <h2>No firmware at all on a single-board computer</h2>
+      <p class="sub">On a <span translate="no" class="notranslate">Raspberry Pi</span>, a <span translate="no" class="notranslate">Radxa</span> or any other <span translate="no" class="notranslate">Linux</span> board with pins, <span translate="no" class="notranslate">DRS</span> reaches the hardware directly. There is nothing to flash and no sketch to write: the panel and the pins live in the same project.</p>
+      <div class="notes" style="margin-top:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+        <div class="card reveal"><h3><span translate="no" class="notranslate">GPIO</span></h3><p>Read inputs and drive outputs on the header pins. Link a pin to a switch, a lamp or a block.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">PWM</span></h3><p>Dim a lamp, set a heater or move a servo from a slider on the panel.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">I2C</span> and <span translate="no" class="notranslate">SPI</span></h3><p>Talk to sensors, converters, displays and memory chips on the bus. Write bytes, read bytes, or write a register address and read the answer in one step.</p></div>
+        <div class="card reveal"><h3>Then pass it on</h3><p>The same board can log the values, serve them over <span translate="no" class="notranslate">MQTT</span> or <span translate="no" class="notranslate">REST</span>, and show the panel on its own screen.</p></div>
+      </div>
+      <p class="sub" style="margin-top:16px">Pin, <span translate="no" class="notranslate">I2C</span> and <span translate="no" class="notranslate">SPI</span> access is available on <span translate="no" class="notranslate">Linux</span> boards.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Also in the box</p>
+      <h2>More than a board</h2>
+      <div class="notes" style="margin-top:18px">
+        <div class="card reveal"><h3><span translate="no" class="notranslate">PLC</span> and industrial</h3><p>Siemens <span translate="no" class="notranslate">S7</span>, <span translate="no" class="notranslate">OPC UA</span> and <span translate="no" class="notranslate">Modbus</span> sit next to your boards on the same panel, so a prototype and the machine it will join can be watched together.</p></div>
+        <div class="card reveal"><h3>Cameras, barcodes and <span translate="no" class="notranslate">QR</span></h3><p>Show an <span translate="no" class="notranslate">IP</span> camera beside the controls, draw barcodes and <span translate="no" class="notranslate">QR</span> codes for labels, and talk to a <span translate="no" class="notranslate">HID</span> device.</p></div>
+        <div class="card reveal"><h3>Alerts</h3><p>Alarms with confirmation, and mail when something needs a person.</p></div>
+        <div class="card reveal"><h3>Recipes and users</h3><p>Store whole parameter sets for different products and load one with a click. Decide who may change what.</p></div>
+        <div class="card reveal"><h3>Control from afar</h3><p>The remote control server shows the running panel in a browser on another machine and takes its input back.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="gateway">
     <div class="wrap">
       <p class="eyebrow">Gateway</p>
       <h2>Put <span translate="no" class="notranslate">DRS</span> between your devices and the outside</h2>
@@ -332,7 +361,7 @@ void loop() {
     </div>
   </section>
 
-  <section id="contact" class="alt">
+  <section class="alt" id="contact">
     <div class="wrap">
       <p class="eyebrow">Contact</p>
       <h2>Talk to us</h2>
