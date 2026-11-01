@@ -1,0 +1,36 @@
+name: Bug report
+description: Something does not work as it should in DRS, drQEmu, the Olympus PLC or Kantar.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: product
+    attributes:
+      label: Which program?
+      options: [DRS Designer, DRS Runner, drQEmu, drFlasher, Olympus PLC, Kantar, This website]
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version (from the download name or the About box)
+  - type: dropdown
+    id: system
+    attributes:
+      label: Your system
+      options: [Windows x64, Windows ARM64, Linux x64, Linux ARM64, Android, Other]
+  - type: input
+    id: board
+    attributes:
+      label: Board or device (ESP32, Arduino, PIC, Raspberry Pi, Radxa, LattePanda, ...)
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to repeat it
+      description: A picture or the project file helps a lot. Drag it into this box.
