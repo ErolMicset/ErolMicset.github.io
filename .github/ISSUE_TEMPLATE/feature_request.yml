@@ -1,0 +1,18 @@
+name: Idea or missing feature
+description: A component, protocol, board or example you miss.
+title: "[Idea] "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: product
+    attributes:
+      label: Which program?
+      options: [DRS, drQEmu, Olympus PLC, Kantar, This website]
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like, and what would you do with it?
+    validations:
+      required: true
