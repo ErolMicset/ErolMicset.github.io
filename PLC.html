@@ -182,7 +182,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
         <figcaption><b>Inside the housing</b><span>The cover open: one circuit board with the display, the keys, a memory card socket and the wireless module, above the terminal rows.</span></figcaption>
       </figure>
       <figure class="card shotfig reveal">
-        <div class="frame"><img src="images/PLC/OlympusReal-web.png" alt="A photograph of the real terminal row: T4 io15, T3 RS232 with Tx, Rx and GND, T2 I2C with 3.3 V, SDA and SCL, and T1 power with GND and V1." width="1000" height="1201" loading="lazy"></div>
+        <div class="frame"><img src="images/PLC/OlympusReal-web.png" data-full="images/PLC/OlympusReal1.1.png" alt="A photograph of the real terminal row: T4 io15, T3 RS232 with Tx, Rx and GND, T2 I2C with 3.3 V, SDA and SCL, and T1 power with GND and V1." width="1000" height="1201" loading="lazy"></div>
         <figcaption><b>The real terminals</b><span>A photograph of the finished unit: <span translate="no" class="notranslate">T4</span> <span translate="no" class="notranslate">io15</span>, <span translate="no" class="notranslate">T3</span> <span translate="no" class="notranslate">RS232</span> (Tx, Rx, GND), <span translate="no" class="notranslate">T2</span> <span translate="no" class="notranslate">I2C</span> (3.3 V, SDA, SCL) and <span translate="no" class="notranslate">T1</span> power (GND, V1).</span></figcaption>
       </figure>
       <figure class="card shotfig reveal">
@@ -249,7 +249,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
     dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.className === 'zb' || e.target.className === 'view') dlg.close(); });
     dlg.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') show(at - 1); else if (e.key === 'ArrowRight') show(at + 1); });
   }
-  function show(i) { at = (i + imgs.length) % imgs.length; var im = imgs[at], f = im.closest('figure'); zi.src = im.src; zi.alt = im.alt; zc.innerHTML = f.querySelector('figcaption').innerHTML; }
+  function show(i) { at = (i + imgs.length) % imgs.length; var im = imgs[at], f = im.closest('figure'); zi.src = im.getAttribute('data-full') || im.src; zi.alt = im.alt; zc.innerHTML = f.querySelector('figcaption').innerHTML; }
   imgs.forEach(function (im, i) { im.parentElement.addEventListener('click', function () { if (!dlg) build(); show(i); dlg.showModal(); }); });
   var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
   if (reduce || !('IntersectionObserver' in window)) items.forEach(function (e) { e.classList.add('in'); });
