@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://erolmicset.github.io/sitemap.xml
