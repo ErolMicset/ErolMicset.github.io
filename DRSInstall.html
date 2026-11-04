@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installation · Digital Rebel Studio</title>
+<link rel="canonical" href="https://erolmicset.github.io/DRSInstall.html">
+<meta name="description" content="How to install DRS (Digital Rebel Studio): extract the zip and start the program for Windows, Linux or Android. English, Turkish, Bulgarian, German and Spanish.">
+<link rel="icon" type="image/png" href="images/drs-logo.png">
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.55 "Segoe UI", system-ui, sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; }
+  h1 { font-size: 1.7rem; margin-bottom: .2rem; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; border-bottom: 1px solid #8884; padding-bottom: .25rem; }
+  h3 { font-size: 1rem; margin-bottom: .2rem; }
+  table { border-collapse: collapse; width: 100%; margin: .6rem 0; }
+  th, td { text-align: left; padding: .35rem .6rem; border: 1px solid #8885; vertical-align: top; }
+  th { background: #8882; }
+  code, pre { font-family: Consolas, "DejaVu Sans Mono", monospace; background: #8882; border-radius: 4px; }
+  code { padding: 0 .3rem; }
+  pre { padding: .6rem .8rem; overflow-x: auto; }
+  .note { border-left: 4px solid #d08a00; background: #d08a0018; padding: .4rem .8rem; margin: .8rem 0; }
+  .langbar { display: none; gap: .4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .langbar button { font: inherit; padding: .25rem .8rem; border: 1px solid #8886; border-radius: 4px; background: #8881; color: inherit; cursor: pointer; }
+  .langbar button.on { background: #2a6fdb; color: #fff; border-color: #2a6fdb; }
+  body.js .langbar { display: flex; }
+  body.js .lang { display: none; }
+  body.js .lang.on { display: block; }
+  .lang + .lang { margin-top: 3rem; border-top: 2px solid #8884; padding-top: 1rem; }
+  body.js .lang + .lang { margin-top: 0; border-top: 0; padding-top: 0; }
+</style>
+</head>
+<body>
+
+<p><a href="DRSDownload.html">&larr; Download</a></p>
+<div class="langbar" id="langbar">
+  <button data-lang="en">English</button>
+  <button data-lang="tr">Türkçe</button>
+  <button data-lang="bg">Български</button>
+  <button data-lang="de">Deutsch</button>
+  <button data-lang="es">Español</button>
+</div>
+
+<!-- ================= ENGLISH ================= -->
+<div class="lang" id="en" lang="en">
+<h1>DigitalRebel Studio - Installation</h1>
+<p>There is no installer. The zip file contains <b>everything</b>: the programs, the help pages, the examples and the settings.
+.NET does <b>not</b> need to be installed.</p>
+
+<h2>1. Extract the zip file</h2>
+<p>Extract the zip file (Windows: right-click &gt; Extract All; Linux: archive manager or <code>unzip</code>). That is the whole installation. Do not take single files out of the extracted folder:</p>
+<table>
+  <tr><th>Item</th><th>What it is</th></tr>
+  <tr><td><code>drDesign-...</code></td><td>The Designer, where you build projects.</td></tr>
+  <tr><td><code>drRunner-...</code></td><td>The Runner, which only runs finished projects.</td></tr>
+  <tr><td><code>Help\</code></td><td>The help pages and this page. The programs look for them in the <code>Help</code> folder next to the program file.</td></tr>
+  <tr><td><code>Examples\</code></td><td>Example projects.</td></tr>
+  <tr><td><code>config.json</code></td><td>Settings.</td></tr>
+  <tr><td><code>LICENSE.txt</code>, <code>THIRD-PARTY-NOTICES.txt</code></td><td>License information.</td></tr>
+</table>
+
+<h2>2. Start the program for your system</h2>
+<p>The file name ends with a code for the operating system and processor:</p>
+<table>
+  <tr><th>Code</th><th>System</th><th>Files</th></tr>
+  <tr><td><code>X64</code></td><td>Windows, Intel/AMD 64-bit</td><td><code>drDesign-X64.exe</code>, <code>drRunner-X64.exe</code></td></tr>
+  <tr><td><code>A64</code></td><td>Windows, ARM 64-bit</td><td><code>drDesign-A64.exe</code>, <code>drRunner-A64.exe</code></td></tr>
+  <tr><td><code>LX64</code></td><td>Linux, Intel/AMD 64-bit</td><td><code>drDesign-LX64</code>, <code>drRunner-LX64</code></td></tr>
+  <tr><td><code>LA64</code></td><td>Linux, ARM 64-bit (for example Raspberry Pi)</td><td><code>drDesign-LA64</code>, <code>drRunner-LA64</code></td></tr>
+  <tr><td>-</td><td>Android</td><td><code>drRunner-A64.apk</code></td></tr>
+</table>
+<p>If you are not sure on Windows, open Settings &gt; System &gt; About and read "System type".</p>
+
+<h3>Windows</h3>
+<p>Double-click the <code>.exe</code> file for your system. Nothing else is needed.</p>
+
+<h3>Linux</h3>
+<p>Give the file run permission once, then start it from a terminal in the extracted folder:</p>
+<pre>chmod 755 drDesign-LX64
+./drDesign-LX64</pre>
+<p>The permission can also be set in the file manager: right-click the file &gt; Properties &gt; Permissions &gt; "Allow executing file as program".</p>
+<div class="note">
+  <b>Double-click:</b> many Linux file managers do not start a plain program file when you double-click it, even with run permission
+  (you may get "Can't open the file ... application/x-executable"). The program itself is fine. Use the terminal command above,
+  or right-click the file and choose <b>Run as a Program</b> (the wording differs between file managers).
+</div>
+<p>A graphical desktop session (X11 or Wayland) is required. On very small or minimal systems, if the program does not start because a library is missing, install:</p>
+<pre>sudo apt install libx11-6 libice6 libsm6 fontconfig libfreetype6</pre>
+
+<h3>Android (drRunner)</h3>
+<p>Transfer <code>drRunner-A64.apk</code> to the device (USB cable, cloud drive or download) and open it there. If Android asks, allow installing apps from this source
+(Settings &gt; Apps &gt; Special access &gt; Install unknown apps; the wording differs between devices). Then tap <b>Install</b>.</p>
+
+<h2>3. Project files</h2>
+<p><b>Designer:</b> projects (<code>.drs</code> files) are opened and saved with the Open/Save dialogs. You can keep them anywhere.</p>
+<p><b>Runner:</b> put the <code>.drs</code> files <b>in the same folder as the Runner program</b>. On startup the Runner decides what to load in this order:</p>
+<ol>
+  <li>A file named <code>autorun.drs</code> next to the program - it is loaded directly.</li>
+  <li>Otherwise the file named in <code>config.json</code> under <code>"Project"</code>.</li>
+  <li>Otherwise all <code>.drs</code> files are listed, and after 20 seconds the first one is opened.</li>
+</ol>
+
+<h2>4. Updating and removing</h2>
+<ul>
+  <li><b>Update:</b> extract the new zip file into the same folder and replace the files. If you changed settings, keep a copy of your <code>config.json</code> first, because the zip contains its own.</li>
+  <li><b>Remove:</b> delete the extracted folder.</li>
+</ul>
+</div>
+
+<!-- ================= TÜRKÇE ================= -->
+<div class="lang" id="tr" lang="tr">
+<h1>DigitalRebel Studio - Kurulum</h1>
+<p>Kurulum programı yoktur. Zip dosyasının içinde <b>her şey</b> var: programlar, yardım sayfaları, örnekler ve ayarlar.
+.NET kurulu olması <b>gerekmez</b>.</p>
+
+<h2>1. Zip dosyasını çıkarın</h2>
+<p>Zip dosyasını çıkarın (Windows: sağ tık &gt; Tümünü ayıkla; Linux: arşiv yöneticisi ya da <code>unzip</code>). Kurulum bundan ibarettir. Çıkan klasörden tek tek dosya almayın:</p>
+<table>
+  <tr><th>Öğe</th><th>Ne olduğu</th></tr>
+  <tr><td><code>drDesign-...</code></td><td>Tasarımcı, projeleri onunla yaparsınız.</td></tr>
+  <tr><td><code>drRunner-...</code></td><td>Runner, yalnızca bitmiş projeleri çalıştırır.</td></tr>
+  <tr><td><code>Help\</code></td><td>Yardım sayfaları ve bu sayfa. Programlar bunları program dosyasının yanındaki <code>Help</code> klasöründe arar.</td></tr>
+  <tr><td><code>Examples\</code></td><td>Örnek projeler.</td></tr>
+  <tr><td><code>config.json</code></td><td>Ayarlar.</td></tr>
+  <tr><td><code>LICENSE.txt</code>, <code>THIRD-PARTY-NOTICES.txt</code></td><td>Lisans bilgileri.</td></tr>
+</table>
+
+<h2>2. Sisteminize uygun programı başlatın</h2>
+<p>Dosya adının sonundaki kod işletim sistemini ve işlemciyi gösterir:</p>
+<table>
+  <tr><th>Kod</th><th>Sistem</th><th>Dosyalar</th></tr>
+  <tr><td><code>X64</code></td><td>Windows, Intel/AMD 64 bit</td><td><code>drDesign-X64.exe</code>, <code>drRunner-X64.exe</code></td></tr>
+  <tr><td><code>A64</code></td><td>Windows, ARM 64 bit</td><td><code>drDesign-A64.exe</code>, <code>drRunner-A64.exe</code></td></tr>
+  <tr><td><code>LX64</code></td><td>Linux, Intel/AMD 64 bit</td><td><code>drDesign-LX64</code>, <code>drRunner-LX64</code></td></tr>
+  <tr><td><code>LA64</code></td><td>Linux, ARM 64 bit (örneğin Raspberry Pi)</td><td><code>drDesign-LA64</code>, <code>drRunner-LA64</code></td></tr>
+  <tr><td>-</td><td>Android</td><td><code>drRunner-A64.apk</code></td></tr>
+</table>
+<p>Windows'ta emin değilseniz Ayarlar &gt; Sistem &gt; Hakkında bölümündeki "Sistem türü" satırına bakın.</p>
+
+<h3>Windows</h3>
+<p>Sisteminize uyan <code>.exe</code> dosyasına çift tıklayın. Başka bir şey gerekmez.</p>
+
+<h3>Linux</h3>
+<p>Dosyaya bir kez çalıştırma izni verin, sonra çıkardığınız klasörde bir terminalden başlatın:</p>
+<pre>chmod 755 drDesign-LX64
+./drDesign-LX64</pre>
+<p>İzin dosya yöneticisinden de verilebilir: dosyaya sağ tık &gt; Özellikler &gt; İzinler &gt; "Dosyayı program olarak çalıştırmaya izin ver" (İngilizce: "Allow executing file as program").</p>
+<div class="note">
+  <b>Çift tıklama:</b> birçok Linux dosya yöneticisi, çalıştırma izni olsa bile düz bir program dosyasına çift tıklanınca onu başlatmaz
+  ("Dosya açılamıyor ... application/x-executable" gibi bir ileti çıkabilir). Program bozuk değildir. Yukarıdaki terminal komutunu kullanın
+  ya da dosyaya sağ tıklayıp <b>Run as a Program</b> (Program olarak çalıştır) seçeneğini seçin (adı dosya yöneticisine göre değişir).
+</div>
+<p>Grafik masaüstü oturumu (X11 veya Wayland) gerekir. Çok küçük ya da asgari sistemlerde bir kitaplık eksik olduğu için program başlamazsa şunu kurun:</p>
+<pre>sudo apt install libx11-6 libice6 libsm6 fontconfig libfreetype6</pre>
+
+<h3>Android (drRunner)</h3>
+<p><code>drRunner-A64.apk</code> dosyasını cihaza aktarın (USB kablo, bulut sürücü ya da indirme) ve orada açın. Android sorarsa bu kaynaktan uygulama kurulmasına izin verin
+(Ayarlar &gt; Uygulamalar &gt; Özel erişim &gt; Bilinmeyen uygulamaları yükle; adı cihaza göre değişir). Sonra <b>Yükle</b>'ye dokunun.</p>
+
+<h2>3. Proje dosyaları</h2>
+<p><b>Tasarımcı:</b> projeler (<code>.drs</code> dosyaları) Aç/Kaydet diyaloglarıyla açılır ve kaydedilir. İstediğiniz yerde tutabilirsiniz.</p>
+<p><b>Runner:</b> <code>.drs</code> dosyalarını <b>Runner programıyla aynı klasöre</b> koyun. Başlangıçta Runner neyi yükleyeceğine şu sırayla karar verir:</p>
+<ol>
+  <li>Program dosyasının yanındaki <code>autorun.drs</code> adlı dosya - doğrudan yüklenir.</li>
+  <li>Yoksa <code>config.json</code> içinde <code>"Project"</code> altında adı yazılı dosya.</li>
+  <li>O da yoksa tüm <code>.drs</code> dosyaları listelenir ve 20 saniye sonra ilki açılır.</li>
+</ol>
+
+<h2>4. Güncelleme ve kaldırma</h2>
+<ul>
+  <li><b>Güncelleme:</b> yeni zip dosyasını aynı klasöre çıkarıp dosyaları değiştirin. Ayarları değiştirdiyseniz önce <code>config.json</code>'un bir kopyasını alın, çünkü zip kendi <code>config.json</code>'unu getirir.</li>
+  <li><b>Kaldırma:</b> çıkardığınız klasörü silin.</li>
+</ul>
+</div>
+
+<!-- ================= БЪЛГАРСКИ ================= -->
+<div class="lang" id="bg" lang="bg">
+<h1>DigitalRebel Studio - Инсталиране</h1>
+<p>Няма инсталатор. Zip файлът съдържа <b>всичко</b>: програмите, помощните страници, примерите и настройките.
+Не е нужно да е инсталиран .NET.</p>
+
+<h2>1. Разархивирайте zip файла</h2>
+<p>Разархивирайте zip файла (Windows: десен бутон &gt; Extract All; Linux: архиватор или <code>unzip</code>). Това е цялото инсталиране. Не изваждайте отделни файлове от получената папка:</p>
+<table>
+  <tr><th>Елемент</th><th>Какво е</th></tr>
+  <tr><td><code>drDesign-...</code></td><td>Дизайнерът, в който създавате проектите.</td></tr>
+  <tr><td><code>drRunner-...</code></td><td>Runner, който само изпълнява готови проекти.</td></tr>
+  <tr><td><code>Help\</code></td><td>Помощните страници и тази страница. Програмите ги търсят в папката <code>Help</code> до програмния файл.</td></tr>
+  <tr><td><code>Examples\</code></td><td>Примерни проекти.</td></tr>
+  <tr><td><code>config.json</code></td><td>Настройки.</td></tr>
+  <tr><td><code>LICENSE.txt</code>, <code>THIRD-PARTY-NOTICES.txt</code></td><td>Лицензна информация.</td></tr>
+</table>
+
+<h2>2. Стартирайте програмата за вашата система</h2>
+<p>Краят на името на файла е код за операционната система и процесора:</p>
+<table>
+  <tr><th>Код</th><th>Система</th><th>Файлове</th></tr>
+  <tr><td><code>X64</code></td><td>Windows, Intel/AMD 64-bit</td><td><code>drDesign-X64.exe</code>, <code>drRunner-X64.exe</code></td></tr>
+  <tr><td><code>A64</code></td><td>Windows, ARM 64-bit</td><td><code>drDesign-A64.exe</code>, <code>drRunner-A64.exe</code></td></tr>
+  <tr><td><code>LX64</code></td><td>Linux, Intel/AMD 64-bit</td><td><code>drDesign-LX64</code>, <code>drRunner-LX64</code></td></tr>
+  <tr><td><code>LA64</code></td><td>Linux, ARM 64-bit (например Raspberry Pi)</td><td><code>drDesign-LA64</code>, <code>drRunner-LA64</code></td></tr>
+  <tr><td>-</td><td>Android</td><td><code>drRunner-A64.apk</code></td></tr>
+</table>
+<p>Ако не сте сигурни в Windows, отворете Settings &gt; System &gt; About и прочетете "System type".</p>
+
+<h3>Windows</h3>
+<p>Щракнете двукратно върху <code>.exe</code> файла за вашата система. Нищо друго не е нужно.</p>
+
+<h3>Linux</h3>
+<p>Дайте на файла право за изпълнение веднъж, после го стартирайте от терминал в разархивираната папка:</p>
+<pre>chmod 755 drDesign-LX64
+./drDesign-LX64</pre>
+<p>Правото може да се зададе и във файловия мениджър: десен бутон върху файла &gt; Properties &gt; Permissions &gt; "Allow executing file as program" (Разреши изпълнението на файла като програма).</p>
+<div class="note">
+  <b>Двукратно щракване:</b> много файлови мениджъри в Linux не стартират обикновен програмен файл при двукратно щракване, дори да има право за изпълнение
+  (може да се появи "Can't open the file ... application/x-executable"). Самата програма е наред. Използвайте командата в терминала по-горе
+  или щракнете с десния бутон върху файла и изберете <b>Run as a Program</b> (Стартирай като програма; името се различава между файловите мениджъри).
+</div>
+<p>Нужна е графична работна среда (X11 или Wayland). На много малки или минимални системи, ако програмата не стартира, защото липсва библиотека, инсталирайте:</p>
+<pre>sudo apt install libx11-6 libice6 libsm6 fontconfig libfreetype6</pre>
+
+<h3>Android (drRunner)</h3>
+<p>Прехвърлете <code>drRunner-A64.apk</code> на устройството (USB кабел, облачно хранилище или изтегляне) и го отворете там. Ако Android попита, разрешете инсталиране на приложения от този източник
+(Settings &gt; Apps &gt; Special access &gt; Install unknown apps; наименованията се различават между устройствата). След това докоснете <b>Install</b> (Инсталирай).</p>
+
+<h2>3. Файлове на проектите</h2>
+<p><b>Дизайнер:</b> проектите (<code>.drs</code> файлове) се отварят и записват с диалозите Open/Save. Можете да ги държите където искате.</p>
+<p><b>Runner:</b> сложете <code>.drs</code> файловете <b>в същата папка като програмата Runner</b>. При стартиране Runner решава какво да зареди в този ред:</p>
+<ol>
+  <li>Файл с име <code>autorun.drs</code> до програмата - зарежда се директно.</li>
+  <li>Иначе файлът, посочен в <code>config.json</code> под <code>"Project"</code>.</li>
+  <li>Иначе се показват всички <code>.drs</code> файлове и след 20 секунди се отваря първият.</li>
+</ol>
+
+<h2>4. Обновяване и премахване</h2>
+<ul>
+  <li><b>Обновяване:</b> разархивирайте новия zip файл в същата папка и заменете файловете. Ако сте променяли настройки, първо запазете копие на <code>config.json</code>, защото zip файлът съдържа свой.</li>
+  <li><b>Премахване:</b> изтрийте разархивираната папка.</li>
+</ul>
+</div>
+
+<!-- ================= DEUTSCH ================= -->
+<div class="lang" id="de" lang="de">
+<h1>DigitalRebel Studio - Installation</h1>
+<p>Es gibt kein Installationsprogramm. Die ZIP-Datei enthält <b>alles</b>: die Programme, die Hilfeseiten, die Beispiele und die Einstellungen.
+.NET muss <b>nicht</b> installiert sein.</p>
+
+<h2>1. ZIP-Datei entpacken</h2>
+<p>Entpacken Sie die ZIP-Datei (Windows: Rechtsklick &gt; Alle extrahieren; Linux: Archivmanager oder <code>unzip</code>). Das ist die gesamte Installation. Nehmen Sie keine einzelnen Dateien aus dem entpackten Ordner heraus:</p>
+<table>
+  <tr><th>Element</th><th>Was es ist</th></tr>
+  <tr><td><code>drDesign-...</code></td><td>Der Designer, in dem Sie Projekte erstellen.</td></tr>
+  <tr><td><code>drRunner-...</code></td><td>Der Runner, der nur fertige Projekte ausführt.</td></tr>
+  <tr><td><code>Help\</code></td><td>Die Hilfeseiten und diese Seite. Die Programme suchen sie im Ordner <code>Help</code> neben der Programmdatei.</td></tr>
+  <tr><td><code>Examples\</code></td><td>Beispielprojekte.</td></tr>
+  <tr><td><code>config.json</code></td><td>Einstellungen.</td></tr>
+  <tr><td><code>LICENSE.txt</code>, <code>THIRD-PARTY-NOTICES.txt</code></td><td>Lizenzinformationen.</td></tr>
+</table>
+
+<h2>2. Programm für Ihr System starten</h2>
+<p>Das Ende des Dateinamens ist ein Kürzel für Betriebssystem und Prozessor:</p>
+<table>
+  <tr><th>Kürzel</th><th>System</th><th>Dateien</th></tr>
+  <tr><td><code>X64</code></td><td>Windows, Intel/AMD 64-Bit</td><td><code>drDesign-X64.exe</code>, <code>drRunner-X64.exe</code></td></tr>
+  <tr><td><code>A64</code></td><td>Windows, ARM 64-Bit</td><td><code>drDesign-A64.exe</code>, <code>drRunner-A64.exe</code></td></tr>
+  <tr><td><code>LX64</code></td><td>Linux, Intel/AMD 64-Bit</td><td><code>drDesign-LX64</code>, <code>drRunner-LX64</code></td></tr>
+  <tr><td><code>LA64</code></td><td>Linux, ARM 64-Bit (zum Beispiel Raspberry Pi)</td><td><code>drDesign-LA64</code>, <code>drRunner-LA64</code></td></tr>
+  <tr><td>-</td><td>Android</td><td><code>drRunner-A64.apk</code></td></tr>
+</table>
+<p>Wenn Sie unter Windows unsicher sind, öffnen Sie Einstellungen &gt; System &gt; Info und lesen Sie "Systemtyp".</p>
+
+<h3>Windows</h3>
+<p>Doppelklicken Sie auf die <code>.exe</code>-Datei für Ihr System. Mehr ist nicht nötig.</p>
+
+<h3>Linux</h3>
+<p>Geben Sie der Datei einmalig das Ausführungsrecht und starten Sie sie dann in einem Terminal im entpackten Ordner:</p>
+<pre>chmod 755 drDesign-LX64
+./drDesign-LX64</pre>
+<p>Das Recht lässt sich auch im Dateimanager setzen: Rechtsklick auf die Datei &gt; Eigenschaften &gt; Zugriffsrechte &gt; "Datei als Programm ausführen" (englisch: "Allow executing file as program").</p>
+<div class="note">
+  <b>Doppelklick:</b> Viele Linux-Dateimanager starten eine einfache Programmdatei per Doppelklick nicht, auch wenn sie das Ausführungsrecht hat
+  (es kann "Datei kann nicht geöffnet werden ... application/x-executable" erscheinen). Das Programm selbst ist in Ordnung. Verwenden Sie den obigen Terminalbefehl
+  oder klicken Sie die Datei rechts an und wählen Sie <b>Run as a Program</b> (Als Programm ausführen; die Bezeichnung unterscheidet sich je nach Dateimanager).
+</div>
+<p>Erforderlich ist eine grafische Desktop-Sitzung (X11 oder Wayland). Auf sehr kleinen oder minimalen Systemen installieren Sie, falls das Programm wegen einer fehlenden Bibliothek nicht startet:</p>
+<pre>sudo apt install libx11-6 libice6 libsm6 fontconfig libfreetype6</pre>
+
+<h3>Android (drRunner)</h3>
+<p>Übertragen Sie <code>drRunner-A64.apk</code> auf das Gerät (USB-Kabel, Cloud-Speicher oder Download) und öffnen Sie sie dort. Wenn Android fragt, erlauben Sie die Installation von Apps aus dieser Quelle
+(Einstellungen &gt; Apps &gt; Spezieller App-Zugriff &gt; Unbekannte Apps installieren; die Bezeichnungen unterscheiden sich je nach Gerät). Tippen Sie dann auf <b>Installieren</b>.</p>
+
+<h2>3. Projektdateien</h2>
+<p><b>Designer:</b> Projekte (<code>.drs</code>-Dateien) werden mit den Dialogen Öffnen/Speichern geöffnet und gespeichert. Sie können sie überall ablegen.</p>
+<p><b>Runner:</b> Legen Sie die <code>.drs</code>-Dateien <b>in denselben Ordner wie das Runner-Programm</b>. Beim Start entscheidet der Runner in dieser Reihenfolge, was geladen wird:</p>
+<ol>
+  <li>Eine Datei namens <code>autorun.drs</code> neben dem Programm - sie wird direkt geladen.</li>
+  <li>Sonst die in <code>config.json</code> unter <code>"Project"</code> genannte Datei.</li>
+  <li>Sonst werden alle <code>.drs</code>-Dateien aufgelistet, und nach 20 Sekunden wird die erste geöffnet.</li>
+</ol>
+
+<h2>4. Aktualisieren und Entfernen</h2>
+<ul>
+  <li><b>Aktualisieren:</b> Entpacken Sie die neue ZIP-Datei in denselben Ordner und ersetzen Sie die Dateien. Wenn Sie Einstellungen geändert haben, sichern Sie vorher <code>config.json</code>, denn die ZIP-Datei bringt eine eigene mit.</li>
+  <li><b>Entfernen:</b> Löschen Sie den entpackten Ordner.</li>
+</ul>
+</div>
+
+<!-- ================= ESPAÑOL ================= -->
+<div class="lang" id="es" lang="es">
+<h1>DigitalRebel Studio - Instalación</h1>
+<p>No hay instalador. El archivo zip contiene <b>todo</b>: los programas, las páginas de ayuda, los ejemplos y los ajustes.
+<b>No</b> hace falta tener .NET instalado.</p>
+
+<h2>1. Extraiga el archivo zip</h2>
+<p>Extraiga el archivo zip (Windows: clic derecho &gt; Extraer todo; Linux: gestor de archivos comprimidos o <code>unzip</code>). Esa es toda la instalación. No saque archivos sueltos de la carpeta extraída:</p>
+<table>
+  <tr><th>Elemento</th><th>Qué es</th></tr>
+  <tr><td><code>drDesign-...</code></td><td>El Diseñador, donde se crean los proyectos.</td></tr>
+  <tr><td><code>drRunner-...</code></td><td>El Runner, que solo ejecuta proyectos terminados.</td></tr>
+  <tr><td><code>Help\</code></td><td>Las páginas de ayuda y esta página. Los programas las buscan en la carpeta <code>Help</code> junto al archivo del programa.</td></tr>
+  <tr><td><code>Examples\</code></td><td>Proyectos de ejemplo.</td></tr>
+  <tr><td><code>config.json</code></td><td>Ajustes.</td></tr>
+  <tr><td><code>LICENSE.txt</code>, <code>THIRD-PARTY-NOTICES.txt</code></td><td>Información de licencia.</td></tr>
+</table>
+
+<h2>2. Inicie el programa de su sistema</h2>
+<p>El final del nombre del archivo es un código del sistema operativo y del procesador:</p>
+<table>
+  <tr><th>Código</th><th>Sistema</th><th>Archivos</th></tr>
+  <tr><td><code>X64</code></td><td>Windows, Intel/AMD de 64 bits</td><td><code>drDesign-X64.exe</code>, <code>drRunner-X64.exe</code></td></tr>
+  <tr><td><code>A64</code></td><td>Windows, ARM de 64 bits</td><td><code>drDesign-A64.exe</code>, <code>drRunner-A64.exe</code></td></tr>
+  <tr><td><code>LX64</code></td><td>Linux, Intel/AMD de 64 bits</td><td><code>drDesign-LX64</code>, <code>drRunner-LX64</code></td></tr>
+  <tr><td><code>LA64</code></td><td>Linux, ARM de 64 bits (por ejemplo Raspberry Pi)</td><td><code>drDesign-LA64</code>, <code>drRunner-LA64</code></td></tr>
+  <tr><td>-</td><td>Android</td><td><code>drRunner-A64.apk</code></td></tr>
+</table>
+<p>Si no está seguro en Windows, abra Configuración &gt; Sistema &gt; Acerca de y lea "Tipo de sistema".</p>
+
+<h3>Windows</h3>
+<p>Haga doble clic en el archivo <code>.exe</code> de su sistema. No hace falta nada más.</p>
+
+<h3>Linux</h3>
+<p>Dele al archivo permiso de ejecución una sola vez y luego inícielo desde un terminal en la carpeta extraída:</p>
+<pre>chmod 755 drDesign-LX64
+./drDesign-LX64</pre>
+<p>El permiso también se puede dar en el gestor de archivos: clic derecho en el archivo &gt; Propiedades &gt; Permisos &gt; "Permitir ejecutar el archivo como un programa" (en inglés: "Allow executing file as program").</p>
+<div class="note">
+  <b>Doble clic:</b> muchos gestores de archivos de Linux no inician un archivo de programa simple con doble clic, aunque tenga permiso de ejecución
+  (puede aparecer "No se puede abrir el archivo ... application/x-executable"). El programa en sí está bien. Use el comando de terminal anterior
+  o haga clic derecho en el archivo y elija <b>Run as a Program</b> (Ejecutar como programa; el nombre varía según el gestor de archivos).
+</div>
+<p>Se necesita una sesión de escritorio gráfica (X11 o Wayland). En sistemas muy pequeños o mínimos, si el programa no inicia porque falta una biblioteca, instale:</p>
+<pre>sudo apt install libx11-6 libice6 libsm6 fontconfig libfreetype6</pre>
+
+<h3>Android (drRunner)</h3>
+<p>Transfiera <code>drRunner-A64.apk</code> al dispositivo (cable USB, unidad en la nube o descarga) y ábralo allí. Si Android lo pide, permita instalar aplicaciones desde esta fuente
+(Ajustes &gt; Aplicaciones &gt; Acceso especial &gt; Instalar apps desconocidas; los nombres varían según el dispositivo). Después toque <b>Instalar</b>.</p>
+
+<h2>3. Archivos de proyecto</h2>
+<p><b>Diseñador:</b> los proyectos (archivos <code>.drs</code>) se abren y se guardan con los diálogos Abrir/Guardar. Puede guardarlos donde quiera.</p>
+<p><b>Runner:</b> coloque los archivos <code>.drs</code> <b>en la misma carpeta que el programa Runner</b>. Al iniciar, el Runner decide qué cargar en este orden:</p>
+<ol>
+  <li>Un archivo llamado <code>autorun.drs</code> junto al programa - se carga directamente.</li>
+  <li>Si no, el archivo indicado en <code>config.json</code> bajo <code>"Project"</code>.</li>
+  <li>Si no, se listan todos los archivos <code>.drs</code> y, tras 20 segundos, se abre el primero.</li>
+</ol>
+
+<h2>4. Actualizar y quitar</h2>
+<ul>
+  <li><b>Actualizar:</b> extraiga el nuevo archivo zip en la misma carpeta y sustituya los archivos. Si cambió ajustes, guarde antes una copia de <code>config.json</code>, porque el zip trae el suyo.</li>
+  <li><b>Quitar:</b> elimine la carpeta extraída.</li>
+</ul>
+</div>
+
+<script>
+(function () {
+  var langs = ['en', 'tr', 'bg', 'de', 'es'];
+  var body = document.body;
+  body.className += ' js';
+  var pick = (location.hash || '').replace('#', '');
+  if (langs.indexOf(pick) < 0) {
+    var nav = ((navigator.language || 'en') + '').slice(0, 2).toLowerCase();
+    pick = langs.indexOf(nav) >= 0 ? nav : 'en';
+  }
+  function show(code) {
+    for (var i = 0; i < langs.length; i++) {
+      document.getElementById(langs[i]).className = 'lang' + (langs[i] === code ? ' on' : '');
+    }
+    var buttons = document.getElementById('langbar').getElementsByTagName('button');
+    for (var j = 0; j < buttons.length; j++) {
+      buttons[j].className = buttons[j].getAttribute('data-lang') === code ? 'on' : '';
+    }
+    document.documentElement.lang = code;
+  }
+  var bar = document.getElementById('langbar').getElementsByTagName('button');
+  for (var k = 0; k < bar.length; k++) {
+    bar[k].onclick = function () { show(this.getAttribute('data-lang')); };
+  }
+  show(pick);
+})();
+</script>
+</body>
+</html>
