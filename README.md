@@ -16,6 +16,7 @@ SCADA and IoT panels.
 | `Embedded.html` | the page for embedded developers: boards, LZ protocol, gateway, on-board pins, downloadable example in `examples/` |
 | `DRSGallery.html` | the screenshot gallery, with topic filters and a full-size view |
 | `images/drs-logo.png`, `images/drs-pcb.png` | the logo and the hero picture, shared by every page |
+| `images/drs-favicon.png` | the tab icon (the Designer icon, 48 px) of every page |
 | `images/drs/*.png` | screenshots of the DRS studio (lower-case, hyphenated names) |
 | `images/drqemu/*.png` | screenshots of drQEmu |
 | `DRSDownload.html`, `drQEmu.html` | the two download pages; each has its own zip |
