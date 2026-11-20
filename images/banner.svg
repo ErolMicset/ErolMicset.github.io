@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-label="Digital Rebel Studio: DRS and drQEmu">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1020"/>
+      <stop offset="1" stop-color="#14224a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0" r="0.8">
+      <stop offset="0" stop-color="#e8a33d" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#e8a33d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0b357"/>
+      <stop offset="1" stop-color="#d98613"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#5b8cff" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="420" fill="url(#bg)"/>
+  <rect width="1280" height="420" fill="url(#grid)"/>
+  <rect width="1280" height="420" fill="url(#glow)"/>
+
+  <!-- chip motif on the right -->
+  <g transform="translate(930 70)" fill="none" stroke="#5b8cff" stroke-opacity="0.55" stroke-width="3">
+    <rect x="40" y="40" width="200" height="200" rx="16" fill="#0e1730" stroke-opacity="0.9"/>
+    <rect x="80" y="80" width="120" height="120" rx="10" stroke="#e8a33d" stroke-opacity="0.9"/>
+    <g stroke-linecap="round">
+      <path d="M80 40V8M120 40V8M160 40V8M200 40V8"/>
+      <path d="M80 240V272M120 240V272M160 240V272M200 240V272"/>
+      <path d="M40 80H8M40 120H8M40 160H8M40 200H8"/>
+      <path d="M240 80H272M240 120H272M240 160H272M240 200H272"/>
+    </g>
+    <text x="140" y="152" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="30" font-weight="700" fill="#e8a33d" stroke="none">DRS</text>
+    <text x="140" y="178" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="14" fill="#9aa5bd" stroke="none">ESP32</text>
+  </g>
+
+  <text x="80" y="150" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="68" font-weight="800" fill="#e9edf6">Digital Rebel Studio</text>
+  <rect x="82" y="172" width="120" height="6" rx="3" fill="url(#amber)"/>
+  <text x="80" y="228" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="30" fill="#9aa5bd">Free HMI and SCADA for embedded developers,</text>
+  <text x="80" y="268" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="30" fill="#9aa5bd">and an emulator for the ESP32 family.</text>
+
+  <g font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="22" font-weight="700">
+    <rect x="80" y="316" width="170" height="52" rx="26" fill="url(#amber)"/>
+    <text x="165" y="350" text-anchor="middle" fill="#1d1408">DRS studio</text>
+    <rect x="266" y="316" width="170" height="52" rx="26" fill="#121b33" stroke="#5b8cff" stroke-opacity="0.7" stroke-width="2"/>
+    <text x="351" y="350" text-anchor="middle" fill="#e9edf6">drQEmu</text>
+    <text x="466" y="350" fill="#6e7891" font-weight="500" font-size="20">erolmicset.github.io</text>
+  </g>
+</svg>
