@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>drQEmu · ESP32 family emulator · Digital Rebel Studio</title>
 <link rel="canonical" href="https://erolmicset.github.io/drQEmu.html">
-<meta name="description" content="drQEmu runs a compiled program of eight ESP32 chips (ESP32, S2, S3, C3, C5, C6, H2, P4) on your PC, with pins, buses and 78 chip models you can see and drive from a browser. For Windows.">
+<meta name="description" content="drQEmu runs a compiled program of eight ESP32 chips (ESP32, S2, S3, C3, C5, C6, H2, P4) on your PC, with pins, buses and 82 chip models you can see and drive from a browser. For Windows.">
 <meta property="og:site_name" content="Digital Rebel Studio">
 <meta property="og:type" content="website">
 <meta property="og:title" content="drQEmu · ESP32 family emulator · Digital Rebel Studio">
-<meta property="og:description" content="drQEmu runs a compiled program of eight ESP32 chips on your PC, with pins, buses and 78 chip models you can see and drive from a browser.">
+<meta property="og:description" content="drQEmu runs a compiled program of eight ESP32 chips on your PC, with pins, buses and 82 chip models you can see and drive from a browser.">
 <meta property="og:url" content="https://erolmicset.github.io/drQEmu.html">
 <meta property="og:image" content="https://erolmicset.github.io/images/drqemu/bus-monitor.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="drQEmu · ESP32 family emulator · Digital Rebel Studio">
-<meta name="twitter:description" content="drQEmu runs a compiled program of eight ESP32 chips on your PC, with pins, buses and 78 chip models you can see and drive from a browser.">
+<meta name="twitter:description" content="drQEmu runs a compiled program of eight ESP32 chips on your PC, with pins, buses and 82 chip models you can see and drive from a browser.">
 <meta name="twitter:image" content="https://erolmicset.github.io/images/drqemu/bus-monitor.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"drQEmu","applicationCategory":"DeveloperApplication","operatingSystem":"Windows","description":"An emulator of eight ESP32 chips that runs a compiled program on a PC, with pins, buses and 78 chip models you can drive from a browser.","url":"https://erolmicset.github.io/drQEmu.html","image":"https://erolmicset.github.io/images/drqemu/bus-monitor.png","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Digital Rebel Studio","url":"https://erolmicset.github.io/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"drQEmu","applicationCategory":"DeveloperApplication","operatingSystem":"Windows, Linux","description":"An emulator of eight ESP32 chips that runs a compiled program on a PC, with pins, buses and 82 chip models you can drive from a browser.","url":"https://erolmicset.github.io/drQEmu.html","image":"https://erolmicset.github.io/images/drqemu/bus-monitor.png","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Digital Rebel Studio","url":"https://erolmicset.github.io/"}}</script>
 <meta name="theme-color" content="#0f1626">
 <link rel="icon" type="image/png" href="images/drs-favicon.png">
 <script>document.documentElement.classList.add('js')</script>
@@ -186,7 +186,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
         <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg></div>
         <div>
           <h2 id="recTitle">Download <span translate="no" class="notranslate">drQEmu</span></h2>
-          <p id="recText">One zip: the emulator for <span translate="no" class="notranslate">Windows</span>, the flasher for real boards, the help page and the licence files. A <span translate="no" class="notranslate">Linux</span> version follows later.</p>
+          <p id="recText">One zip: the emulator and the flasher for real boards, each for <span translate="no" class="notranslate">Windows</span> and <span translate="no" class="notranslate">Linux</span>, the help pages and the licence files.</p>
           <p class="meta" id="recMeta" translate="no"></p>
         </div>
         <a class="btn primary" id="recBtn" href="#">Download the zip</a>
@@ -224,12 +224,12 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
   <section class="alt">
     <div class="wrap">
       <p class="eyebrow">Devices</p>
-      <h2>78 chip models to connect</h2>
+      <h2>82 chip models to connect</h2>
       <p class="sub">Each one answers like the real part, so the usual <span translate="no" class="notranslate">Arduino</span> library works unchanged. A part appears as a card with its state and its inputs; many cards have an <b>Info</b> button with the wiring and what is not modeled.</p>
       <div class="notes" style="margin-top:22px">
         <div class="card reveal"><h3><span translate="no" class="notranslate">I2C</span>: 53</h3><p><b>Displays:</b> <span translate="no" class="notranslate">SSD1306, SH1106, HD44780 16x2 and 20x4</span>. <b>Touch:</b> <span translate="no" class="notranslate">FT6336, CST816, GT911</span>. <b>Expanders:</b> <span translate="no" class="notranslate">PCF8574, PCF8575, MCP23008, MCP23017</span>. <b>Clocks:</b> <span translate="no" class="notranslate">DS1307, DS3231, PCF8563, PCF8583</span>. <b>Climate:</b> <span translate="no" class="notranslate">BMP180, BMP280, BME280, AHT20, SHT21, SHT3x</span>. <b>Temperature:</b> <span translate="no" class="notranslate">LM75, TMP102, DS1621, MCP9808, TMP117</span>. <b>Motion and field:</b> <span translate="no" class="notranslate">MPU6050, ADXL345, HMC5883L, QMC5883L</span>. <b>Light:</b> <span translate="no" class="notranslate">BH1750, VEML7700, TCS34725</span>. <b>Pulse:</b> <span translate="no" class="notranslate">MAX30102</span>. <b>Converters:</b> <span translate="no" class="notranslate">ADS1015, ADS1115, PCF8591, MCP4725, MCP4728</span>. <b>Power:</b> <span translate="no" class="notranslate">INA219, INA226</span>. <b>PWM:</b> <span translate="no" class="notranslate">PCA9685</span>. <b>Memory:</b> <span translate="no" class="notranslate">24C01 to 24C512</span>.</p></div>
-        <div class="card reveal"><h3><span translate="no" class="notranslate">SPI</span>: 16</h3><p><b>Color displays:</b> <span translate="no" class="notranslate">ST7735, ILI9341, ST7789, ST7796, GC9A01</span> and an <span translate="no" class="notranslate">RGB</span> panel. <b>Monochrome:</b> <span translate="no" class="notranslate">SSD1306, SH1106</span>. <b>LED drivers:</b> <span translate="no" class="notranslate">MAX7219, 74HC595</span>. <b>Touch:</b> <span translate="no" class="notranslate">XPT2046</span>. <b>Others:</b> <span translate="no" class="notranslate">MCP3008, MCP23S17, MAX6675</span>. <b>Storage:</b> <span translate="no" class="notranslate">W25Q</span> flash and an <span translate="no" class="notranslate">SD</span> card.</p></div>
-        <div class="card reveal"><h3>On pins: 9</h3><p><span translate="no" class="notranslate">DHT22, DHT11, DS18B20, HC-SR04, HX711, TM1637</span>, a matrix keypad, a rotary encoder and an <span translate="no" class="notranslate">HD44780</span> text display wired directly.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">SPI</span>: 19</h3><p><b>Color displays:</b> <span translate="no" class="notranslate">ST7735, ILI9341, ST7789, ST7796, GC9A01</span> and an <span translate="no" class="notranslate">RGB</span> panel. <b>Monochrome:</b> <span translate="no" class="notranslate">SSD1306, SH1106, PCD8544</span> (Nokia 5110). <b>LED drivers:</b> <span translate="no" class="notranslate">MAX7219, 74HC595</span>. <b>Touch:</b> <span translate="no" class="notranslate">XPT2046</span>. <b>Others:</b> <span translate="no" class="notranslate">MCP3008, MCP23S17, MAX6675</span>. <b>Radio and RFID:</b> <span translate="no" class="notranslate">nRF24L01+</span> (two radios talk to each other) and the <span translate="no" class="notranslate">MFRC522</span> card reader with a virtual card. <b>Storage:</b> <span translate="no" class="notranslate">W25Q</span> flash and an <span translate="no" class="notranslate">SD</span> card.</p></div>
+        <div class="card reveal"><h3>On pins: 10</h3><p><span translate="no" class="notranslate">DHT22, DHT11, DS18B20, HC-SR04, HX711, TM1637</span>, a matrix keypad, a rotary encoder, an <span translate="no" class="notranslate">HD44780</span> text display wired directly and a <span translate="no" class="notranslate">WS2812</span> LED strip.</p></div>
       </div>
       <p class="sub" style="margin-top:18px">Put a display and its touch chip together and you have a complete <span translate="no" class="notranslate">HMI</span> board: the 2.8 and 3.5 inch <span translate="no" class="notranslate">ESP32</span> boards, the round <span translate="no" class="notranslate">GC9A01</span> board, and on the <span translate="no" class="notranslate">ESP32-S3</span> the 3.5 inch parallel board and the 800 x 480 board.</p>
     </div>
@@ -316,8 +316,8 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
       <div class="plate reveal" id="flow"><p class="pcap" id="flowCap">Compile the sketch, start <span translate="no" class="notranslate">drQEmu</span>, load the image, watch and drive the board in the browser.</p></div>
       <div class="notes" style="margin-top:22px">
         <div class="card reveal"><h3>The image</h3><p>Compile your sketch the way you always do and keep the merged image (the <span translate="no" class="notranslate">.merged.bin</span> file). That file is what <span translate="no" class="notranslate">drQEmu</span> runs: the same bytes you would write to a board.</p></div>
-        <div class="card reveal"><h3><span translate="no" class="notranslate">Windows</span></h3><p>Start <span translate="no" class="notranslate">drQEmu32All.exe</span>. The page opens in your browser; the help page in the zip explains every part of it. A <span translate="no" class="notranslate">Linux</span> version is not ready yet.</p></div>
-        <div class="card reveal"><h3>Real boards</h3><p><span translate="no" class="notranslate">drFlasher</span> writes an image to a connected <span translate="no" class="notranslate">ESP32</span> board over its serial port. It is a separate file: you do not need it to use the emulator.</p></div>
+        <div class="card reveal"><h3><span translate="no" class="notranslate">Windows</span> and <span translate="no" class="notranslate">Linux</span></h3><p>Start <span translate="no" class="notranslate">drQEmu32.exe</span> on <span translate="no" class="notranslate">Windows</span>, or <span translate="no" class="notranslate">drQEmu32</span> on <span translate="no" class="notranslate">Linux</span>. The page opens in your browser; its <b>Help</b> link opens the help page, built into the program, which explains every part of it.</p></div>
+        <div class="card reveal"><h3>Real boards</h3><p><span translate="no" class="notranslate">drFlasher</span> writes an image to many <span translate="no" class="notranslate">ESP32</span> boards at once over their serial ports and checks every board afterwards. It knows the <span translate="no" class="notranslate">ESP32</span>, <span translate="no" class="notranslate">S2</span>, <span translate="no" class="notranslate">S3</span>, <span translate="no" class="notranslate">C3</span>, <span translate="no" class="notranslate">C5</span>, <span translate="no" class="notranslate">C6</span>, <span translate="no" class="notranslate">H2</span> and <span translate="no" class="notranslate">P4</span> and has its own <b>Help</b> page. It is a separate file: you do not need it to use the emulator.</p></div>
       </div>
     </div>
   </section>
@@ -355,9 +355,11 @@ var RELEASE = {
   version: '1.1.0', date: '',
   file: '', url: '', size: 0,
   files: [
-    ['Emulator', 'Windows x64', 'drQEmu32All.exe', 3.9],
-    ['Flasher', 'Windows x64', 'drFlasher.exe', 35.9],
-    ['Help', 'any browser', 'drQEmu32All.html', 0.1]
+    ['Emulator', 'Windows x64', 'drQEmu32.exe', 5.1],
+    ['Emulator', 'Linux x64', 'drQEmu32', 7.3],
+    ['Flasher', 'Windows x64', 'drFlasher.exe', 36.0],
+    ['Flasher', 'Linux x64', 'drFlasher-lin64', 37.5],
+    ['Help', 'any browser', 'drQEmu32.html', 0.7]
   ]
 };
 (function () {
