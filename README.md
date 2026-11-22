@@ -42,7 +42,7 @@ Runs the program you compiled for an **ESP32, ESP32-S2, S3, C3, C5, C6, H2 or P4
 | ESP32-H2 | RISC-V | 802.15.4 with Zigbee and a Thread leader, Bluetooth LE |
 | ESP32-P4 | 2 x RISC-V with FPU | start-up, pins, PWM, analog, PSRAM, I2C, SPI (beta) |
 
-- **78 chip models to connect**, each answering like the real part so the usual Arduino library works unchanged: displays (SSD1306, ILI9341, ST7789, GC9A01 ...), touch (XPT2046, FT6336, GT911 ...), sensors, clocks, expanders, memories, DHT22, DS18B20, HC-SR04, HX711 and more.
+- **82 chip models to connect**, each answering like the real part so the usual Arduino library works unchanged: displays (SSD1306, ILI9341, ST7789, GC9A01 ...), touch (XPT2046, FT6336, GT911 ...), sensors, clocks, expanders, memories, DHT22, DS18B20, HC-SR04, HX711 and more.
 - **Complete HMI boards:** put a display and its touch chip together and you have the 2.8 and 3.5 inch ESP32 boards, the round GC9A01 board and the S3 parallel and RGB boards.
 - **Virtual WiFi network**, so programs that scan, join, get an address and reach the network run unchanged.
 
