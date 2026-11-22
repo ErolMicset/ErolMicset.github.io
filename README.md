@@ -106,7 +106,7 @@ This repository is the public website, served by GitHub Pages at https://erolmic
 | `DRSDownload.html`, `drQEmu.html` | the two download pages; each has its own zip |
 | `DownloadPathList.txt` | one line per zip: `version - zip file name - path`; "Tools" in the name = test servers, "drQEmu" in the name = the emulator |
 
-There is no build step, no framework and no external request: styles, scripts
+There is no build step and no framework, and no external request except the drQEmu video, which loads from YouTube only when you press play: styles, scripts
 and icons are all inline. Open `index.html` in a browser to preview it.
 
 ### Publishing with GitHub Pages

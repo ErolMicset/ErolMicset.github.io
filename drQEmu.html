@@ -139,6 +139,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .shotfig figcaption{margin-top:12px;display:grid;gap:3px}
 .shotfig figcaption b{font-size:16.5px}
 .shotfig figcaption span{color:var(--muted);font-size:14.5px}
+.vid{padding:12px;max-width:960px;margin:22px 0 0}
+.vplay{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;border-radius:12px;overflow:hidden;background:#10151c;cursor:pointer}
+.vplay img{width:100%;height:100%;object-fit:contain;display:block}
+.vplay .pl{position:absolute;inset:0;display:grid;place-items:center;background:rgba(8,12,20,.28);transition:background .2s}
+.vplay .pl svg{width:84px;height:84px;padding:22px 18px 22px 26px;border-radius:50%;background:var(--accent);fill:var(--accent-ink);box-shadow:0 8px 28px rgba(0,0,0,.4);transition:transform .25s}
+.vplay:hover .pl{background:rgba(8,12,20,.12)}
+.vplay:hover .pl svg{transform:scale(1.08)}
+.vid iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#000}
 dialog.zoom{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100vh;margin:0}
 dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
 .zb{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;padding:54px 40px 16px}
@@ -192,6 +200,21 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
         <a class="btn primary" id="recBtn" href="#">Download the zip</a>
       </div>
       <p class="other" style="margin:18px 4px 0;color:var(--muted);font-size:14.5px"><span>Looking for the panel studio? That is <a href="DRSDownload.html"><span translate="no" class="notranslate">DRS</span>, on its own download page</a>.</span></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Video</p>
+      <h2>A two minute tour</h2>
+      <p class="sub">The project, the Lab, an <span translate="no" class="notranslate">LVGL</span> screen with touch, the Wiring view and the Interface windows. Subtitles: English, Turkish, Bulgarian, German and Spanish; pick the language with the <b>CC</b> button.</p>
+      <div class="card vid reveal">
+        <button class="vplay" id="vplay" type="button" data-id="aPHAEq5NqoY" aria-label="Play the drQEmu video">
+          <img src="images/drqemu/lvgl-interface.png" alt="drQEmu: an LVGL screen on an ILI9341 display, next to the serial monitor" loading="lazy">
+          <span class="pl" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+      </div>
+      <p class="sub" style="margin-top:12px;font-size:14.5px">The video plays from <span translate="no" class="notranslate">YouTube</span>. Nothing is loaded from there until you press play. <a href="https://www.youtube.com/watch?v=aPHAEq5NqoY" rel="noopener" target="_blank">Open it on <span translate="no" class="notranslate">YouTube</span></a>.</p>
     </div>
   </section>
 
@@ -460,6 +483,22 @@ var RELEASE = {
     setTimeout(function () { plate.classList.add('go'); items.forEach(function (e) { e.classList.add('in'); }); }, 6000);
   }
   $('y').textContent = new Date().getFullYear();
+})();
+</script>
+<script>
+/* Video: nothing is requested from YouTube until the play button is pressed. */
+(function () {
+  var b = document.getElementById('vplay');
+  if (!b) return;
+  b.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-id') + '?autoplay=1&rel=0&cc_load_policy=1&hl=en';
+    f.title = 'drQEmu video';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.setAttribute('allowfullscreen', '');
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    b.parentNode.replaceChild(f, b);
+  });
 })();
 </script>
 <script src="lzflow.js"></script>
