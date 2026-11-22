@@ -32,7 +32,7 @@ A free visual studio for HMI, SCADA and IoT panels. Any board you program, with 
 
 Runs the program you compiled for an **ESP32, ESP32-S2, S3, C3, C5, C6, H2 or P4** on your PC. The chip is read from the image: one program file, any of the eight. Pins, the I2C and SPI buses and the chips on them are drawn in a browser page.
 
-<p align="center"><img src="images/drqemu/bus-monitor.png" alt="drQEmu bus monitor" width="90%"></p>
+<p align="center"><img src="images/drqemu/lvgl-interface.png" alt="drQEmu: an LVGL screen on an ILI9341 display, next to the serial monitor" width="90%"></p>
 
 | Chip | Core | Highlights |
 | --- | --- | --- |
@@ -40,11 +40,13 @@ Runs the program you compiled for an **ESP32, ESP32-S2, S3, C3, C5, C6, H2 or P4
 | ESP32-S2 / S3 | Xtensa LX7 | touch, PSRAM, OTA, WiFi; S3 also drives 8 bit parallel and RGB 800 x 480 displays |
 | ESP32-C3 / C5 / C6 | RISC-V | analog calibration, watchdogs, sleep, WiFi |
 | ESP32-H2 | RISC-V | 802.15.4 with Zigbee and a Thread leader, Bluetooth LE |
-| ESP32-P4 | 2 x RISC-V with FPU | start-up, pins, PWM, analog, PSRAM, I2C, SPI (beta) |
+| ESP32-P4 | 2 x RISC-V with FPU | start-up, pins, PWM, analog, PSRAM, I2C, SPI with DMA, I2S, TWAI, PCNT, AES / SHA / RSA, USB serial, watchdogs, sleep (beta) |
 
-- **82 chip models to connect**, each answering like the real part so the usual Arduino library works unchanged: displays (SSD1306, ILI9341, ST7789, GC9A01 ...), touch (XPT2046, FT6336, GT911 ...), sensors, clocks, expanders, memories, DHT22, DS18B20, HC-SR04, HX711 and more.
+- **82 chip models to connect**, each answering like the real part so the usual Arduino library works unchanged: displays (SSD1306, ILI9341, ST7789, GC9A01, PCD8544 ...), touch (XPT2046, FT6336, GT911 ...), sensors, clocks, expanders, memories, radio and RFID (nRF24L01+, MFRC522), WS2812 LED strips, DHT22, DS18B20, HC-SR04, HX711 and more.
 - **Complete HMI boards:** put a display and its touch chip together and you have the 2.8 and 3.5 inch ESP32 boards, the round GC9A01 board and the S3 parallel and RGB boards.
 - **Virtual WiFi network**, so programs that scan, join, get an address and reach the network run unchanged.
+- **drFlasher for real boards:** writes one image to many boards at the same time, checks every board with an MD5, and knows all eight chips. Help pages for both programs are built in, in five languages.
+- **Windows and Linux**, x64: one file each, nothing to install.
 
 Radios are not real: WiFi is a virtual network, and there is no air for classic-ESP32 Bluetooth.
 
@@ -55,7 +57,7 @@ Radios are not real: WiFi is a virtual network, and there is no air for classic-
 | **DRS** | https://erolmicset.github.io/DRSDownload.html |
 | **drQEmu** | https://erolmicset.github.io/drQEmu.html (emulator, flasher for real boards, help page) |
 
-Windows builds are available now. A Linux build of drQEmu follows later.
+Both come for Windows and Linux. The zips are release files of this repository: see [Releases](https://github.com/ErolMicset/ErolMicset.github.io/releases). The DRS zip holds the Designer and the Runner for every system and the test servers; the drQEmu zip holds the emulator, the flasher, the help pages, the licence files and ready-to-run example images.
 
 ## Also in the family
 
