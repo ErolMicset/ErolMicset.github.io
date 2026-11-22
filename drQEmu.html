@@ -241,12 +241,20 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
       <p class="sub">Real screens of <span translate="no" class="notranslate">drQEmu</span> while a compiled program runs, at their real size. Click a picture to look at every pixel.</p>
       <div class="shotgrid" id="shots">
       <figure class="card shotfig reveal">
-        <div class="frame"><img src="images/drqemu/lcd1602.png" alt="A text display on the I2C bus. A 16 x 2 HD44780 display on an I2C backpack. The program writes two lines and a custom character; the card shows the screen as it would look, with its mode, display and backlight state." width="1109" height="470" loading="lazy"></div>
-        <figcaption><b>A text display on the I2C bus</b><span>A 16 x 2 HD44780 display on an I2C backpack. The program writes two lines and a custom character; the card shows the screen as it would look, with its mode, display and backlight state.</span></figcaption>
+        <div class="frame"><img src="images/drqemu/lvgl-interface.png" alt="A touch screen drawn by LVGL. A program that uses the LVGL library draws its screen on an ILI9341 display, 240 x 320. In the Interface tab the screen sits next to the serial monitor, where the program reports its frames." width="1100" height="949" loading="lazy"></div>
+        <figcaption><b>A touch screen drawn by LVGL</b><span>A program that uses the <span translate="no" class="notranslate">LVGL</span> library draws its screen on an <span translate="no" class="notranslate">ILI9341</span> display, 240 x 320. In the Interface tab the screen sits next to the serial monitor, where the program reports its frames.</span></figcaption>
       </figure>
       <figure class="card shotfig reveal">
-        <div class="frame"><img src="images/drqemu/oled.png" alt="An OLED that draws what the program sends. A 128 x 64 SSD1306 display on I2C. The program draws two lines, a counter and a moving bar; the picture follows it live." width="1109" height="583" loading="lazy"></div>
-        <figcaption><b>An OLED that draws what the program sends</b><span>A 128 x 64 SSD1306 display on I2C. The program draws two lines, a counter and a moving bar; the picture follows it live.</span></figcaption>
+        <div class="frame"><img src="images/drqemu/lvgl-lab.png" alt="The chips of the program. The Lab tab keeps a card for every chip the program talks to. The LVGL screen is shown live, with the controller, the size and the number of pixels the program has written." width="1100" height="837" loading="lazy"></div>
+        <figcaption><b>The chips of the program</b><span>The Lab tab keeps a card for every chip the program talks to. The <span translate="no" class="notranslate">LVGL</span> screen is shown live, with the controller, the size and the number of pixels the program has written.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/board.png" alt="The board and the program. The Board tab starts, stops and resets the board and shows what the image holds: the chip, the flash, the partitions, the build and the ESP-IDF version." width="1100" height="1032" loading="lazy"></div>
+        <figcaption><b>The board and the program</b><span>The Board tab starts, stops and resets the board and shows what the image holds: the chip, the flash, the partitions, the build and the <span translate="no" class="notranslate">ESP-IDF</span> version.</span></figcaption>
+      </figure>
+      <figure class="card shotfig reveal">
+        <div class="frame"><img src="images/drqemu/lcd1602.png" alt="A text display on the I2C bus. A 16 x 2 HD44780 display on an I2C backpack. The program writes two lines and a custom character; the card shows the screen as it would look, with its mode, display and backlight state." width="1109" height="470" loading="lazy"></div>
+        <figcaption><b>A text display on the I2C bus</b><span>A 16 x 2 HD44780 display on an I2C backpack. The program writes two lines and a custom character; the card shows the screen as it would look, with its mode, display and backlight state.</span></figcaption>
       </figure>
       <figure class="card shotfig reveal">
         <div class="frame"><img src="images/drqemu/keypad-lcd.png" alt="A keypad and a parallel display. A 4 x 3 matrix keypad on seven pins and an HD44780 display on six pins. Click a key and the program sees it pressed; the display shows the text the program writes." width="1109" height="786" loading="lazy"></div>
