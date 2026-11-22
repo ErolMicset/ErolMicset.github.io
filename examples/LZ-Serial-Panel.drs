@@ -45,6 +45,7 @@
         "Class": "drLLinkProperty",
         "Name": "LLProperty1",
         "Properties": {
+          "AutoFlow": "RightToLeft",
           "Position.X": 260,
           "Position.Y": 265,
           "Size.Width": 155.28466796875,
@@ -89,6 +90,7 @@
         "Class": "drLLinkProperty",
         "Name": "LLProperty2",
         "Properties": {
+          "AutoFlow": "LeftToRight",
           "Position.X": 260,
           "Position.Y": 230,
           "Size.Width": 176.51123046875,
@@ -270,6 +272,7 @@
         "Class": "drLLinkProperty",
         "Name": "LLProperty3",
         "Properties": {
+          "AutoFlow": "RightToLeft",
           "Position.X": 260,
           "Position.Y": 195,
           "Size.Width": 180.37060546875,
