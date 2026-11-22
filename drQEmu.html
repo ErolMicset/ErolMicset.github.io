@@ -352,7 +352,7 @@ dialog.zoom::backdrop{background:rgba(5,9,18,.9)}
 /* The ONE place to edit for a new drQEmu release: version, date, the zip name and its size (MiB).
    DownloadPathList.txt (lines whose zip name contains "drQEmu") gives the address of the newest zip. */
 var RELEASE = {
-  version: '1.1.0', date: '',
+  version: '1.2.0', date: '2026-11-22',
   file: '', url: '', size: 192.3,
   files: [
     ['Emulator', 'Windows x64', 'drQEmu32.exe', 5.1],
@@ -397,7 +397,7 @@ var RELEASE = {
       if (p.length < 3 || !/drqemu/i.test(p[1])) return;
       if (!best || cmp(p[0], best.v) > 0) best = { v: p[0], file: p[1], url: p.slice(2).join(' - ') };
     });
-    if (best) { RELEASE.version = best.v; RELEASE.file = best.file; RELEASE.url = best.url; RELEASE.date = ''; paint(); }
+    if (best) { RELEASE.version = best.v; RELEASE.file = best.file; RELEASE.url = best.url; RELEASE.date = (best.file.match(/\d{4}-\d{2}-\d{2}/) || [''])[0]; paint(); }   /* the date comes from the zip name: drQEmu-v1.2.0-2026-11-22.zip */
   }, function () {});
 
   /* full-size viewer */
