@@ -14,3 +14,4 @@
 # The old ESP32-only zip (0.1.0) is withdrawn. When the new zip is ready add its line here, for example:
 # 1.1.0 - drQEmu-v1.1.0-<date>.zip - https://github.com/ErolMicset/ErolMicset.github.io/releases/download/v1.1.0/drQEmu-v1.1.0-<date>.zip
 # Until a drQEmu line exists, drQEmu.html shows "Download coming soon".
+1.2.0 - drQEmu-v1.2.0-2026-11-22.zip - https://github.com/ErolMicset/ErolMicset.github.io/releases/download/v1.2.0/drQEmu-v1.2.0-2026-11-22.zip
